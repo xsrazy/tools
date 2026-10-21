@@ -1,6 +1,2 @@
-# Build-time only: never deploy
 hidden_files/
-scripts/
-data/
 *.md
-QA_AUDIT_20261019.md
