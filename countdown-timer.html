@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Countdown Timer, Stopwatch and Date Countdown | Micro Tools Hub</title>
+    <meta name="keywords" content="countdown timer, online stopwatch, countdown to date, timer with alarm, stopwatch with laps, fullscreen timer" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Free online countdown timer with three modes: count down to any date and time, run a duration timer with an alarm sound, or use the stopwatch with laps and fullscreen mode. No sign-up, runs in your browser." />
+    <link rel="canonical" href="https://tools.xsrazy.web.id/countdown-timer.html" />
+    <meta property="og:title" content="Countdown Timer, Stopwatch and Date Countdown" />
+    <meta property="og:description" content="Count down to any date, run a timer with alarm, or use the stopwatch with laps and fullscreen. Free, no sign-up." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Micro Tools Hub" />
+    <meta property="og:image:alt" content="Countdown Timer, Stopwatch and Date Countdown - free online tool" />
+    <meta property="og:url" content="https://tools.xsrazy.web.id/countdown-timer.html" />
+    <meta property="og:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Countdown Timer, Stopwatch and Date Countdown" />
+    <meta name="twitter:description" content="Countdown to a date, duration timer with alarm, stopwatch with laps. Free, no sign-up." />
+    <meta name="twitter:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta name="theme-color" content="#0B1220" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="/assets/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=26" />
+    <style>
+      .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+      .mode { display: none; }
+      .mode.active { display: block; }
+      .cd-units { display: flex; gap: 10px; flex-wrap: wrap; margin: 18px 0 6px; }
+      .cd-unit { flex: 1 1 90px; background: var(--surface-2); border: 1.5px solid var(--line); border-radius: 14px; padding: 14px 8px; text-align: center; }
+      .cd-unit b { display: block; font-family: var(--font-display); font-size: 1.9rem; font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; }
+      .cd-unit span { font-size: .74rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+      .timer-inputs { display: flex; gap: 10px; flex-wrap: wrap; }
+      .timer-inputs .num-wrap { flex: 1 1 100px; }
+      .lap-table { margin-top: 16px; }
+      .cd-display { font-family: var(--font-display); font-size: clamp(2.4rem, 7vw, 3.6rem); font-weight: 800; letter-spacing: -0.02em; color: var(--ink); font-variant-numeric: tabular-nums; margin: 14px 0 4px; word-break: break-all; }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"How accurate is the online countdown timer?","acceptedAnswer":{"@type":"Answer","text":"The timer is driven by your device clock with millisecond timestamps, so it stays accurate to about a second over long runs. Browsers slow down timers in background tabs, so keep the tab visible if the exact alarm moment matters."}},
+        {"@type":"Question","name":"Will the alarm sound if the tab is in the background?","acceptedAnswer":{"@type":"Answer","text":"It depends on your browser. Most browsers throttle background tabs, which can delay the alarm by up to a minute. For a reliable alarm, keep the timer tab open and visible, and make sure your device volume is on."}},
+        {"@type":"Question","name":"What time zone does the date countdown use?","acceptedAnswer":{"@type":"Answer","text":"Your device's local time zone. The date and time you pick are interpreted exactly as shown on your device clock, so a countdown to midnight New Year is midnight where you are."}},
+        {"@type":"Question","name":"Can I use the stopwatch in fullscreen?","acceptedAnswer":{"@type":"Answer","text":"Yes. Press the Fullscreen button under the stopwatch to fill the screen with the timer, which is handy for classrooms, workouts and presentations. Press Esc or the button again to exit."}},
+        {"@type":"Question","name":"Is there a limit on stopwatch laps?","acceptedAnswer":{"@type":"Answer","text":"No. You can record as many laps as you like. Each lap shows its split time and the running total, newest first."}}
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Countdown timer",
+      "url": "https://tools.xsrazy.web.id/countdown-timer.html",
+      "description": "Countdown to any date, interval timer and stopwatch with laps.",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+</head>
+<body>
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="index.html" aria-label="Micro Tools Hub home">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+          <span class="brand-word">Micro <em>Tools</em></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="navLinks" aria-label="Site">
+          <a class="nav-link" href="word-counter.html">Word Counter</a>
+          <a class="nav-link" href="password-generator.html">Password Generator</a>
+          <a class="nav-link" href="unit-converter.html">Unit Converter</a>
+          <a class="nav-link" href="timezone-converter.html">Time Zone</a>
+          <a class="nav-link" href="case-converter.html">Case Converter</a>
+          <a class="btn btn-primary btn-sm" href="index.html#tools">Browse tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ADSENSE SLOT 1 of 3 (header leaderboard): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+    <div class="ad-slot" data-ad-slot="header">Advertisement</div>
+
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="index.html#tools">All tools</a> &nbsp;/&nbsp; Countdown timer</nav>
+      <header class="page-head">
+        <h1>Countdown timer and stopwatch</h1>
+        <p><strong>Count down to any date</strong>, run a <strong>duration timer</strong> with an alarm, or use the <strong>stopwatch</strong> with laps and fullscreen. Three tools, one page.</p>
+      </header>
+
+      <main>
+        <div class="tool-grid">
+          <div class="card panel">
+            <h2>Timer</h2>
+            <p class="sub">Pick a mode. Only one runs at a time.</p>
+            <div class="seg" role="group" aria-label="Timer mode" style="margin-bottom:20px">
+              <button type="button" data-mode="date" aria-pressed="true">Count down to date</button>
+              <button type="button" data-mode="timer" aria-pressed="false">Duration timer</button>
+              <button type="button" data-mode="sw" aria-pressed="false">Stopwatch</button>
+            </div>
+
+            <div class="mode active" id="mode-date">
+              <div class="field">
+                <label for="cd-date">Target date and time</label>
+                <div class="num-wrap" style="flex:none;width:100%"><input id="cd-date" type="datetime-local" /></div>
+                <div class="hint">Uses your device's local time zone.</div>
+              </div>
+              <div class="btn-row">
+                <button class="btn btn-primary" id="cd-start" type="button">Start countdown</button>
+                <button class="btn btn-outline" id="cd-clear" type="button">Clear</button>
+              </div>
+            </div>
+
+            <div class="mode" id="mode-timer">
+              <div class="field">
+                <span class="field-label" id="tm-label">Duration</span>
+                <div class="timer-inputs" role="group" aria-labelledby="tm-label">
+                  <div class="num-wrap"><input id="tm-h" type="number" inputmode="numeric" min="0" max="99" value="0" aria-label="Hours" /><span class="affix right">h</span></div>
+                  <div class="num-wrap"><input id="tm-m" type="number" inputmode="numeric" min="0" max="59" value="5" aria-label="Minutes" /><span class="affix right">m</span></div>
+                  <div class="num-wrap"><input id="tm-s" type="number" inputmode="numeric" min="0" max="59" value="0" aria-label="Seconds" /><span class="affix right">s</span></div>
+                </div>
+              </div>
+              <div class="btn-row">
+                <button class="btn btn-primary" id="tm-start" type="button">Start</button>
+                <button class="btn btn-outline" id="tm-reset" type="button">Reset</button>
+              </div>
+              <div class="hint" style="margin-top:10px">An alarm sounds when the timer reaches zero. Keep the tab visible for the exact moment.</div>
+            </div>
+
+            <div class="mode" id="mode-sw">
+              <div class="btn-row" style="margin-top:0">
+                <button class="btn btn-primary" id="sw-start" type="button">Start</button>
+                <button class="btn btn-outline" id="sw-lap" type="button" disabled>Lap</button>
+                <button class="btn btn-outline" id="sw-reset" type="button">Reset</button>
+                <button class="btn btn-outline" id="sw-fs" type="button">Fullscreen</button>
+              </div>
+              <div class="lap-table">
+                <div class="table-scroll">
+                  <table>
+                    <thead><tr><th>Lap</th><th>Split</th><th>Total</th></tr></thead>
+                    <tbody id="sw-laps"><tr><td colspan="3" style="color:var(--faint)">No laps yet. Press Lap while the stopwatch runs.</td></tr></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card result-card">
+            <div class="result-head">
+              <div class="result-label" id="out-label">Countdown</div>
+              <div class="cd-display" id="out-display">--</div>
+              <p class="result-note" id="out-note">Pick a mode on the left, set it up and press Start.</p>
+            </div>
+            <div class="cd-units" id="out-units" style="display:none">
+              <div class="cd-unit"><b id="u-d">0</b><span>days</span></div>
+              <div class="cd-unit"><b id="u-h">0</b><span>hours</span></div>
+              <div class="cd-unit"><b id="u-m">0</b><span>minutes</span></div>
+              <div class="cd-unit"><b id="u-s">0</b><span>seconds</span></div>
+            </div>
+            <div class="callout info" style="margin-top:22px"><strong>Private by design:</strong> everything runs on this page with JavaScript. No account, no server, no tracking.</div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ADSENSE SLOT 2 of 3 (in-article): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="in-article">Advertisement</div>
+
+      <section class="explainer">
+        <div class="card">
+          <h3>How the timing works</h3>
+          <p>All three modes are driven by your device clock using millisecond timestamps, not by counting ticks, so they stay accurate even over long runs. The <strong>date countdown</strong> shows days, hours, minutes and seconds until your target. The <strong>duration timer</strong> counts down from the hours, minutes and seconds you set and plays an alarm at zero. The <strong>stopwatch</strong> counts up with tenth-of-a-second precision and records unlimited laps.</p>
+        </div>
+        <div class="card">
+          <h3>Tips for reliable alarms</h3>
+          <ul>
+            <li><strong>Keep the tab visible:</strong> browsers throttle background tabs, which can delay the alarm.</li>
+            <li><strong>Check your volume</strong> before starting a timer you depend on.</li>
+            <li><strong>Fullscreen stopwatch</strong> is handy for classrooms, workouts and presentations. Press Esc to exit.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="related">
+        <h2>Related tools</h2>
+        <div class="related-grid">
+          <a href="timezone-converter.html"><span class="t">Time zone converter</span><span class="d">Convert any time between world time zones instantly.</span></a>
+          <a href="unit-converter.html"><span class="t">Unit converter</span><span class="d">Length, weight, temperature and more in one place.</span></a>
+          <a href="word-counter.html"><span class="t">Word counter</span><span class="d">Live word, character and reading-time counts.</span></a>
+        </div>
+      </section>
+
+      <section class="faq faq-narrow">
+        <h2>Countdown timer FAQs</h2>
+        <details>
+          <summary>How accurate is the online countdown timer?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">The timer is driven by your device clock with millisecond timestamps, so it stays accurate to about a second over long runs. Browsers slow down timers in background tabs, so keep the tab visible if the exact moment matters.</div>
+        </details>
+        <details>
+          <summary>Will the alarm sound if the tab is in the background?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">It depends on your browser. Most browsers throttle background tabs, which can delay the alarm by up to a minute. For a reliable alarm, keep the timer tab open and visible, and make sure your device volume is on.</div>
+        </details>
+        <details>
+          <summary>What time zone does the date countdown use?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Your device's local time zone. The date and time you pick are interpreted exactly as shown on your device clock, so a countdown to midnight on New Year is midnight where you are.</div>
+        </details>
+        <details>
+          <summary>Can I use the stopwatch in fullscreen?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Yes. Press the Fullscreen button under the stopwatch to fill the screen with the timer, which is handy for classrooms, workouts and presentations. Press Esc or the button again to exit.</div>
+        </details>
+        <details>
+          <summary>Is there a limit on stopwatch laps?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">No. You can record as many laps as you like. Each lap shows its split time and the running total, newest first.</div>
+        </details>
+      </section>
+
+      <!-- ADSENSE SLOT 3 of 3 (above footer): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="above-footer">Advertisement</div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="f-brand">
+          <a class="brand brand-light" href="https://tools.xsrazy.web.id/" aria-label="Micro Tools Hub home">
+            <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+            <span class="brand-word">Micro <em>Tools</em></span>
+          </a>
+          <p>Free online tools with instant results, right in your browser.</p>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#text-tools">Text tools</a>
+          <nav aria-label="Popular text tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/word-counter.html">Word Counter</a>
+            <a href="https://tools.xsrazy.web.id/case-converter.html">Case Converter</a>
+            <a href="https://tools.xsrazy.web.id/character-counter.html">Character Counter</a>
+            <a href="https://tools.xsrazy.web.id/word-frequency-counter.html">Word Frequency</a>
+            <a href="https://tools.xsrazy.web.id/text-reverser.html">Text Reverser</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#generators">Generators</a>
+          <nav aria-label="Popular generators" class="flist">
+            <a href="https://tools.xsrazy.web.id/password-generator.html">Password Generator</a>
+            <a href="https://tools.xsrazy.web.id/qr/">QR Code Generator</a>
+            <a href="https://tools.xsrazy.web.id/meme-generator.html">Meme Generator</a>
+            <a href="https://tools.xsrazy.web.id/uuid-v1-generator.html">UUID Generator</a>
+            <a href="https://tools.xsrazy.web.id/fake-name-generator.html">Fake Name Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#converters">Converters</a>
+          <nav aria-label="Popular converters" class="flist">
+            <a href="https://tools.xsrazy.web.id/unit-converter.html">Unit Converter</a>
+            <a href="https://tools.xsrazy.web.id/currency-converter.html">Currency Converter</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/color-converter.html">Color Converter</a>
+            <a href="https://tools.xsrazy.web.id/number-base-converter.html">Number Base Converter</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#image-tools">Image tools</a>
+          <nav aria-label="Popular image tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/image-compressor.html">Image Compressor</a>
+            <a href="https://tools.xsrazy.web.id/image-resizer.html">Image Resizer</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/favicon-generator.html">Favicon Generator</a>
+            <a href="https://tools.xsrazy.web.id/image-cropper.html">Image Cropper</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#calculators">Calculators</a>
+          <nav aria-label="Popular calculators" class="flist">
+            <a href="https://tools.xsrazy.web.id/bmi-calculator.html">BMI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/mortgage-calculator.html">Mortgage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/percentage-toolkit.html">Percentage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/loan-calculator.html">Loan Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/age-calculator.html">Age Calculator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#business-tools">Business</a>
+          <nav aria-label="Popular business tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/invoice/">Invoice Generator</a>
+            <a href="https://tools.xsrazy.web.id/business-name-generator.html">Business Name Generator</a>
+            <a href="https://tools.xsrazy.web.id/roi-calculator.html">ROI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/salary-converter.html">Salary Converter</a>
+            <a href="https://tools.xsrazy.web.id/business-plan-generator.html">Business Plan Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#downloaders">Downloaders</a>
+          <nav aria-label="Popular downloaders" class="flist">
+            <a href="https://tools.xsrazy.web.id/tiktok-video-downloader.html">TikTok Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/twitter-video-downloader.html">Twitter Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/youtube-thumbnail-downloader.html">YouTube Thumbnail Downloader</a>
+            <a href="https://tools.xsrazy.web.id/pinterest-downloader.html">Pinterest Downloader</a>
+            <a href="https://tools.xsrazy.web.id/reddit-downloader.html">Reddit Downloader</a>
+          </nav>
+        </div>
+        <div class="fcol f-company">
+          <span class="fhead-link fhead-static">Company</span>
+          <nav aria-label="Company" class="flist-static">
+            <a href="https://tools.xsrazy.web.id/">Home</a>
+            <a href="https://tools.xsrazy.web.id/about.html">About</a>
+            <a href="https://tools.xsrazy.web.id/contact.html">Contact</a>
+            <a href="https://tools.xsrazy.web.id/privacy-policy.html">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 Micro Tools Hub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="site.js"></script>
+    <script src="animations.js"></script>
+    <script>
+    function initCountdownTimer() {
+      var label = document.getElementById('out-label');
+      var display = document.getElementById('out-display');
+      var note = document.getElementById('out-note');
+      var units = document.getElementById('out-units');
+      function showUnits(on) { units.style.display = on ? 'flex' : 'none'; }
+      function pad(n, l) { n = String(n); while (n.length < (l || 2)) n = '0' + n; return n; }
+
+      var iv = null;
+      function stop() { if (iv) { clearInterval(iv); iv = null; } }
+
+      function beep() {
+        try {
+          var Ctx = window.AudioContext || window.webkitAudioContext;
+          var ctx = new Ctx();
+          var o = ctx.createOscillator(), g = ctx.createGain();
+          o.connect(g); g.connect(ctx.destination);
+          o.type = 'sine'; o.frequency.value = 880;
+          var t = ctx.currentTime;
+          for (var i = 0; i < 3; i++) {
+            g.gain.setValueAtTime(0.0001, t + i * 0.35);
+            g.gain.exponentialRampToValueAtTime(0.5, t + i * 0.35 + 0.03);
+            g.gain.exponentialRampToValueAtTime(0.0001, t + i * 0.35 + 0.3);
+          }
+          o.start(t); o.stop(t + 1.1);
+        } catch (e) {}
+      }
+
+      /* ---------- mode tabs ---------- */
+      var tabBtns = document.querySelectorAll('.seg [data-mode]');
+      var panes = { date: document.getElementById('mode-date'), timer: document.getElementById('mode-timer'), sw: document.getElementById('mode-sw') };
+      tabBtns.forEach(function (b) {
+        b.addEventListener('click', function () {
+          stop();
+          tabBtns.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+          Object.keys(panes).forEach(function (k) { panes[k].classList.toggle('active', k === b.getAttribute('data-mode')); });
+          showUnits(false);
+          label.textContent = b.textContent.trim();
+          display.textContent = '--';
+          note.textContent = 'Set it up on the left and press Start.';
+        });
+      });
+
+      /* ---------- date countdown ---------- */
+      var cdDate = document.getElementById('cd-date');
+      document.getElementById('cd-start').addEventListener('click', function () {
+        stop();
+        if (!cdDate.value) { note.textContent = 'Pick a date and time first.'; return; }
+        var target = new Date(cdDate.value).getTime();
+        if (isNaN(target)) { note.textContent = 'That date could not be read. Try again.'; return; }
+        label.textContent = 'Countdown to date';
+        showUnits(true);
+        function tick() {
+          var diff = target - Date.now();
+          if (diff <= 0) {
+            stop();
+            display.textContent = "Time's up!";
+            document.getElementById('u-d').textContent = '0';
+            document.getElementById('u-h').textContent = '0';
+            document.getElementById('u-m').textContent = '0';
+            document.getElementById('u-s').textContent = '0';
+            note.textContent = 'The target date and time has arrived.';
+            beep();
+            return;
+          }
+          var s = Math.floor(diff / 1000);
+          var d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60), sec = s % 60;
+          document.getElementById('u-d').textContent = d.toLocaleString('en-US');
+          document.getElementById('u-h').textContent = pad(h);
+          document.getElementById('u-m').textContent = pad(m);
+          document.getElementById('u-s').textContent = pad(sec);
+          display.textContent = d + 'd ' + pad(h) + 'h ' + pad(m) + 'm ' + pad(sec) + 's';
+          note.textContent = 'Counting down to ' + new Date(target).toLocaleString('en-US') + '.';
+        }
+        tick();
+        iv = setInterval(tick, 250);
+      });
+      document.getElementById('cd-clear').addEventListener('click', function () {
+        stop(); cdDate.value = ''; showUnits(false);
+        display.textContent = '--'; note.textContent = 'Pick a future date and time, then start.';
+      });
+
+      /* ---------- duration timer ---------- */
+      var tmH = document.getElementById('tm-h'), tmM = document.getElementById('tm-m'), tmS = document.getElementById('tm-s');
+      var tmStart = document.getElementById('tm-start');
+      var tmEnd = 0, tmLeft = 0, tmRunning = false;
+      function tmRender(ms) {
+        var s = Math.max(0, Math.ceil(ms / 1000));
+        display.textContent = pad(Math.floor(s / 3600)) + ':' + pad(Math.floor(s % 3600 / 60)) + ':' + pad(s % 60);
+      }
+      tmStart.addEventListener('click', function () {
+        if (tmRunning) {
+          tmRunning = false; stop();
+          tmLeft = tmEnd - Date.now();
+          tmStart.textContent = 'Resume';
+          note.textContent = 'Paused.';
+          return;
+        }
+        var total = (parseInt(tmH.value, 10) || 0) * 3600000 + (parseInt(tmM.value, 10) || 0) * 60000 + (parseInt(tmS.value, 10) || 0) * 1000;
+        if (!tmLeft || tmLeft <= 0) {
+          if (total <= 0) { note.textContent = 'Set a duration greater than zero.'; return; }
+          tmLeft = total;
+        }
+        tmEnd = Date.now() + tmLeft;
+        tmRunning = true;
+        tmStart.textContent = 'Pause';
+        label.textContent = 'Duration timer';
+        showUnits(false);
+        note.textContent = 'Running.';
+        function tick() {
+          var ms = tmEnd - Date.now();
+          if (ms <= 0) {
+            stop(); tmRunning = false; tmLeft = 0;
+            tmRender(0);
+            display.textContent = "Time's up!";
+            note.textContent = 'The timer finished.';
+            tmStart.textContent = 'Start';
+            beep();
+            return;
+          }
+          tmRender(ms);
+        }
+        tick();
+        iv = setInterval(tick, 250);
+      });
+      document.getElementById('tm-reset').addEventListener('click', function () {
+        stop(); tmRunning = false; tmLeft = 0;
+        tmStart.textContent = 'Start';
+        display.textContent = '00:00:00';
+        note.textContent = 'Set a duration and press Start.';
+      });
+
+      /* ---------- stopwatch ---------- */
+      var swStart = document.getElementById('sw-start'), swLap = document.getElementById('sw-lap'), swReset = document.getElementById('sw-reset');
+      var swTbody = document.getElementById('sw-laps');
+      var swAcc = 0, swSince = 0, swRunning = false, lapCount = 0, lastLapTotal = 0;
+      function swFmt(ms) {
+        var t = Math.floor(ms / 100);
+        var d = t % 10, s = Math.floor(t / 10) % 60, m = Math.floor(t / 600) % 60, h = Math.floor(t / 36000);
+        return (h > 0 ? h + ':' + pad(m) : pad(m) + ':' + pad(s)) + '.' + d;
+      }
+      function swNow() { return swAcc + (swRunning ? Date.now() - swSince : 0); }
+      swStart.addEventListener('click', function () {
+        if (swRunning) {
+          swAcc = swNow(); swRunning = false; stop();
+          swStart.textContent = 'Resume'; swLap.disabled = true;
+          note.textContent = 'Paused at ' + swFmt(swAcc) + '.';
+        } else {
+          swSince = Date.now(); swRunning = true;
+          swStart.textContent = 'Pause'; swLap.disabled = false;
+          label.textContent = 'Stopwatch';
+          showUnits(false);
+          note.textContent = 'Running.';
+          iv = setInterval(function () { display.textContent = swFmt(swNow()); }, 100);
+          display.textContent = swFmt(swNow());
+        }
+      });
+      swLap.addEventListener('click', function () {
+        if (!swRunning) return;
+        lapCount++;
+        var total = swNow(), split = total - lastLapTotal;
+        lastLapTotal = total;
+        if (swTbody.querySelector('td[colspan]')) swTbody.innerHTML = '';
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<td>' + lapCount + '</td><td>' + swFmt(split) + '</td><td>' + swFmt(total) + '</td>';
+        swTbody.insertBefore(tr, swTbody.firstChild);
+      });
+      swReset.addEventListener('click', function () {
+        stop(); swRunning = false; swAcc = 0; lapCount = 0; lastLapTotal = 0;
+        swStart.textContent = 'Start'; swLap.disabled = true;
+        display.textContent = '00:00.0';
+        swTbody.innerHTML = '<tr><td colspan="3" style="color:var(--faint)">No laps yet. Press Lap while the stopwatch runs.</td></tr>';
+        note.textContent = 'Press Start to begin.';
+      });
+      document.getElementById('sw-fs').addEventListener('click', function () {
+        try {
+          if (document.fullscreenElement) { document.exitFullscreen(); }
+          else { document.documentElement.requestFullscreen(); }
+        } catch (e) {}
+      });
+    }
+    initCountdownTimer();
+    </script>
+</body>
+</html>

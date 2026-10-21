@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>HEIC to PNG Converter - Convert iPhone Photos Losslessly | Micro Tools Hub</title>
+    <meta name="keywords" content="heic to png, convert heic to png, heif to png, heic converter, iphone photo converter, heic to png lossless" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Free HEIC to PNG converter: convert iPhone HEIC and HEIF photos to lossless PNG entirely in your browser. No upload, no sign-up." />
+    <link rel="canonical" href="https://tools.xsrazy.web.id/heic-to-png.html" />
+    <meta property="og:title" content="HEIC to PNG Converter: Convert iPhone Photos Losslessly" />
+    <meta property="og:description" content="Convert HEIC photos to lossless PNG fully in your browser. Free, no sign-up." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Micro Tools Hub" />
+    <meta property="og:image:alt" content="HEIC to PNG Converter: Convert iPhone Photos Losslessly - free online tool" />
+    <meta property="og:url" content="https://tools.xsrazy.web.id/heic-to-png.html" />
+    <meta property="og:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="HEIC to PNG Converter: Convert iPhone Photos Losslessly" />
+    <meta name="twitter:description" content="Convert HEIC photos to lossless PNG fully in your browser. Free, no sign-up." />
+    <meta name="twitter:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta name="theme-color" content="#0B1220" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="/assets/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=26" />
+    <style>
+      .dropzone { border: 2px dashed var(--line); border-radius: 14px; padding: 34px 20px; text-align: center; cursor: pointer; transition: border-color .15s, background .15s; }
+      .dropzone:hover, .dropzone.drag { border-color: var(--accent); background: rgba(124, 58, 237, .06); }
+      .dropzone input { display: none; }
+      .file-list { margin-top: 12px; display: flex; flex-direction: column; gap: 10px; }
+      .file-row { display: flex; align-items: center; gap: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+      .file-row img { width: 64px; height: 64px; object-fit: cover; border-radius: 8px; flex: none; background: #0f172a; }
+      .file-row .meta { flex: 1; min-width: 0; }
+      .file-row .meta .n { font-weight: 700; font-size: .9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .file-row .meta .s { font-size: .8rem; color: var(--faint); }
+      .spin { display: inline-block; width: 16px; height: 16px; border: 2.5px solid rgba(139,92,246,.3); border-top-color: #8B5CF6; border-radius: 50%; animation: sp 0.8s linear infinite; vertical-align: -3px; }
+      @keyframes sp { to { transform: rotate(360deg); } }
+      .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 4px; }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is HEIC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HEIC is the photo format iPhones use by default since iOS 11. It stores high quality in small files, but many Windows apps, websites and older devices cannot open it, which is why converting to PNG helps."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why convert HEIC to PNG instead of JPG?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PNG is lossless, so no detail is lost in conversion. Choose PNG when you plan to edit, print or archive the photo. Choose JPG when you need the smallest file for sharing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are my photos uploaded anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Conversion runs entirely in your browser with a local decoding library. Your photos never leave your device."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I convert multiple HEIC files at once?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Select or drop several HEIC files and each one converts separately with its own download button, plus a download-all option."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this work on an iPhone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Open this page in Safari or Chrome on your iPhone, pick HEIC photos from your library, and download the PNG versions."
+      }
+    }
+  ]
+}
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "HEIC to PNG",
+      "url": "https://tools.xsrazy.web.id/heic-to-png.html",
+      "description": "Convert iPhone HEIC photos to PNG.",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+</head>
+<body>
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="index.html" aria-label="Micro Tools Hub home">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+          <span class="brand-word">Micro <em>Tools</em></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="navLinks" aria-label="Site">
+          <a class="nav-link" href="word-counter.html">Word Counter</a>
+          <a class="nav-link" href="password-generator.html">Password Generator</a>
+          <a class="nav-link" href="unit-converter.html">Unit Converter</a>
+          <a class="nav-link" href="timezone-converter.html">Time Zone</a>
+          <a class="nav-link" href="case-converter.html">Case Converter</a>
+          <a class="btn btn-primary btn-sm" href="index.html#tools">Browse tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ADSENSE SLOT 1 of 3 (header leaderboard): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+    <div class="ad-slot" data-ad-slot="header">Advertisement</div>
+
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="index.html#image-tools">Image Tools</a> &nbsp;/&nbsp; HEIC to PNG</nav>
+      <header class="page-head">
+        <h1>HEIC to PNG converter</h1>
+        <p>Convert iPhone <strong>HEIC and HEIF</strong> photos to <strong>lossless PNG</strong>, fully in your browser. No upload, no sign-up.</p>
+      </header>
+
+      <main>
+        <div class="tool-grid">
+          <div class="card panel">
+            <h2>Your photos</h2>
+            <p class="sub">Drop HEIC files or click to browse. Converted locally.</p>
+            <div class="dropzone" id="hp-drop" role="button" tabindex="0" aria-label="Choose HEIC files">
+              <input type="file" id="hp-file" accept=".heic,.heif,image/heic,image/heif" multiple />
+              <div style="font-weight:800;font-size:1.02rem">Drop HEIC photos here</div>
+              <div class="hint">or click to browse. Multiple files supported.</div>
+            </div>
+            <div class="file-list" id="hp-list"></div>
+          </div>
+
+          <div class="card result-card">
+            <div class="result-head">
+              <div class="result-label">Converted</div>
+              <div class="big-number"><span id="hp-count" data-countup>0</span></div>
+              <p class="result-note" id="hp-note">Pick HEIC files to start converting.</p>
+            </div>
+            <div style="padding:0 28px">
+              <div class="btn-row">
+                <button class="btn btn-primary btn-sm" id="hp-dlall" disabled>Download all PNGs</button>
+                <button class="btn btn-sm" id="hp-clear">Clear</button>
+              </div>
+              <div class="file-list" id="hp-done" style="margin-top:4px"></div>
+            </div>
+            <div class="callout info" style="margin:22px 28px 28px"><strong>Private by design:</strong> decoding runs locally with a vendored library. There is no server, no account and no upload.</div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ADSENSE SLOT 2 of 3 (in-article): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="in-article">Advertisement</div>
+
+      <section class="explainer">
+        <div class="card">
+          <h3>Why PNG instead of JPG</h3>
+          <p>PNG is a lossless format: every pixel survives conversion exactly as decoded, so it is the right choice when you plan to edit, print or archive a photo. JPG files are smaller but lose a little detail each time they are saved. PNG files are bigger than JPGs, which is the trade-off for pixel-perfect quality.</p>
+        </div>
+        <div class="card">
+          <h3>How it stays private</h3>
+          <ul>
+            <li><strong>No upload:</strong> the HEIC decoding library runs inside this page.</li>
+            <li><strong>Batch friendly:</strong> convert a whole camera roll, one download per photo.</li>
+            <li><strong>Full resolution:</strong> width and height are preserved, only the container changes.</li>
+            <li><strong>Lossless output:</strong> PNG keeps 100% of the decoded quality.</li>
+          </ul>
+          <p>Pick HEIC files above and each one converts automatically with its own download button.</p>
+        </div>
+      </section>
+
+      <section class="related">
+        <h2>Related tools</h2>
+        <div class="related-grid">
+          <a href="heic-to-jpg.html"><span class="t">HEIC to JPG</span><span class="d">Convert iPhone HEIC photos to JPG in your browser.</span></a>
+          <a href="image-compressor.html"><span class="t">Image compressor</span><span class="d">Shrink JPG, PNG and WebP, or hit an exact target size.</span></a>
+          <a href="qr/index.html"><span class="t">QR code generator</span><span class="d">Create custom QR codes and download them as PNG.</span></a>
+        </div>
+      </section>
+
+      <section class="faq faq-narrow">
+        <h2>HEIC to PNG FAQs</h2>
+        <details>
+          <summary>What is HEIC?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">HEIC is the photo format iPhones use by default since iOS 11. It stores high quality in small files, but many Windows apps, websites and older devices cannot open it, which is why converting to PNG helps.</div>
+        </details>
+        <details>
+          <summary>Why convert HEIC to PNG instead of JPG?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">PNG is lossless, so no detail is lost in conversion. Choose PNG when you plan to edit, print or archive the photo. Choose JPG when you need the smallest file for sharing.</div>
+        </details>
+        <details>
+          <summary>Are my photos uploaded anywhere?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">No. Conversion runs entirely in your browser with a local decoding library. Your photos never leave your device.</div>
+        </details>
+        <details>
+          <summary>Can I convert multiple HEIC files at once?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Yes. Select or drop several HEIC files and each one converts separately with its own download button, plus a download-all option.</div>
+        </details>
+        <details>
+          <summary>Does this work on an iPhone?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Yes. Open this page in Safari or Chrome on your iPhone, pick HEIC photos from your library, and download the PNG versions.</div>
+        </details>
+      </section>
+
+      <!-- ADSENSE SLOT 3 of 3 (above footer): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="above-footer">Advertisement</div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="f-brand">
+          <a class="brand brand-light" href="https://tools.xsrazy.web.id/" aria-label="Micro Tools Hub home">
+            <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+            <span class="brand-word">Micro <em>Tools</em></span>
+          </a>
+          <p>Free online tools with instant results, right in your browser.</p>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#text-tools">Text tools</a>
+          <nav aria-label="Popular text tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/word-counter.html">Word Counter</a>
+            <a href="https://tools.xsrazy.web.id/case-converter.html">Case Converter</a>
+            <a href="https://tools.xsrazy.web.id/character-counter.html">Character Counter</a>
+            <a href="https://tools.xsrazy.web.id/word-frequency-counter.html">Word Frequency</a>
+            <a href="https://tools.xsrazy.web.id/text-reverser.html">Text Reverser</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#generators">Generators</a>
+          <nav aria-label="Popular generators" class="flist">
+            <a href="https://tools.xsrazy.web.id/password-generator.html">Password Generator</a>
+            <a href="https://tools.xsrazy.web.id/qr/">QR Code Generator</a>
+            <a href="https://tools.xsrazy.web.id/meme-generator.html">Meme Generator</a>
+            <a href="https://tools.xsrazy.web.id/uuid-v1-generator.html">UUID Generator</a>
+            <a href="https://tools.xsrazy.web.id/fake-name-generator.html">Fake Name Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#converters">Converters</a>
+          <nav aria-label="Popular converters" class="flist">
+            <a href="https://tools.xsrazy.web.id/unit-converter.html">Unit Converter</a>
+            <a href="https://tools.xsrazy.web.id/currency-converter.html">Currency Converter</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/color-converter.html">Color Converter</a>
+            <a href="https://tools.xsrazy.web.id/number-base-converter.html">Number Base Converter</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#image-tools">Image tools</a>
+          <nav aria-label="Popular image tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/image-compressor.html">Image Compressor</a>
+            <a href="https://tools.xsrazy.web.id/image-resizer.html">Image Resizer</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/favicon-generator.html">Favicon Generator</a>
+            <a href="https://tools.xsrazy.web.id/image-cropper.html">Image Cropper</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#calculators">Calculators</a>
+          <nav aria-label="Popular calculators" class="flist">
+            <a href="https://tools.xsrazy.web.id/bmi-calculator.html">BMI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/mortgage-calculator.html">Mortgage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/percentage-toolkit.html">Percentage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/loan-calculator.html">Loan Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/age-calculator.html">Age Calculator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#business-tools">Business</a>
+          <nav aria-label="Popular business tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/invoice/">Invoice Generator</a>
+            <a href="https://tools.xsrazy.web.id/business-name-generator.html">Business Name Generator</a>
+            <a href="https://tools.xsrazy.web.id/roi-calculator.html">ROI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/salary-converter.html">Salary Converter</a>
+            <a href="https://tools.xsrazy.web.id/business-plan-generator.html">Business Plan Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#downloaders">Downloaders</a>
+          <nav aria-label="Popular downloaders" class="flist">
+            <a href="https://tools.xsrazy.web.id/tiktok-video-downloader.html">TikTok Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/twitter-video-downloader.html">Twitter Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/youtube-thumbnail-downloader.html">YouTube Thumbnail Downloader</a>
+            <a href="https://tools.xsrazy.web.id/pinterest-downloader.html">Pinterest Downloader</a>
+            <a href="https://tools.xsrazy.web.id/reddit-downloader.html">Reddit Downloader</a>
+          </nav>
+        </div>
+        <div class="fcol f-company">
+          <span class="fhead-link fhead-static">Company</span>
+          <nav aria-label="Company" class="flist-static">
+            <a href="https://tools.xsrazy.web.id/">Home</a>
+            <a href="https://tools.xsrazy.web.id/about.html">About</a>
+            <a href="https://tools.xsrazy.web.id/contact.html">Contact</a>
+            <a href="https://tools.xsrazy.web.id/privacy-policy.html">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 Micro Tools Hub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="site.js"></script>
+    <script src="animations.js"></script>
+    <script src="assets/vendor/heic2any.min.js"></script>
+    <script>
+    (function () {
+      "use strict";
+      var drop = document.getElementById("hp-drop");
+      var fileInput = document.getElementById("hp-file");
+      var listEl = document.getElementById("hp-list");
+      var doneEl = document.getElementById("hp-done");
+      var countEl = document.getElementById("hp-count");
+      var noteEl = document.getElementById("hp-note");
+      var dlAllBtn = document.getElementById("hp-dlall");
+      var clearBtn = document.getElementById("hp-clear");
+      var queue = [];
+      var results = [];
+      var converting = false;
+      function fmtBytes(n) {
+        if (n < 1024) return n + " B";
+        if (n < 1048576) return (n / 1024).toFixed(1) + " KB";
+        return (n / 1048576).toFixed(2) + " MB";
+      }
+      function rowEl(file, state) {
+        var row = document.createElement("div");
+        row.className = "file-row";
+        row.innerHTML = '<div class="meta"><div class="n"></div><div class="s"></div></div><div class="act"></div>';
+        row.querySelector(".n").textContent = file.name;
+        row.querySelector(".s").textContent = state;
+        return row;
+      }
+      function updateNote() {
+        if (!noteEl) return;
+        if (converting) { noteEl.textContent = "Converting..."; return; }
+        if (results.length) noteEl.textContent = results.length + (results.length === 1 ? " photo converted." : " photos converted.");
+        else noteEl.textContent = queue.length ? "Ready to convert." : "Pick HEIC files to start converting.";
+        if (dlAllBtn) dlAllBtn.disabled = results.length === 0;
+      }
+      function downloadOne(rec) {
+        var a = document.createElement("a");
+        a.href = rec.url; a.download = rec.name;
+        document.body.appendChild(a); a.click(); a.remove();
+      }
+      async function convertNext() {
+        if (converting || !queue.length) { updateNote(); return; }
+        converting = true;
+        var item = queue.shift();
+        var act = item.row.querySelector(".act");
+        act.innerHTML = '<span class="spin" aria-label="Converting"></span>';
+        updateNote();
+        try {
+          if (typeof heic2any !== "function") throw new Error("Converter library failed to load. Check your connection and reload.");
+          var out = await heic2any({ blob: item.file, toType: "image/png" });
+          var blob = Array.isArray(out) ? out[0] : out;
+          var url = URL.createObjectURL(blob);
+          var base = item.file.name.replace(/\.(heic|heif)$/i, "");
+          var rec = { name: base + ".png", url: url, size: blob.size };
+          results.push(rec);
+          item.row.querySelector(".s").textContent = fmtBytes(item.file.size) + " HEIC -> " + fmtBytes(blob.size) + " PNG";
+          var img = document.createElement("img");
+          img.src = url; img.alt = "Converted photo preview";
+          item.row.insertBefore(img, item.row.firstChild);
+          act.innerHTML = "";
+          var dl = document.createElement("button");
+          dl.className = "btn btn-primary btn-sm";
+          dl.textContent = "Download PNG";
+          dl.addEventListener("click", function () { downloadOne(rec); });
+          act.appendChild(dl);
+          if (doneEl) {
+            var drow = document.createElement("div");
+            drow.className = "file-row";
+            var dimg = document.createElement("img");
+            dimg.src = url; dimg.alt = "Converted photo";
+            var dmeta = document.createElement("div");
+            dmeta.className = "meta";
+            var dn = document.createElement("div"); dn.className = "n"; dn.textContent = rec.name;
+            var ds = document.createElement("div"); ds.className = "s"; ds.textContent = fmtBytes(rec.size);
+            dmeta.appendChild(dn); dmeta.appendChild(ds);
+            var dact = document.createElement("div");
+            var ddl = document.createElement("button");
+            ddl.className = "btn btn-sm"; ddl.textContent = "Download";
+            ddl.addEventListener("click", function () { downloadOne(rec); });
+            dact.appendChild(ddl);
+            drow.appendChild(dimg); drow.appendChild(dmeta); drow.appendChild(dact);
+            doneEl.appendChild(drow);
+          }
+        } catch (e) {
+          act.innerHTML = "";
+          item.row.querySelector(".s").textContent = "Failed: " + (e && e.message ? e.message : "unknown error");
+          item.row.querySelector(".s").style.color = "#f87171";
+        }
+        if (countEl) countEl.textContent = results.length;
+        converting = false;
+        updateNote();
+        convertNext();
+      }
+      function addFiles(files) {
+        for (var i = 0; i < files.length; i++) {
+          var f = files[i];
+          var ok = /\.hei[cf]$/i.test(f.name) || /image\/hei[cf]/i.test(f.type);
+          if (!ok) continue;
+          var row = rowEl(f, fmtBytes(f.size) + " - queued");
+          if (listEl) listEl.appendChild(row);
+          queue.push({ file: f, row: row });
+        }
+        updateNote();
+        convertNext();
+      }
+      function init() {
+        if (!drop || !fileInput) return;
+        drop.addEventListener("click", function () { fileInput.click(); });
+        drop.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") fileInput.click(); });
+        fileInput.addEventListener("change", function () { addFiles(fileInput.files); fileInput.value = ""; });
+        ["dragover", "dragenter"].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add("drag"); }); });
+        ["dragleave", "drop"].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove("drag"); }); });
+        drop.addEventListener("drop", function (e) { addFiles(e.dataTransfer.files); });
+        if (dlAllBtn) dlAllBtn.addEventListener("click", function () {
+          results.forEach(function (rec, i) {
+            setTimeout(function () { downloadOne(rec); }, i * 400);
+          });
+        });
+        if (clearBtn) clearBtn.addEventListener("click", function () {
+          results.forEach(function (r) { URL.revokeObjectURL(r.url); });
+          queue = []; results = []; converting = false;
+          if (listEl) listEl.innerHTML = "";
+          if (doneEl) doneEl.innerHTML = "";
+          if (countEl) countEl.textContent = "0";
+          updateNote();
+        });
+        updateNote();
+      }
+      init();
+    })();
+    </script>
+</body>
+</html>

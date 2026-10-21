@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Meme Generator - Add Text to Images Online | Micro Tools Hub</title>
+    <meta name="keywords" content="meme generator, meme maker, add text to image, funny meme maker, caption image online" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Free meme generator: upload your own photo or use a built-in template, add classic top and bottom captions, and download your meme as a PNG. All in your browser." />
+    <link rel="canonical" href="https://tools.xsrazy.web.id/meme-generator/" />
+    <meta property="og:title" content="Meme Generator - Add Text to Images Online" />
+    <meta property="og:description" content="Upload a photo or pick a template, add top and bottom text, download your meme. Free, no sign-up." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Micro Tools Hub" />
+    <meta property="og:image:alt" content="Meme Generator - Add Text to Images Online - free online tool" />
+    <meta property="og:url" content="https://tools.xsrazy.web.id/meme-generator/" />
+    <meta property="og:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Meme Generator - Add Text to Images Online" />
+    <meta name="twitter:description" content="Make memes with your own photos or built-in templates. Free, no sign-up." />
+    <meta name="twitter:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta name="theme-color" content="#0B1220" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="/assets/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=26" />
+    <style>
+      .meme-stage { display: flex; flex-direction: column; align-items: center; padding: 28px; }
+      #meme-canvas { width: 100%; max-width: 480px; height: auto; border-radius: 14px; background: #0B1220; }
+      .drop-zone { border: 2px dashed var(--line); border-radius: 14px; padding: 26px 18px; text-align: center; cursor: pointer; transition: border-color .15s, background .15s; }
+      .drop-zone:hover, .drop-zone.drag { border-color: var(--accent); background: var(--accent-soft); }
+      .drop-zone p { margin: 0 0 6px; font-weight: 700; }
+      .drop-zone .hint { margin: 0; }
+      .template-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 12px; }
+      .template-btn { border: 2px solid var(--line); border-radius: 12px; height: 64px; cursor: pointer; padding: 0; overflow: hidden; }
+      .template-btn[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(124,58,237,.25); }
+      .template-btn span { display: block; width: 100%; height: 100%; }
+      .meme-actions { display: flex; gap: 10px; flex-wrap: wrap; padding: 4px 28px 28px; }
+      .range-row { display: flex; align-items: center; gap: 12px; }
+      .range-row input[type="range"] { flex: 1; }
+      .range-val { font-weight: 800; font-size: .9rem; min-width: 52px; text-align: right; color: var(--accent-dark); }
+      .field input[type="text"] { width: 100%; box-sizing: border-box; }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"Is my uploaded photo sent to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Your photo is loaded into the page with a local file reader and drawn on a canvas in your browser. It never leaves your device."}},
+        {"@type":"Question","name":"What image formats can I upload?","acceptedAnswer":{"@type":"Answer","text":"Any format your browser can display: JPG, PNG, GIF, WebP and most others. The meme is always downloaded as a PNG."}},
+        {"@type":"Question","name":"Can I make a meme without uploading a photo?","acceptedAnswer":{"@type":"Answer","text":"Yes. Pick one of the four built-in template backgrounds and add your captions on top of it."}},
+        {"@type":"Question","name":"What size is the downloaded meme?","acceptedAnswer":{"@type":"Answer","text":"Uploaded photos keep their own dimensions, capped at 1200 pixels on the longest side for fast rendering. Templates render at 800 by 800 pixels."}},
+        {"@type":"Question","name":"Can I use multiple lines of text?","acceptedAnswer":{"@type":"Answer","text":"Yes. Press Enter inside the top or bottom text field to add line breaks, and each line is centered automatically."}}
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Meme generator",
+      "url": "https://tools.xsrazy.web.id/meme-generator.html",
+      "description": "Classic top and bottom text on any image. Download as PNG.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+</head>
+<body>
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="index.html" aria-label="Micro Tools Hub home">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+          <span class="brand-word">Micro <em>Tools</em></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="navLinks" aria-label="Site">
+          <a class="nav-link" href="word-counter.html">Word Counter</a>
+          <a class="nav-link" href="password-generator.html">Password Generator</a>
+          <a class="nav-link" href="unit-converter.html">Unit Converter</a>
+          <a class="nav-link" href="timezone-converter.html">Time Zone</a>
+          <a class="nav-link" href="case-converter.html">Case Converter</a>
+          <a class="btn btn-primary btn-sm" href="index.html#tools">Browse tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ADSENSE SLOT 1 of 3 (header leaderboard): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+    <div class="ad-slot" data-ad-slot="header">Advertisement</div>
+
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="index.html#generators">Generators</a> &nbsp;/&nbsp; Meme generator</nav>
+      <header class="page-head">
+        <h1>Meme generator</h1>
+        <p>Upload your own photo or pick a template, add classic <strong>top and bottom captions</strong>, and download your meme as a PNG.</p>
+      </header>
+
+      <main>
+        <div class="tool-grid">
+          <div class="card panel">
+            <h2>Your meme</h2>
+            <p class="sub">Image first, then captions.</p>
+            <div class="field">
+              <label>Image</label>
+              <div class="drop-zone" id="drop-zone" role="button" tabindex="0" aria-label="Upload an image">
+                <p>Drop an image here or click to upload</p>
+                <p class="hint">JPG, PNG, GIF, WebP. Never leaves your device.</p>
+              </div>
+              <input type="file" id="meme-file" accept="image/*" hidden />
+            </div>
+            <div class="field">
+              <label>Or use a built-in template</label>
+              <div class="template-row" id="template-row" role="group" aria-label="Template backgrounds"></div>
+            </div>
+            <div class="field">
+              <label for="meme-top">Top text</label>
+              <input type="text" id="meme-top" placeholder="TOP TEXT" maxlength="120" />
+            </div>
+            <div class="field">
+              <label for="meme-bottom">Bottom text</label>
+              <input type="text" id="meme-bottom" placeholder="bottom text" maxlength="120" />
+            </div>
+            <div class="field">
+              <label for="meme-size">Font size</label>
+              <div class="range-row">
+                <input type="range" id="meme-size" min="24" max="120" value="64" />
+                <span class="range-val" id="meme-size-val">64px</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card result-card">
+            <div class="meme-stage">
+              <canvas id="meme-canvas" width="800" height="800"></canvas>
+            </div>
+            <div class="meme-actions">
+              <button class="btn btn-primary btn-lg" id="meme-download" type="button">Download PNG</button>
+              <button class="btn btn-outline" id="meme-reset" type="button">Reset</button>
+            </div>
+            <div class="callout info" style="margin-top:6px"><strong>Private by design:</strong> your photo is drawn on a canvas in this tab only. There is no upload, no account, and no watermark.</div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ADSENSE SLOT 2 of 3 (in-article): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="in-article">Advertisement</div>
+
+      <section class="explainer">
+        <div class="card">
+          <h3>How to make a meme</h3>
+          <p><strong>1.</strong> Upload a photo (drag and drop works) or pick a built-in template. <strong>2.</strong> Type your top and bottom captions. <strong>3.</strong> Adjust the font size and hit <strong>Download PNG</strong>.</p>
+          <p>Captions use the classic meme style: bold white text with a black outline, centered on the image. Keep lines short for the biggest impact.</p>
+        </div>
+        <div class="card">
+          <h3>Tips for better memes</h3>
+          <ul>
+            <li><strong>Contrast:</strong> the black outline keeps text readable on any photo.</li>
+            <li><strong>Brevity:</strong> two short lines beat one long paragraph.</li>
+            <li><strong>Timing:</strong> templates are 800 by 800, perfect for social feeds.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="related">
+        <h2>Related tools</h2>
+        <div class="related-grid">
+          <a href="word-counter.html"><span class="t">Word counter</span><span class="d">Count words and characters in your captions as you type.</span></a>
+          <a href="case-converter.html"><span class="t">Case converter</span><span class="d">UPPERCASE, lowercase, Title Case and more, applied instantly.</span></a>
+          <a href="color-palette-generator.html"><span class="t">Color palette generator</span><span class="d">Harmonious color schemes with click-to-copy HEX codes.</span></a>
+        </div>
+      </section>
+
+      <section class="faq faq-narrow">
+        <h2>Meme generator FAQs</h2>
+        <details>
+          <summary>Is my uploaded photo sent to a server?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">No. Your photo is loaded into the page with a local file reader and drawn on a canvas in your browser. It never leaves your device.</div>
+        </details>
+        <details>
+          <summary>What image formats can I upload?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Any format your browser can display: JPG, PNG, GIF, WebP and most others. The meme is always downloaded as a PNG.</div>
+        </details>
+        <details>
+          <summary>Can I make a meme without uploading a photo?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Yes. Pick one of the four built-in template backgrounds and add your captions on top of it.</div>
+        </details>
+        <details>
+          <summary>What size is the downloaded meme?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Uploaded photos keep their own dimensions, capped at 1200 pixels on the longest side for fast rendering. Templates render at 800 by 800 pixels.</div>
+        </details>
+        <details>
+          <summary>Can I use multiple lines of text?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">The top and bottom fields are single-line for the classic look. Keep each caption short and let the outline do the work.</div>
+        </details>
+      </section>
+
+      <!-- ADSENSE SLOT 3 of 3 (above footer): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="above-footer">Advertisement</div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="f-brand">
+          <a class="brand brand-light" href="https://tools.xsrazy.web.id/" aria-label="Micro Tools Hub home">
+            <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+            <span class="brand-word">Micro <em>Tools</em></span>
+          </a>
+          <p>Free online tools with instant results, right in your browser.</p>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#text-tools">Text tools</a>
+          <nav aria-label="Popular text tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/word-counter.html">Word Counter</a>
+            <a href="https://tools.xsrazy.web.id/case-converter.html">Case Converter</a>
+            <a href="https://tools.xsrazy.web.id/character-counter.html">Character Counter</a>
+            <a href="https://tools.xsrazy.web.id/word-frequency-counter.html">Word Frequency</a>
+            <a href="https://tools.xsrazy.web.id/text-reverser.html">Text Reverser</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#generators">Generators</a>
+          <nav aria-label="Popular generators" class="flist">
+            <a href="https://tools.xsrazy.web.id/password-generator.html">Password Generator</a>
+            <a href="https://tools.xsrazy.web.id/qr/">QR Code Generator</a>
+            <a href="https://tools.xsrazy.web.id/meme-generator.html">Meme Generator</a>
+            <a href="https://tools.xsrazy.web.id/uuid-v1-generator.html">UUID Generator</a>
+            <a href="https://tools.xsrazy.web.id/fake-name-generator.html">Fake Name Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#converters">Converters</a>
+          <nav aria-label="Popular converters" class="flist">
+            <a href="https://tools.xsrazy.web.id/unit-converter.html">Unit Converter</a>
+            <a href="https://tools.xsrazy.web.id/currency-converter.html">Currency Converter</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/color-converter.html">Color Converter</a>
+            <a href="https://tools.xsrazy.web.id/number-base-converter.html">Number Base Converter</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#image-tools">Image tools</a>
+          <nav aria-label="Popular image tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/image-compressor.html">Image Compressor</a>
+            <a href="https://tools.xsrazy.web.id/image-resizer.html">Image Resizer</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/favicon-generator.html">Favicon Generator</a>
+            <a href="https://tools.xsrazy.web.id/image-cropper.html">Image Cropper</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#calculators">Calculators</a>
+          <nav aria-label="Popular calculators" class="flist">
+            <a href="https://tools.xsrazy.web.id/bmi-calculator.html">BMI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/mortgage-calculator.html">Mortgage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/percentage-toolkit.html">Percentage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/loan-calculator.html">Loan Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/age-calculator.html">Age Calculator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#business-tools">Business</a>
+          <nav aria-label="Popular business tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/invoice/">Invoice Generator</a>
+            <a href="https://tools.xsrazy.web.id/business-name-generator.html">Business Name Generator</a>
+            <a href="https://tools.xsrazy.web.id/roi-calculator.html">ROI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/salary-converter.html">Salary Converter</a>
+            <a href="https://tools.xsrazy.web.id/business-plan-generator.html">Business Plan Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#downloaders">Downloaders</a>
+          <nav aria-label="Popular downloaders" class="flist">
+            <a href="https://tools.xsrazy.web.id/tiktok-video-downloader.html">TikTok Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/twitter-video-downloader.html">Twitter Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/youtube-thumbnail-downloader.html">YouTube Thumbnail Downloader</a>
+            <a href="https://tools.xsrazy.web.id/pinterest-downloader.html">Pinterest Downloader</a>
+            <a href="https://tools.xsrazy.web.id/reddit-downloader.html">Reddit Downloader</a>
+          </nav>
+        </div>
+        <div class="fcol f-company">
+          <span class="fhead-link fhead-static">Company</span>
+          <nav aria-label="Company" class="flist-static">
+            <a href="https://tools.xsrazy.web.id/">Home</a>
+            <a href="https://tools.xsrazy.web.id/about.html">About</a>
+            <a href="https://tools.xsrazy.web.id/contact.html">Contact</a>
+            <a href="https://tools.xsrazy.web.id/privacy-policy.html">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 Micro Tools Hub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="site.js"></script>
+    <script src="animations.js"></script>
+    <script>
+    (function initMemeGenerator(){
+      var canvas = document.getElementById('meme-canvas');
+      if(!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var TEMPLATES = [
+        { name: 'Sunset',  c1: '#F97316', c2: '#EC4899' },
+        { name: 'Ocean',   c1: '#0EA5E9', c2: '#6366F1' },
+        { name: 'Forest',  c1: '#10B981', c2: '#065F46' },
+        { name: 'Midnight',c1: '#1E1B4B', c2: '#7C3AED' }
+      ];
+      var img = null, activeTemplate = 0;
+      var topInput = document.getElementById('meme-top');
+      var bottomInput = document.getElementById('meme-bottom');
+      var sizeInput = document.getElementById('meme-size');
+      var sizeVal = document.getElementById('meme-size-val');
+      var fileInput = document.getElementById('meme-file');
+      var dropZone = document.getElementById('drop-zone');
+      var templateRow = document.getElementById('template-row');
+
+      function drawBackground(){
+        var w = canvas.width, h = canvas.height;
+        if(img){
+          var iw = img.naturalWidth, ih = img.naturalHeight;
+          var s = Math.max(w/iw, h/ih);
+          var dw = iw*s, dh = ih*s;
+          ctx.drawImage(img, (w-dw)/2, (h-dh)/2, dw, dh);
+        } else {
+          var t = TEMPLATES[activeTemplate];
+          var g = ctx.createLinearGradient(0, 0, w, h);
+          g.addColorStop(0, t.c1); g.addColorStop(1, t.c2);
+          ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+        }
+      }
+      function drawCaption(text, y){
+        if(!text) return;
+        var size = parseInt(sizeInput.value, 10) || 64;
+        ctx.font = '900 ' + size + 'px Impact, "Arial Black", "Helvetica Neue", sans-serif';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.lineJoin = 'round';
+        ctx.lineWidth = Math.max(3, Math.round(size/14));
+        ctx.strokeStyle = '#000'; ctx.fillStyle = '#fff';
+        var lines = text.toUpperCase().split('\n');
+        var lh = size * 1.15;
+        lines.forEach(function(line, i){
+          var ly = y + i*lh - (lines.length-1)*lh/2;
+          ctx.strokeText(line, canvas.width/2, ly);
+          ctx.fillText(line, canvas.width/2, ly);
+        });
+      }
+      function render(){
+        drawBackground();
+        var pad = parseInt(sizeInput.value, 10)*0.75;
+        drawCaption(topInput.value.trim(), pad);
+        drawCaption(bottomInput.value.trim(), canvas.height - pad);
+      }
+      function loadFile(file){
+        if(!file || !file.type || file.type.indexOf('image/') !== 0) return;
+        var reader = new FileReader();
+        reader.onload = function(){
+          var im = new Image();
+          im.onload = function(){
+            img = im;
+            var maxDim = 1200;
+            var iw = im.naturalWidth, ih = im.naturalHeight;
+            var s = Math.min(1, maxDim/Math.max(iw, ih));
+            canvas.width = Math.round(iw*s); canvas.height = Math.round(ih*s);
+            render();
+          };
+          im.src = reader.result;
+        };
+        reader.readAsDataURL(file);
+      }
+      TEMPLATES.forEach(function(t, i){
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'template-btn';
+        b.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+        b.setAttribute('aria-label', t.name + ' template');
+        var s = document.createElement('span');
+        s.style.background = 'linear-gradient(135deg,' + t.c1 + ',' + t.c2 + ')';
+        b.appendChild(s);
+        b.addEventListener('click', function(){
+          img = null; activeTemplate = i;
+          canvas.width = 800; canvas.height = 800;
+          templateRow.querySelectorAll('.template-btn').forEach(function(x){ x.setAttribute('aria-pressed','false'); });
+          b.setAttribute('aria-pressed','true');
+          render();
+        });
+        templateRow.appendChild(b);
+      });
+      dropZone.addEventListener('click', function(){ fileInput.click(); });
+      dropZone.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); fileInput.click(); } });
+      fileInput.addEventListener('change', function(){ loadFile(fileInput.files[0]); fileInput.value=''; });
+      ['dragover','dragenter'].forEach(function(ev){ dropZone.addEventListener(ev, function(e){ e.preventDefault(); dropZone.classList.add('drag'); }); });
+      ['dragleave','drop'].forEach(function(ev){ dropZone.addEventListener(ev, function(e){ e.preventDefault(); dropZone.classList.remove('drag'); }); });
+      dropZone.addEventListener('drop', function(e){ if(e.dataTransfer.files.length) loadFile(e.dataTransfer.files[0]); });
+      topInput.addEventListener('input', render);
+      bottomInput.addEventListener('input', render);
+      sizeInput.addEventListener('input', function(){ sizeVal.textContent = sizeInput.value + 'px'; render(); });
+      document.getElementById('meme-download').addEventListener('click', function(){
+        var a = document.createElement('a');
+        a.download = 'meme.png';
+        a.href = canvas.toDataURL('image/png');
+        document.body.appendChild(a); a.click(); a.remove();
+      });
+      document.getElementById('meme-reset').addEventListener('click', function(){
+        img = null; activeTemplate = 0;
+        topInput.value = ''; bottomInput.value = '';
+        sizeInput.value = 64; sizeVal.textContent = '64px';
+        canvas.width = 800; canvas.height = 800;
+        templateRow.querySelectorAll('.template-btn').forEach(function(x, i){ x.setAttribute('aria-pressed', i === 0 ? 'true' : 'false'); });
+        render();
+      });
+      render();
+    })();
+    </script>
+</body>
+</html>

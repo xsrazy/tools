@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Image to PDF - Combine Images into One PDF | Micro Tools Hub</title>
+    <meta name="keywords" content="image to pdf, jpg to pdf, png to pdf, combine images to pdf, photos to pdf, picture to pdf" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Free image to PDF converter: combine JPG, PNG and other images into one PDF, one image per page, auto-sized to fit A4. Runs entirely in your browser." />
+    <link rel="canonical" href="https://tools.xsrazy.web.id/image-to-pdf.html" />
+    <meta property="og:title" content="Image to PDF - Combine Images into One PDF" />
+    <meta property="og:description" content="Turn JPG, PNG and more into a single PDF, one image per A4 page. Free, no sign-up, files stay on your device." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Micro Tools Hub" />
+    <meta property="og:image:alt" content="Image to PDF - Combine Images into One PDF - free online tool" />
+    <meta property="og:url" content="https://tools.xsrazy.web.id/image-to-pdf.html" />
+    <meta property="og:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Image to PDF - Combine Images into One PDF" />
+    <meta name="twitter:description" content="Combine images into one PDF in your browser. Free, no uploads, no sign-up." />
+    <meta name="twitter:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta name="theme-color" content="#0B1220" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="/assets/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=26" />
+    <style>
+      .pdf-thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 10px; margin-top: 12px; }
+      .pdf-thumb { position: relative; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--surface); }
+      .pdf-thumb img { display: block; width: 100%; height: 80px; object-fit: cover; }
+      .pdf-thumb .tname { display: block; font-size: .68rem; padding: 4px 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--muted); }
+      .pdf-thumb .rm { position: absolute; top: 4px; right: 4px; border: none; background: rgba(0,0,0,.65); color: #fff; border-radius: 8px; width: 24px; height: 24px; cursor: pointer; font-size: 14px; line-height: 1; padding: 0; }
+      .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"What image formats can I use?","acceptedAnswer":{"@type":"Answer","text":"JPG, PNG, GIF, WebP, BMP and any other format your browser can display. Every image is rendered to JPEG internally before being placed in the PDF."}},
+        {"@type":"Question","name":"How is each PDF page sized?","acceptedAnswer":{"@type":"Answer","text":"Each image gets its own A4 page. The image is scaled to fit inside the page with a margin, keeping its aspect ratio, and centered on the page."}},
+        {"@type":"Question","name":"Are my images uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. The PDF is built in your browser with the pdf-lib library. Your images never leave your device."}},
+        {"@type":"Question","name":"Can I reorder the images?","acceptedAnswer":{"@type":"Answer","text":"Pages follow the order you selected the files. Use the remove button on a thumbnail to drop an image, or re-select files in the order you want."}},
+        {"@type":"Question","name":"What if the PDF library fails to load?","acceptedAnswer":{"@type":"Answer","text":"The pdf-lib library loads from the jsDelivr CDN. If it fails, check your internet connection and try again; your selected images are kept so you can retry."}}
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Image to PDF",
+      "url": "https://tools.xsrazy.web.id/image-to-pdf.html",
+      "description": "Combine images into one PDF.",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+</head>
+<body>
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="index.html" aria-label="Micro Tools Hub home">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+          <span class="brand-word">Micro <em>Tools</em></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="navLinks" aria-label="Site">
+          <a class="nav-link" href="word-counter.html">Word Counter</a>
+          <a class="nav-link" href="password-generator.html">Password Generator</a>
+          <a class="nav-link" href="unit-converter.html">Unit Converter</a>
+          <a class="nav-link" href="timezone-converter.html">Time Zone</a>
+          <a class="nav-link" href="case-converter.html">Case Converter</a>
+          <a class="btn btn-primary btn-sm" href="index.html#tools">Browse tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ADSENSE SLOT 1 of 3 (header leaderboard): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+    <div class="ad-slot" data-ad-slot="header">Advertisement</div>
+
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="index.html#image-tools">Image Tools</a> &nbsp;/&nbsp; Image to PDF</nav>
+      <header class="page-head">
+        <h1>Image to PDF</h1>
+        <p>Combine <strong>images</strong> into a single <strong>PDF</strong>. One image per page, auto-sized to fit A4. Your files never leave the browser.</p>
+      </header>
+
+      <main>
+        <div class="tool-grid">
+          <div class="card panel">
+            <h2>Your images</h2>
+            <p class="sub">Select one or more images, then create the PDF.</p>
+            <div class="field">
+              <label for="pdf-files">Image files</label>
+              <input type="file" id="pdf-files" accept="image/*" multiple />
+              <div class="hint">JPG, PNG, GIF, WebP and more. Pages follow selection order.</div>
+            </div>
+            <div class="pdf-thumbs" id="pdf-list" aria-label="Selected images"></div>
+            <div class="btn-row">
+              <button class="btn btn-primary btn-lg" id="pdf-create">Create PDF</button>
+            </div>
+          </div>
+
+          <div class="card result-card">
+            <div class="result-head">
+              <div class="result-label">Status</div>
+              <p class="result-note" id="pdf-status">Add images to get started.</p>
+            </div>
+            <div class="stats">
+              <div class="stat"><div class="k">Images</div><div class="v" id="pdf-pages">0</div></div>
+              <div class="stat"><div class="k">Output size</div><div class="v" id="pdf-size">-</div></div>
+            </div>
+            <div class="btn-row">
+              <button class="btn btn-primary btn-lg" id="pdf-download" disabled>Download PDF</button>
+            </div>
+            <div class="callout info" style="margin-top:16px"><strong>Private by design:</strong> the PDF is generated on your device with the pdf-lib library (loaded from a CDN). Your images are never uploaded.</div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ADSENSE SLOT 2 of 3 (in-article): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="in-article">Advertisement</div>
+
+      <section class="explainer">
+        <div class="card">
+          <h3>How it works</h3>
+          <p>Select images and they appear as thumbnails. Press <strong>Create PDF</strong> and each image is drawn onto its own <strong>A4 page</strong>, scaled to fit with a margin while keeping its aspect ratio. The finished document downloads as <strong>images.pdf</strong>.</p>
+        </div>
+        <div class="card">
+          <h3>Good to know</h3>
+          <ul>
+            <li><strong>Page order</strong> matches the order you picked the files.</li>
+            <li><strong>Remove</strong> any image with the x button on its thumbnail before creating the PDF.</li>
+            <li><strong>Large photos</strong> are capped at a reasonable resolution to keep the PDF size manageable.</li>
+            <li>Works offline after the first load, except for the one-time CDN fetch of the PDF library.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="related">
+        <h2>Related tools</h2>
+        <div class="related-grid">
+          <a href="image-compressor.html"><span class="t">Image compressor</span><span class="d">Shrink JPG and PNG file sizes without visible quality loss.</span></a>
+          <a href="heic-to-jpg.html"><span class="t">HEIC to JPG</span><span class="d">Convert iPhone HEIC photos to widely supported JPEG.</span></a>
+          <a href="base64-encoder.html"><span class="t">Base64 encoder</span><span class="d">Encode files and text to Base64, or decode them back.</span></a>
+        </div>
+      </section>
+
+      <section class="faq faq-narrow">
+        <h2>Image to PDF FAQs</h2>
+        <details>
+          <summary>What image formats can I use?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">JPG, PNG, GIF, WebP, BMP and any other format your browser can display. Every image is rendered to JPEG internally before being placed in the PDF.</div>
+        </details>
+        <details>
+          <summary>How is each PDF page sized?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Each image gets its own A4 page. The image is scaled to fit inside the page with a margin, keeping its aspect ratio, and centered on the page.</div>
+        </details>
+        <details>
+          <summary>Are my images uploaded to a server?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">No. The PDF is built in your browser with the pdf-lib library. Your images never leave your device.</div>
+        </details>
+        <details>
+          <summary>Can I reorder the images?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Pages follow the order you selected the files. Use the remove button on a thumbnail to drop an image, or re-select files in the order you want.</div>
+        </details>
+        <details>
+          <summary>What if the PDF library fails to load?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">The pdf-lib library loads from the jsDelivr CDN. If it fails, check your internet connection and try again; your selected images are kept so you can retry.</div>
+        </details>
+      </section>
+
+      <!-- ADSENSE SLOT 3 of 3 (above footer): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="above-footer">Advertisement</div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="f-brand">
+          <a class="brand brand-light" href="https://tools.xsrazy.web.id/" aria-label="Micro Tools Hub home">
+            <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+            <span class="brand-word">Micro <em>Tools</em></span>
+          </a>
+          <p>Free online tools with instant results, right in your browser.</p>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#text-tools">Text tools</a>
+          <nav aria-label="Popular text tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/word-counter.html">Word Counter</a>
+            <a href="https://tools.xsrazy.web.id/case-converter.html">Case Converter</a>
+            <a href="https://tools.xsrazy.web.id/character-counter.html">Character Counter</a>
+            <a href="https://tools.xsrazy.web.id/word-frequency-counter.html">Word Frequency</a>
+            <a href="https://tools.xsrazy.web.id/text-reverser.html">Text Reverser</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#generators">Generators</a>
+          <nav aria-label="Popular generators" class="flist">
+            <a href="https://tools.xsrazy.web.id/password-generator.html">Password Generator</a>
+            <a href="https://tools.xsrazy.web.id/qr/">QR Code Generator</a>
+            <a href="https://tools.xsrazy.web.id/meme-generator.html">Meme Generator</a>
+            <a href="https://tools.xsrazy.web.id/uuid-v1-generator.html">UUID Generator</a>
+            <a href="https://tools.xsrazy.web.id/fake-name-generator.html">Fake Name Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#converters">Converters</a>
+          <nav aria-label="Popular converters" class="flist">
+            <a href="https://tools.xsrazy.web.id/unit-converter.html">Unit Converter</a>
+            <a href="https://tools.xsrazy.web.id/currency-converter.html">Currency Converter</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/color-converter.html">Color Converter</a>
+            <a href="https://tools.xsrazy.web.id/number-base-converter.html">Number Base Converter</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#image-tools">Image tools</a>
+          <nav aria-label="Popular image tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/image-compressor.html">Image Compressor</a>
+            <a href="https://tools.xsrazy.web.id/image-resizer.html">Image Resizer</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/favicon-generator.html">Favicon Generator</a>
+            <a href="https://tools.xsrazy.web.id/image-cropper.html">Image Cropper</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#calculators">Calculators</a>
+          <nav aria-label="Popular calculators" class="flist">
+            <a href="https://tools.xsrazy.web.id/bmi-calculator.html">BMI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/mortgage-calculator.html">Mortgage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/percentage-toolkit.html">Percentage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/loan-calculator.html">Loan Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/age-calculator.html">Age Calculator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#business-tools">Business</a>
+          <nav aria-label="Popular business tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/invoice/">Invoice Generator</a>
+            <a href="https://tools.xsrazy.web.id/business-name-generator.html">Business Name Generator</a>
+            <a href="https://tools.xsrazy.web.id/roi-calculator.html">ROI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/salary-converter.html">Salary Converter</a>
+            <a href="https://tools.xsrazy.web.id/business-plan-generator.html">Business Plan Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#downloaders">Downloaders</a>
+          <nav aria-label="Popular downloaders" class="flist">
+            <a href="https://tools.xsrazy.web.id/tiktok-video-downloader.html">TikTok Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/twitter-video-downloader.html">Twitter Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/youtube-thumbnail-downloader.html">YouTube Thumbnail Downloader</a>
+            <a href="https://tools.xsrazy.web.id/pinterest-downloader.html">Pinterest Downloader</a>
+            <a href="https://tools.xsrazy.web.id/reddit-downloader.html">Reddit Downloader</a>
+          </nav>
+        </div>
+        <div class="fcol f-company">
+          <span class="fhead-link fhead-static">Company</span>
+          <nav aria-label="Company" class="flist-static">
+            <a href="https://tools.xsrazy.web.id/">Home</a>
+            <a href="https://tools.xsrazy.web.id/about.html">About</a>
+            <a href="https://tools.xsrazy.web.id/contact.html">Contact</a>
+            <a href="https://tools.xsrazy.web.id/privacy-policy.html">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 Micro Tools Hub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="site.js"></script>
+    <script src="animations.js"></script>
+    <script>
+    (function () {
+      var input = document.getElementById('pdf-files');
+      if (!input) return;
+      var listEl = document.getElementById('pdf-list');
+      var createBtn = document.getElementById('pdf-create');
+      var dlBtn = document.getElementById('pdf-download');
+      var statusEl = document.getElementById('pdf-status');
+      var pagesEl = document.getElementById('pdf-pages');
+      var sizeEl = document.getElementById('pdf-size');
+      if (!listEl || !createBtn || !dlBtn || !statusEl || !pagesEl || !sizeEl) return;
+
+      var files = [];
+      var pdfUrl = null;
+      var PDF_LIB_URL = 'https://cdn.jsdelivr.net/npm/pdf-lib@1/dist/pdf-lib.min.js';
+
+      function fmtBytes(n) {
+        if (!isFinite(n) || n < 0) return '-';
+        if (n < 1024) return n + ' B';
+        var units = ['KB', 'MB', 'GB'];
+        var u = -1, v = n;
+        do { v /= 1024; u++; } while (v >= 1024 && u < units.length - 1);
+        return (u === 0 ? Math.round(v) : v.toFixed(1)) + ' ' + units[u];
+      }
+      function setStatus(t) { statusEl.textContent = t; }
+
+      function renderThumbs() {
+        listEl.innerHTML = '';
+        files.forEach(function (f, idx) {
+          var wrap = document.createElement('div');
+          wrap.className = 'pdf-thumb';
+          var img = document.createElement('img');
+          img.src = f.dataUrl;
+          img.alt = f.name;
+          var nm = document.createElement('span');
+          nm.className = 'tname';
+          nm.textContent = f.name;
+          var rm = document.createElement('button');
+          rm.type = 'button';
+          rm.className = 'rm';
+          rm.setAttribute('aria-label', 'Remove ' + f.name);
+          rm.textContent = 'x';
+          rm.addEventListener('click', function () {
+            files.splice(idx, 1);
+            renderThumbs();
+            updateCounts();
+          });
+          wrap.appendChild(img);
+          wrap.appendChild(nm);
+          wrap.appendChild(rm);
+          listEl.appendChild(wrap);
+        });
+      }
+      function updateCounts() {
+        pagesEl.textContent = String(files.length);
+        if (files.length === 0) setStatus('Add images to get started.');
+        else if (!pdfUrl) setStatus(files.length + (files.length === 1 ? ' image' : ' images') + ' ready. Press Create PDF.');
+      }
+      function resetOutput() {
+        if (pdfUrl) { URL.revokeObjectURL(pdfUrl); pdfUrl = null; }
+        dlBtn.disabled = true;
+        sizeEl.textContent = '-';
+      }
+
+      input.addEventListener('change', function () {
+        var picked = input.files ? Array.prototype.slice.call(input.files) : [];
+        if (!picked.length) return;
+        setStatus('Reading images...');
+        var pending = picked.length;
+        picked.forEach(function (f) {
+          var reader = new FileReader();
+          reader.onload = function () {
+            files.push({ name: f.name || 'image', dataUrl: reader.result });
+            pending--;
+            if (pending === 0) {
+              resetOutput();
+              renderThumbs();
+              updateCounts();
+              input.value = '';
+            }
+          };
+          reader.onerror = function () {
+            pending--;
+            if (pending === 0) {
+              resetOutput();
+              renderThumbs();
+              updateCounts();
+              input.value = '';
+            }
+          };
+          reader.readAsDataURL(f);
+        });
+      });
+
+      function loadPdfLib() {
+        return new Promise(function (resolve, reject) {
+          if (window.PDFLib && window.PDFLib.PDFDocument) { resolve(); return; }
+          var s = document.createElement('script');
+          s.src = PDF_LIB_URL;
+          s.async = true;
+          s.onload = function () { resolve(); };
+          s.onerror = function () { reject(new Error('cdn')); };
+          document.head.appendChild(s);
+        });
+      }
+
+      function loadImage(dataUrl) {
+        return new Promise(function (resolve, reject) {
+          var im = new Image();
+          im.onload = function () { resolve(im); };
+          im.onerror = function () { reject(new Error('decode')); };
+          im.src = dataUrl;
+        });
+      }
+
+      function buildPdf() {
+        var PAGE_W = 595.28, PAGE_H = 841.89, MARGIN = 36, MAX_SIDE = 2480;
+        return window.PDFLib.PDFDocument.create().then(function (doc) {
+          var chain = Promise.resolve();
+          files.forEach(function (f) {
+            chain = chain.then(function () {
+              return loadImage(f.dataUrl).then(function (im) {
+                var w = im.naturalWidth || 1;
+                var h = im.naturalHeight || 1;
+                var s = Math.min(1, MAX_SIDE / Math.max(w, h));
+                var cw = Math.max(1, Math.round(w * s));
+                var ch = Math.max(1, Math.round(h * s));
+                var canvas = document.createElement('canvas');
+                canvas.width = cw;
+                canvas.height = ch;
+                var ctx = canvas.getContext('2d');
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, cw, ch);
+                ctx.drawImage(im, 0, 0, cw, ch);
+                var jpgUrl = canvas.toDataURL('image/jpeg', 0.92);
+                return doc.embedJpg(jpgUrl).then(function (jpg) {
+                  var page = doc.addPage([PAGE_W, PAGE_H]);
+                  var fit = Math.min((PAGE_W - MARGIN * 2) / cw, (PAGE_H - MARGIN * 2) / ch);
+                  var dw = cw * fit, dh = ch * fit;
+                  page.drawImage(jpg, { x: (PAGE_W - dw) / 2, y: (PAGE_H - dh) / 2, width: dw, height: dh });
+                });
+              });
+            });
+          });
+          return chain.then(function () { return doc.save(); });
+        });
+      }
+
+      createBtn.addEventListener('click', function () {
+        if (!files.length) {
+          setStatus('Add at least one image first.');
+          return;
+        }
+        resetOutput();
+        createBtn.disabled = true;
+        setStatus('Loading PDF library...');
+        loadPdfLib().then(function () {
+          setStatus('Building PDF from ' + files.length + (files.length === 1 ? ' image' : ' images') + '...');
+          return buildPdf();
+        }).then(function (bytes) {
+          var blob = new Blob([bytes], { type: 'application/pdf' });
+          if (pdfUrl) URL.revokeObjectURL(pdfUrl);
+          pdfUrl = URL.createObjectURL(blob);
+          dlBtn.disabled = false;
+          sizeEl.textContent = fmtBytes(blob.size);
+          setStatus('PDF ready with ' + files.length + (files.length === 1 ? ' page' : ' pages') + ' (' + fmtBytes(blob.size) + ').');
+        }).catch(function (err) {
+          if (err && err.message === 'cdn') {
+            setStatus('Could not load the PDF library from the CDN. Check your connection and try again.');
+          } else {
+            setStatus('Could not build the PDF. One of the images may be unreadable.');
+          }
+        }).then(function () {
+          createBtn.disabled = false;
+        });
+      });
+
+      dlBtn.addEventListener('click', function () {
+        if (!pdfUrl) return;
+        var a = document.createElement('a');
+        a.href = pdfUrl;
+        a.download = 'images.pdf';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setStatus('Downloaded images.pdf.');
+      });
+    })();
+    </script>
+</body>
+</html>

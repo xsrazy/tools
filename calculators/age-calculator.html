@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Age Calculator - Calculate Your Exact Age | Micro Tools Hub</title>
+    <meta name="keywords" content="age calculator, how old am i, exact age calculator, date of birth calculator, birthday countdown, zodiac sign calculator" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Free age calculator: enter your date of birth to get your exact age in years, months and days, total days lived, the day of the week you were born, your next birthday countdown and zodiac sign." />
+    <link rel="canonical" href="https://tools.xsrazy.web.id/calculators/age-calculator.html" />
+    <meta property="og:title" content="Age Calculator - Calculate Your Exact Age" />
+    <meta property="og:description" content="Your exact age in years, months and days, total days lived, birthday countdown and zodiac sign. Free, no sign-up." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Micro Tools Hub" />
+    <meta property="og:image:alt" content="Age Calculator - Calculate Your Exact Age - free online tool" />
+    <meta property="og:url" content="https://tools.xsrazy.web.id/calculators/age-calculator.html" />
+    <meta property="og:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Age Calculator - Calculate Your Exact Age" />
+    <meta name="twitter:description" content="Exact age, days lived, birthday countdown and zodiac sign. Free, no sign-up." />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="../assets/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css?v=26" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"How is exact age in years, months and days calculated?","acceptedAnswer":{"@type":"Answer","text":"Full years are counted first, then full months, then remaining days, using real calendar month lengths. If your birthday has not happened yet this year, the year count drops by one and the months and days fill the gap, which is why the math needs the actual calendar."}},
+        {"@type":"Question","name":"Does the age calculator handle leap years?","acceptedAnswer":{"@type":"Answer","text":"Yes. All math uses real calendar dates, so February 29 birthdays and leap days in your lifetime are counted correctly in both the exact age and the total days lived."}},
+        {"@type":"Question","name":"How are zodiac signs determined?","acceptedAnswer":{"@type":"Answer","text":"The calculator uses the tropical zodiac date ranges, for example Aries runs March 21 to April 19 and Capricorn runs December 22 to January 19. It is shown for fun, not as an astrological claim."}},
+        {"@type":"Question","name":"Why is the total months figure approximate?","acceptedAnswer":{"@type":"Answer","text":"Months are not all the same length, so there is no exact whole number of months in a given day count. The figure divides total days by 30.436875, the average month length including leap years, and rounds down."}},
+        {"@type":"Question","name":"Is my date of birth sent anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. The calculation runs entirely in your browser with JavaScript. Your birth date never leaves your device."}}
+      ]
+    }
+    </script>
+  
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Age calculator",
+      "url": "https://tools.xsrazy.web.id/calculators/age-calculator.html",
+      "description": "Exact age, birthday countdown and zodiac.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+</head>
+  <body>
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html" aria-label="Micro Tools Hub home">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+          <span class="brand-word">Micro <em>Tools</em></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="navLinks" aria-label="Site">
+          <a class="nav-link" href="mortgage-calculator.html">Mortgage</a>
+          <a class="nav-link" href="loan-calculator.html">Loan</a>
+          <a class="nav-link" href="compound-interest-calculator.html">Compound Interest</a>
+          <a class="nav-link" href="refinance-calculator.html">Refinance</a>
+          <a class="nav-link" href="credit-card-payoff-calculator.html">Credit Card Payoff</a>
+          <a class="nav-link" href="paycheck-calculator.html">Paycheck</a>
+          <a class="nav-link" href="hourly-to-salary.html">Hourly to Salary</a>
+          <a class="nav-link" href="overtime-calculator.html">Overtime</a>
+          <a class="btn btn-primary btn-sm" href="age-calculator.html">Calculate now</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ADSENSE SLOT 1 of 3 (header leaderboard): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+    <div class="ad-slot" data-ad-slot="header">Advertisement</div>
+
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a> &nbsp;/&nbsp; <a href="../index.html#calculators">Calculators</a> &nbsp;/&nbsp; Age calculator</nav>
+      <header class="page-head">
+        <h1>Age calculator</h1>
+        <p>Find your <strong>exact age</strong> in years, months and days, plus total days lived, the <strong>day of the week</strong> you were born, your <strong>next birthday</strong> countdown and <strong>zodiac sign</strong>.</p>
+      </header>
+
+      <main>
+        <div class="calc-grid">
+          <div class="card panel">
+            <h2>Your date of birth</h2>
+            <p class="sub">Results update as you type. Nothing is uploaded.</p>
+            <div class="field">
+              <label for="a-dob">Date of birth</label>
+              <div class="num-wrap" style="flex:none;width:100%"><input id="a-dob" type="date" max="2026-12-31" /></div>
+            </div>
+            <div class="field">
+              <label for="a-asof">Calculate age as of</label>
+              <div class="num-wrap" style="flex:none;width:100%"><input id="a-asof" type="date" /></div>
+              <div class="hint">Defaults to today. Set a past or future date to see an age at any point in time.</div>
+            </div>
+          </div>
+
+          <div class="card result-card">
+            <div class="result-head">
+              <div class="result-label">Your age</div>
+              <div class="big-number"><span id="a-age">-</span></div>
+              <p class="result-note" id="a-note">Enter your date of birth to see your exact age.</p>
+            </div>
+            <div class="stats">
+              <div class="stat"><div class="k">Total days lived</div><div class="v" id="a-days" data-countup>-</div></div>
+              <div class="stat"><div class="k">Total weeks</div><div class="v" id="a-weeks">-</div></div>
+              <div class="stat"><div class="k">Total months (approx.)</div><div class="v" id="a-months">-</div></div>
+              <div class="stat"><div class="k">Born on a</div><div class="v" id="a-dow">-</div></div>
+              <div class="stat"><div class="k">Next birthday</div><div class="v" id="a-bday">-</div></div>
+              <div class="stat"><div class="k">Zodiac sign</div><div class="v" id="a-zodiac">-</div></div>
+            </div>
+            <div class="callout info" style="margin-top:22px"><strong>Private by design:</strong> your birth date is processed only in this page. There is no server and nothing is stored.</div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ADSENSE SLOT 2 of 3 (in-article): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="in-article">Advertisement</div>
+
+      <section class="explainer">
+        <div class="card">
+          <h3>How exact age is calculated</h3>
+          <p>The calculator counts <strong>full years</strong> first, then <strong>full months</strong>, then the <strong>remaining days</strong>, using real calendar month lengths. If your birthday has not happened yet this year, the year count drops by one and the months and days fill the gap. Because it uses actual calendar dates, leap years and February 29 birthdays are handled correctly.</p>
+          <p><strong>Total days lived</strong> is the straight day count between the two dates. <strong>Total months</strong> divides that by 30.436875, the average month length including leap years, so treat it as an approximation.</p>
+        </div>
+        <div class="card">
+          <h3>Zodiac date ranges</h3>
+          <ul>
+            <li><strong>Capricorn:</strong> Dec 22 - Jan 19 &nbsp; <strong>Aquarius:</strong> Jan 20 - Feb 18</li>
+            <li><strong>Pisces:</strong> Feb 19 - Mar 20 &nbsp; <strong>Aries:</strong> Mar 21 - Apr 19</li>
+            <li><strong>Taurus:</strong> Apr 20 - May 20 &nbsp; <strong>Gemini:</strong> May 21 - Jun 20</li>
+            <li><strong>Cancer:</strong> Jun 21 - Jul 22 &nbsp; <strong>Leo:</strong> Jul 23 - Aug 22</li>
+            <li><strong>Virgo:</strong> Aug 23 - Sep 22 &nbsp; <strong>Libra:</strong> Sep 23 - Oct 22</li>
+            <li><strong>Scorpio:</strong> Oct 23 - Nov 21 &nbsp; <strong>Sagittarius:</strong> Nov 22 - Dec 21</li>
+          </ul>
+          <p>Shown for fun, using the tropical zodiac most horoscopes use.</p>
+        </div>
+      </section>
+
+      <section class="related">
+        <h2>Related calculators</h2>
+        <div class="related-grid">
+          <a href="sleep-calculator.html"><span class="t">Sleep calculator</span><span class="d">Ideal bedtimes and wake times based on 90-minute sleep cycles.</span></a>
+          <a href="paycheck-calculator.html"><span class="t">Paycheck calculator</span><span class="d">Take-home pay after tax and deductions.</span></a>
+          <a href="compound-interest-calculator.html"><span class="t">Compound interest</span><span class="d">Project savings growth with regular monthly contributions.</span></a>
+        </div>
+      </section>
+
+      <section class="faq faq-narrow">
+        <h2>Age calculator FAQs</h2>
+        <details>
+          <summary>How is exact age in years, months and days calculated?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Full years are counted first, then full months, then remaining days, using real calendar month lengths. If your birthday has not happened yet this year, the year count drops by one and the months and days fill the gap, which is why the math needs the actual calendar.</div>
+        </details>
+        <details>
+          <summary>Does the age calculator handle leap years?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Yes. All math uses real calendar dates, so February 29 birthdays and leap days in your lifetime are counted correctly in both the exact age and the total days lived.</div>
+        </details>
+        <details>
+          <summary>How are zodiac signs determined?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">The calculator uses the tropical zodiac date ranges, for example Aries runs March 21 to April 19 and Capricorn runs December 22 to January 19. It is shown for fun, not as an astrological claim.</div>
+        </details>
+        <details>
+          <summary>Why is the total months figure approximate?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Months are not all the same length, so there is no exact whole number of months in a given day count. The figure divides total days by 30.436875, the average month length including leap years, and rounds down.</div>
+        </details>
+        <details>
+          <summary>Is my date of birth sent anywhere?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">No. The calculation runs entirely in your browser with JavaScript. Your birth date never leaves your device.</div>
+        </details>
+      </section>
+
+      <!-- ADSENSE SLOT 3 of 3 (above footer): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="above-footer">Advertisement</div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="f-brand">
+          <a class="brand brand-light" href="https://tools.xsrazy.web.id/" aria-label="Micro Tools Hub home">
+            <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+            <span class="brand-word">Micro <em>Tools</em></span>
+          </a>
+          <p>Free online tools with instant results, right in your browser.</p>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#text-tools">Text tools</a>
+          <nav aria-label="Popular text tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/word-counter.html">Word Counter</a>
+            <a href="https://tools.xsrazy.web.id/case-converter.html">Case Converter</a>
+            <a href="https://tools.xsrazy.web.id/character-counter.html">Character Counter</a>
+            <a href="https://tools.xsrazy.web.id/word-frequency-counter.html">Word Frequency</a>
+            <a href="https://tools.xsrazy.web.id/text-reverser.html">Text Reverser</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#generators">Generators</a>
+          <nav aria-label="Popular generators" class="flist">
+            <a href="https://tools.xsrazy.web.id/password-generator.html">Password Generator</a>
+            <a href="https://tools.xsrazy.web.id/qr/">QR Code Generator</a>
+            <a href="https://tools.xsrazy.web.id/meme-generator.html">Meme Generator</a>
+            <a href="https://tools.xsrazy.web.id/uuid-v1-generator.html">UUID Generator</a>
+            <a href="https://tools.xsrazy.web.id/fake-name-generator.html">Fake Name Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#converters">Converters</a>
+          <nav aria-label="Popular converters" class="flist">
+            <a href="https://tools.xsrazy.web.id/unit-converter.html">Unit Converter</a>
+            <a href="https://tools.xsrazy.web.id/currency-converter.html">Currency Converter</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/color-converter.html">Color Converter</a>
+            <a href="https://tools.xsrazy.web.id/number-base-converter.html">Number Base Converter</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#image-tools">Image tools</a>
+          <nav aria-label="Popular image tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/image-compressor.html">Image Compressor</a>
+            <a href="https://tools.xsrazy.web.id/image-resizer.html">Image Resizer</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/favicon-generator.html">Favicon Generator</a>
+            <a href="https://tools.xsrazy.web.id/image-cropper.html">Image Cropper</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#calculators">Calculators</a>
+          <nav aria-label="Popular calculators" class="flist">
+            <a href="https://tools.xsrazy.web.id/bmi-calculator.html">BMI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/mortgage-calculator.html">Mortgage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/percentage-toolkit.html">Percentage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/loan-calculator.html">Loan Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/age-calculator.html">Age Calculator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#business-tools">Business</a>
+          <nav aria-label="Popular business tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/invoice/">Invoice Generator</a>
+            <a href="https://tools.xsrazy.web.id/business-name-generator.html">Business Name Generator</a>
+            <a href="https://tools.xsrazy.web.id/roi-calculator.html">ROI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/salary-converter.html">Salary Converter</a>
+            <a href="https://tools.xsrazy.web.id/business-plan-generator.html">Business Plan Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#downloaders">Downloaders</a>
+          <nav aria-label="Popular downloaders" class="flist">
+            <a href="https://tools.xsrazy.web.id/tiktok-video-downloader.html">TikTok Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/twitter-video-downloader.html">Twitter Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/youtube-thumbnail-downloader.html">YouTube Thumbnail Downloader</a>
+            <a href="https://tools.xsrazy.web.id/pinterest-downloader.html">Pinterest Downloader</a>
+            <a href="https://tools.xsrazy.web.id/reddit-downloader.html">Reddit Downloader</a>
+          </nav>
+        </div>
+        <div class="fcol f-company">
+          <span class="fhead-link fhead-static">Company</span>
+          <nav aria-label="Company" class="flist-static">
+            <a href="https://tools.xsrazy.web.id/">Home</a>
+            <a href="https://tools.xsrazy.web.id/about.html">About</a>
+            <a href="https://tools.xsrazy.web.id/contact.html">Contact</a>
+            <a href="https://tools.xsrazy.web.id/privacy-policy.html">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 Micro Tools Hub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="../site.js"></script>
+    <script src="../animations.js"></script>
+    <script>
+    function initAge() {
+      var dobEl = document.getElementById('a-dob');
+      var asofEl = document.getElementById('a-asof');
+      if (!dobEl || !asofEl) return;
+      function set(id, txt) { var el = document.getElementById(id); if (el) el.textContent = txt; }
+      function fmt(n) { return n.toLocaleString('en-US'); }
+      function parseDate(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+      function toYMD(d) {
+        return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+      }
+      function zodiac(m, d) {
+        var Z = [
+          ['Aquarius', 1, 20], ['Pisces', 2, 19], ['Aries', 3, 21], ['Taurus', 4, 20],
+          ['Gemini', 5, 21], ['Cancer', 6, 21], ['Leo', 7, 23], ['Virgo', 8, 23],
+          ['Libra', 9, 23], ['Scorpio', 10, 23], ['Sagittarius', 11, 22], ['Capricorn', 12, 22]
+        ];
+        var sign = 'Capricorn';
+        for (var i = 0; i < Z.length; i++) {
+          if (m > Z[i][1] || (m === Z[i][1] && d >= Z[i][2])) sign = Z[i][0];
+        }
+        return sign;
+      }
+      function update() {
+        if (!dobEl.value) {
+          set('a-age', '-');
+          set('a-note', 'Enter your date of birth to see your exact age.');
+          ['a-days', 'a-weeks', 'a-months', 'a-dow', 'a-bday', 'a-zodiac'].forEach(function (id) { set(id, '-'); });
+          return;
+        }
+        var dob = parseDate(dobEl.value);
+        var asof = asofEl.value ? parseDate(asofEl.value) : new Date();
+        asof = new Date(asof.getFullYear(), asof.getMonth(), asof.getDate());
+        if (asof < dob) {
+          set('a-age', '-');
+          set('a-note', 'The "as of" date is before the birth date. Pick a later date.');
+          return;
+        }
+        var y = asof.getFullYear() - dob.getFullYear();
+        var m = asof.getMonth() - dob.getMonth();
+        var d = asof.getDate() - dob.getDate();
+        if (d < 0) {
+          m--;
+          d += new Date(asof.getFullYear(), asof.getMonth(), 0).getDate();
+        }
+        if (m < 0) { y--; m += 12; }
+        var days = Math.round((asof - dob) / 86400000);
+        var weeks = Math.floor(days / 7);
+        var months = Math.floor(days / 30.436875);
+        var dow = dob.toLocaleDateString('en-US', { weekday: 'long' });
+        var thisYear = new Date(asof.getFullYear(), dob.getMonth(), dob.getDate());
+        var next = thisYear < asof ? new Date(asof.getFullYear() + 1, dob.getMonth(), dob.getDate()) : thisYear;
+        var daysTo = Math.round((next - asof) / 86400000);
+        var bdayStr = next.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+        set('a-age', y + (y === 1 ? ' year' : ' years'));
+        set('a-note', m + (m === 1 ? ' month' : ' months') + ', ' + d + (d === 1 ? ' day' : ' days') + ' old as of ' + asof.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) + '.');
+        set('a-days', fmt(days));
+        set('a-weeks', fmt(weeks));
+        set('a-months', fmt(months));
+        set('a-dow', dow);
+        set('a-bday', daysTo === 0 ? 'Today! Happy birthday.' : bdayStr + ' (' + fmt(daysTo) + ' days)');
+        set('a-zodiac', zodiac(dob.getMonth() + 1, dob.getDate()));
+      }
+      var now = new Date();
+      asofEl.value = toYMD(now);
+      dobEl.addEventListener('change', update);
+      asofEl.addEventListener('change', update);
+      update();
+    }
+    initAge();
+    </script>
+  </body>
+</html>

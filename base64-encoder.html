@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Base64 Encoder &amp; Decoder - Free Online Dev Tool | Micro Tools Hub</title>
+    <meta name="keywords" content="base64 encoder, base64 decoder, base64 encode online, url encoder decoder, jwt decoder, base64url" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Free Base64 encoder and decoder with full UTF-8 support and URL-safe mode, plus a URL encoder/decoder and JWT decoder on the same page. Runs entirely in your browser." />
+    <link rel="canonical" href="https://tools.xsrazy.web.id/base64-encoder/" />
+    <meta property="og:title" content="Base64 Encoder &amp; Decoder - Free Online Dev Tool" />
+    <meta property="og:description" content="Encode and decode Base64 with UTF-8 support, URL-safe mode, plus URL and JWT decoders. Free, no sign-up." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Micro Tools Hub" />
+    <meta property="og:image:alt" content="Base64 Encoder &amp;amp; Decoder - Free Online Dev Tool - free online tool" />
+    <meta property="og:url" content="https://tools.xsrazy.web.id/base64-encoder/" />
+    <meta property="og:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Base64 Encoder &amp; Decoder - Free Online Dev Tool" />
+    <meta name="twitter:description" content="Base64, URL and JWT tools in one page. Free, no sign-up." />
+    <meta name="twitter:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta name="theme-color" content="#0B1220" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="/assets/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=26" />
+    <style>
+      .mode-seg { margin: 0 0 18px; }
+      .mono-area { font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+      .tool-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+      .err { display: none; color: #DC2626; font-weight: 700; font-size: .88rem; margin-top: 10px; }
+      .err.show { display: block; }
+      .jwt-pre { background: var(--navy); color: #DDD6FE; border-radius: 12px; padding: 16px 18px; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .85rem; line-height: 1.6; white-space: pre-wrap; word-break: break-word; margin: 10px 0 0; max-height: 320px; overflow-y: auto; }
+      .jwt-label { font-size: .76rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); margin: 18px 0 0; }
+      .sub-card { margin-top: 20px; }
+      .field textarea { width: 100%; box-sizing: border-box; }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"Does this Base64 tool support Unicode and emoji?","acceptedAnswer":{"@type":"Answer","text":"Yes. Text is encoded as UTF-8 first, so accented characters, non-Latin scripts and emoji round-trip correctly, unlike naive Base64 tools that break on them."}},
+        {"@type":"Question","name":"What is URL-safe Base64?","acceptedAnswer":{"@type":"Answer","text":"URL-safe Base64 replaces + with -, / with _ and drops the = padding, so the output can be pasted into URLs and filenames without escaping. It is the format JWT tokens use."}},
+        {"@type":"Question","name":"Is my data uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Encoding and decoding happen entirely in your browser with JavaScript. Never paste real production secrets into any online tool, including this one."}},
+        {"@type":"Question","name":"What does the JWT decoder show?","acceptedAnswer":{"@type":"Answer","text":"It decodes the header and payload of a JSON Web Token and pretty-prints them as JSON. It does not verify the signature, so it cannot prove a token is authentic."}},
+        {"@type":"Question","name":"Why did decoding fail with an error?","acceptedAnswer":{"@type":"Answer","text":"The input is not valid Base64. Common causes are missing padding, stray whitespace or characters outside the Base64 alphabet. Check that you pasted the full string."}}
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Base64 encoder",
+      "url": "https://tools.xsrazy.web.id/base64-encoder.html",
+      "description": "Base64 encode and decode, plus URL encoder and JWT decoder.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+</head>
+<body>
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="index.html" aria-label="Micro Tools Hub home">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+          <span class="brand-word">Micro <em>Tools</em></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="navLinks" aria-label="Site">
+          <a class="nav-link" href="word-counter.html">Word Counter</a>
+          <a class="nav-link" href="password-generator.html">Password Generator</a>
+          <a class="nav-link" href="unit-converter.html">Unit Converter</a>
+          <a class="nav-link" href="timezone-converter.html">Time Zone</a>
+          <a class="nav-link" href="case-converter.html">Case Converter</a>
+          <a class="btn btn-primary btn-sm" href="index.html#tools">Browse tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ADSENSE SLOT 1 of 3 (header leaderboard): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+    <div class="ad-slot" data-ad-slot="header">Advertisement</div>
+
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="index.html#generators">Generators</a> &nbsp;/&nbsp; Base64 encoder</nav>
+      <header class="page-head">
+        <h1>Base64 encoder &amp; decoder</h1>
+        <p>Encode and decode <strong>Base64</strong> with full UTF-8 support and URL-safe mode, plus a <strong>URL encoder</strong> and <strong>JWT decoder</strong> on the same page.</p>
+      </header>
+
+      <main>
+        <div class="tool-grid">
+          <div class="card panel">
+            <h2>Base64</h2>
+            <p class="sub">Live conversion as you type.</p>
+            <div class="seg mode-seg" role="group" aria-label="Base64 mode">
+              <button type="button" id="b64-mode-encode" aria-pressed="true">Encode</button>
+              <button type="button" id="b64-mode-decode" aria-pressed="false">Decode</button>
+            </div>
+            <div class="field">
+              <label for="b64-input" id="b64-input-label">Text to encode</label>
+              <textarea class="tool-text mono-area" id="b64-input" placeholder="Type or paste here..."></textarea>
+            </div>
+            <label class="check-row"><input type="checkbox" id="b64-urlsafe" /> URL-safe mode (Base64URL, no padding)</label>
+            <div class="field">
+              <label for="b64-output" id="b64-output-label">Base64 output</label>
+              <textarea class="tool-text mono-area" id="b64-output" readonly placeholder="Result appears here..."></textarea>
+            </div>
+            <div class="err" id="b64-err">That input is not valid Base64. Check for missing characters or stray whitespace.</div>
+            <div class="tool-actions">
+              <button class="btn btn-outline btn-sm" id="b64-copy" type="button">Copy result</button>
+              <button class="btn btn-outline btn-sm" id="b64-clear" type="button">Clear</button>
+            </div>
+            <div class="callout info" style="margin:18px 0 0"><strong>Privacy note:</strong> everything runs locally in your browser. As a rule, never paste real production secrets or tokens into any online tool.</div>
+          </div>
+
+          <div class="card result-card">
+            <div class="card panel sub-card" style="border:0;box-shadow:none;padding-top:4px">
+              <h2>URL encoder / decoder</h2>
+              <p class="sub">Percent-encode URLs and query strings.</p>
+              <div class="field">
+                <label for="url-input">Text or URL</label>
+                <textarea class="tool-text mono-area" id="url-input" placeholder="https://example.com/?q=hello world"></textarea>
+              </div>
+              <div class="tool-actions">
+                <button class="btn btn-primary btn-sm" id="url-encode" type="button">Encode URL</button>
+                <button class="btn btn-outline btn-sm" id="url-decode" type="button">Decode URL</button>
+              </div>
+              <div class="field" style="margin-top:14px">
+                <label for="url-output">Result</label>
+                <textarea class="tool-text mono-area" id="url-output" readonly placeholder="Result appears here..."></textarea>
+              </div>
+            </div>
+            <div class="card panel sub-card" style="border:0;box-shadow:none">
+              <h2>JWT decoder</h2>
+              <p class="sub">Inspect the header and payload of a JSON Web Token. Signature is not verified.</p>
+              <div class="field">
+                <label for="jwt-input">JWT token</label>
+                <textarea class="tool-text mono-area" id="jwt-input" placeholder="Paste a token like eyJhbGciOi..."></textarea>
+              </div>
+              <div class="tool-actions">
+                <button class="btn btn-primary btn-sm" id="jwt-decode" type="button">Decode token</button>
+                <button class="btn btn-outline btn-sm" id="jwt-clear" type="button">Clear</button>
+              </div>
+              <div class="err" id="jwt-err">That does not look like a valid JWT (expected three dot-separated parts).</div>
+              <div id="jwt-result" style="display:none">
+                <div class="jwt-label">Header</div>
+                <div class="jwt-pre" id="jwt-header"></div>
+                <div class="jwt-label">Payload</div>
+                <div class="jwt-pre" id="jwt-payload"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ADSENSE SLOT 2 of 3 (in-article): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="in-article">Advertisement</div>
+
+      <section class="explainer">
+        <div class="card">
+          <h3>What is Base64 for</h3>
+          <p><strong>Base64</strong> turns binary data or text into a safe ASCII string. Developers use it to embed images in CSS, pass tokens in URLs, and encode API payloads. <strong>URL-safe Base64</strong> (Base64URL) swaps two characters so the output never needs escaping in a link.</p>
+          <p><strong>JWTs</strong> (JSON Web Tokens) are three Base64URL parts joined by dots: header, payload, and signature. Decoding shows you the claims inside, but only the server holding the secret can verify the signature.</p>
+        </div>
+        <div class="card">
+          <h3>Why this tool</h3>
+          <ul>
+            <li><strong>UTF-8 correct:</strong> emoji and non-Latin text round-trip properly.</li>
+            <li><strong>Live:</strong> results update as you type, with clear errors on bad input.</li>
+            <li><strong>Private:</strong> no server, no logs, nothing leaves the tab.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="related">
+        <h2>Related tools</h2>
+        <div class="related-grid">
+          <a href="password-generator.html"><span class="t">Password generator</span><span class="d">Strong random passwords with a strength meter.</span></a>
+          <a href="word-counter.html"><span class="t">Word counter</span><span class="d">Count words and characters as you type.</span></a>
+          <a href="unit-converter.html"><span class="t">Unit converter</span><span class="d">Convert length, weight, temperature and more.</span></a>
+        </div>
+      </section>
+
+      <section class="faq faq-narrow">
+        <h2>Base64 encoder FAQs</h2>
+        <details>
+          <summary>Does this Base64 tool support Unicode and emoji?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Yes. Text is encoded as UTF-8 first, so accented characters, non-Latin scripts and emoji round-trip correctly, unlike naive Base64 tools that break on them.</div>
+        </details>
+        <details>
+          <summary>What is URL-safe Base64?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">URL-safe Base64 replaces + with -, / with _ and drops the = padding, so the output can be pasted into URLs and filenames without escaping. It is the format JWT tokens use.</div>
+        </details>
+        <details>
+          <summary>Is my data uploaded anywhere?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">No. Encoding and decoding happen entirely in your browser with JavaScript. Never paste real production secrets into any online tool, including this one.</div>
+        </details>
+        <details>
+          <summary>What does the JWT decoder show?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">It decodes the header and payload of a JSON Web Token and pretty-prints them as JSON. It does not verify the signature, so it cannot prove a token is authentic.</div>
+        </details>
+        <details>
+          <summary>Why did decoding fail with an error?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">The input is not valid Base64. Common causes are missing padding, stray whitespace or characters outside the Base64 alphabet. Check that you pasted the full string.</div>
+        </details>
+      </section>
+
+      <!-- ADSENSE SLOT 3 of 3 (above footer): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="above-footer">Advertisement</div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="f-brand">
+          <a class="brand brand-light" href="https://tools.xsrazy.web.id/" aria-label="Micro Tools Hub home">
+            <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+            <span class="brand-word">Micro <em>Tools</em></span>
+          </a>
+          <p>Free online tools with instant results, right in your browser.</p>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#text-tools">Text tools</a>
+          <nav aria-label="Popular text tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/word-counter.html">Word Counter</a>
+            <a href="https://tools.xsrazy.web.id/case-converter.html">Case Converter</a>
+            <a href="https://tools.xsrazy.web.id/character-counter.html">Character Counter</a>
+            <a href="https://tools.xsrazy.web.id/word-frequency-counter.html">Word Frequency</a>
+            <a href="https://tools.xsrazy.web.id/text-reverser.html">Text Reverser</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#generators">Generators</a>
+          <nav aria-label="Popular generators" class="flist">
+            <a href="https://tools.xsrazy.web.id/password-generator.html">Password Generator</a>
+            <a href="https://tools.xsrazy.web.id/qr/">QR Code Generator</a>
+            <a href="https://tools.xsrazy.web.id/meme-generator.html">Meme Generator</a>
+            <a href="https://tools.xsrazy.web.id/uuid-v1-generator.html">UUID Generator</a>
+            <a href="https://tools.xsrazy.web.id/fake-name-generator.html">Fake Name Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#converters">Converters</a>
+          <nav aria-label="Popular converters" class="flist">
+            <a href="https://tools.xsrazy.web.id/unit-converter.html">Unit Converter</a>
+            <a href="https://tools.xsrazy.web.id/currency-converter.html">Currency Converter</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/color-converter.html">Color Converter</a>
+            <a href="https://tools.xsrazy.web.id/number-base-converter.html">Number Base Converter</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#image-tools">Image tools</a>
+          <nav aria-label="Popular image tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/image-compressor.html">Image Compressor</a>
+            <a href="https://tools.xsrazy.web.id/image-resizer.html">Image Resizer</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/favicon-generator.html">Favicon Generator</a>
+            <a href="https://tools.xsrazy.web.id/image-cropper.html">Image Cropper</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#calculators">Calculators</a>
+          <nav aria-label="Popular calculators" class="flist">
+            <a href="https://tools.xsrazy.web.id/bmi-calculator.html">BMI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/mortgage-calculator.html">Mortgage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/percentage-toolkit.html">Percentage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/loan-calculator.html">Loan Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/age-calculator.html">Age Calculator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#business-tools">Business</a>
+          <nav aria-label="Popular business tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/invoice/">Invoice Generator</a>
+            <a href="https://tools.xsrazy.web.id/business-name-generator.html">Business Name Generator</a>
+            <a href="https://tools.xsrazy.web.id/roi-calculator.html">ROI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/salary-converter.html">Salary Converter</a>
+            <a href="https://tools.xsrazy.web.id/business-plan-generator.html">Business Plan Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#downloaders">Downloaders</a>
+          <nav aria-label="Popular downloaders" class="flist">
+            <a href="https://tools.xsrazy.web.id/tiktok-video-downloader.html">TikTok Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/twitter-video-downloader.html">Twitter Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/youtube-thumbnail-downloader.html">YouTube Thumbnail Downloader</a>
+            <a href="https://tools.xsrazy.web.id/pinterest-downloader.html">Pinterest Downloader</a>
+            <a href="https://tools.xsrazy.web.id/reddit-downloader.html">Reddit Downloader</a>
+          </nav>
+        </div>
+        <div class="fcol f-company">
+          <span class="fhead-link fhead-static">Company</span>
+          <nav aria-label="Company" class="flist-static">
+            <a href="https://tools.xsrazy.web.id/">Home</a>
+            <a href="https://tools.xsrazy.web.id/about.html">About</a>
+            <a href="https://tools.xsrazy.web.id/contact.html">Contact</a>
+            <a href="https://tools.xsrazy.web.id/privacy-policy.html">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 Micro Tools Hub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="site.js"></script>
+    <script src="animations.js"></script>
+    <script>
+    (function initBase64Tools(){
+      var input = document.getElementById('b64-input');
+      if(!input) return;
+      var output = document.getElementById('b64-output');
+      var urlsafe = document.getElementById('b64-urlsafe');
+      var err = document.getElementById('b64-err');
+      var modeEncodeBtn = document.getElementById('b64-mode-encode');
+      var modeDecodeBtn = document.getElementById('b64-mode-decode');
+      var inputLabel = document.getElementById('b64-input-label');
+      var outputLabel = document.getElementById('b64-output-label');
+      var mode = 'encode';
+      function b64encode(str, safe){
+        var b = btoa(unescape(encodeURIComponent(str)));
+        if(safe) b = b.replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+        return b;
+      }
+      function b64decode(str, safe){
+        var s = str.trim().replace(/\s+/g,'');
+        if(safe) s = s.replace(/-/g,'+').replace(/_/g,'/');
+        while(s.length % 4) s += '=';
+        return decodeURIComponent(escape(atob(s)));
+      }
+      function convert(){
+        err.classList.remove('show');
+        var v = input.value;
+        if(!v){ output.value = ''; return; }
+        try{
+          output.value = (mode === 'encode') ? b64encode(v, urlsafe.checked) : b64decode(v, urlsafe.checked);
+        }catch(e){
+          output.value = '';
+          err.classList.add('show');
+        }
+      }
+      function setMode(m){
+        mode = m;
+        modeEncodeBtn.setAttribute('aria-pressed', m === 'encode' ? 'true' : 'false');
+        modeDecodeBtn.setAttribute('aria-pressed', m === 'decode' ? 'true' : 'false');
+        inputLabel.textContent = m === 'encode' ? 'Text to encode' : 'Base64 to decode';
+        outputLabel.textContent = m === 'encode' ? 'Base64 output' : 'Decoded text';
+        convert();
+      }
+      modeEncodeBtn.addEventListener('click', function(){ setMode('encode'); });
+      modeDecodeBtn.addEventListener('click', function(){ setMode('decode'); });
+      input.addEventListener('input', convert);
+      urlsafe.addEventListener('change', convert);
+      document.getElementById('b64-clear').addEventListener('click', function(){ input.value=''; output.value=''; err.classList.remove('show'); input.focus(); });
+      document.getElementById('b64-copy').addEventListener('click', function(){
+        if(!output.value) return;
+        output.select();
+        if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(output.value); }
+        else { document.execCommand('copy'); }
+      });
+      var urlInput = document.getElementById('url-input');
+      var urlOutput = document.getElementById('url-output');
+      document.getElementById('url-encode').addEventListener('click', function(){
+        try{ urlOutput.value = encodeURIComponent(urlInput.value); }catch(e){ urlOutput.value = 'Encoding failed.'; }
+      });
+      document.getElementById('url-decode').addEventListener('click', function(){
+        try{ urlOutput.value = decodeURIComponent(urlInput.value); }catch(e){ urlOutput.value = 'That is not valid percent-encoding.'; }
+      });
+      var jwtInput = document.getElementById('jwt-input');
+      var jwtErr = document.getElementById('jwt-err');
+      var jwtResult = document.getElementById('jwt-result');
+      document.getElementById('jwt-decode').addEventListener('click', function(){
+        jwtErr.classList.remove('show'); jwtResult.style.display = 'none';
+        var parts = jwtInput.value.trim().split('.');
+        if(parts.length !== 3){ jwtErr.classList.add('show'); return; }
+        try{
+          var header = JSON.parse(b64decode(parts[0], true));
+          var payload = JSON.parse(b64decode(parts[1], true));
+          document.getElementById('jwt-header').textContent = JSON.stringify(header, null, 2);
+          document.getElementById('jwt-payload').textContent = JSON.stringify(payload, null, 2);
+          jwtResult.style.display = 'block';
+        }catch(e){ jwtErr.classList.add('show'); }
+      });
+      document.getElementById('jwt-clear').addEventListener('click', function(){
+        jwtInput.value=''; jwtResult.style.display='none'; jwtErr.classList.remove('show');
+      });
+    })();
+    </script>
+</body>
+</html>

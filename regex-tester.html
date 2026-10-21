@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Regex Tester - Test Regular Expressions Online | Micro Tools Hub</title>
+    <meta name="keywords" content="regex tester, regular expression tester, regex checker, test regex online, javascript regex tester, regex replace" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Free regex tester: test regular expressions with live match highlighting, match counts and replace preview. Uses JavaScript regex, runs fully in your browser." />
+    <link rel="canonical" href="https://tools.xsrazy.web.id/regex-tester.html" />
+    <meta property="og:title" content="Regex Tester: Test Regular Expressions Online" />
+    <meta property="og:description" content="Live regex match highlighting, match counts and replace preview. Free, no sign-up, private by design." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Micro Tools Hub" />
+    <meta property="og:image:alt" content="Regex Tester: Test Regular Expressions Online - free online tool" />
+    <meta property="og:url" content="https://tools.xsrazy.web.id/regex-tester.html" />
+    <meta property="og:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Regex Tester: Test Regular Expressions Online" />
+    <meta name="twitter:description" content="Test regex with live highlighting and replace preview. Free, no sign-up." />
+    <meta name="twitter:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta name="theme-color" content="#0B1220" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="/assets/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=26" />
+    <style>
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      .rx-input { width: 100%; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 1.02rem; border: 1.5px solid var(--line); border-radius: 12px; padding: 12px 14px; background: var(--surface); color: var(--ink); outline: 0; }
+      .rx-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(124, 58, 237, .13); }
+      .rx-bad { border-color: #f87171 !important; }
+      .flags { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 10px; }
+      .hl-box { width: 100%; min-height: 200px; max-height: 380px; overflow: auto; background: var(--surface); border: 1.5px solid var(--line); border-radius: 12px; padding: 14px 16px; font-size: .92rem; line-height: 1.7; white-space: pre-wrap; word-break: break-word; }
+      .hl { background: rgba(139, 92, 246, .28); border-radius: 4px; padding: 1px 2px; outline: 1px solid rgba(139, 92, 246, .55); }
+      .match-list { max-height: 220px; overflow: auto; margin-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+      .match-item { font-size: .82rem; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; }
+      .err-msg { color: #f87171; font-size: .9rem; font-weight: 600; margin-top: 8px; }
+      .sheet td { padding: 7px 10px; border-bottom: 1px solid var(--line); font-size: .88rem; }
+      .sheet td:first-child { white-space: nowrap; font-weight: 700; color: #a78bfa; }
+      .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 4px; }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"Which regex flavor does this tester use?","acceptedAnswer":{"@type":"Answer","text":"JavaScript. The pattern runs in your browser with the same engine as Node.js and modern browsers, so what you see here matches what your code will do."}},
+        {"@type":"Question","name":"What do the g, i, m, s and u flags mean?","acceptedAnswer":{"@type":"Answer","text":"g finds all matches instead of stopping at the first. i ignores case. m makes ^ and $ match line starts and ends. s lets the dot match newlines. u enables full Unicode mode."}},
+        {"@type":"Question","name":"Why does my regex show an 'Invalid regular expression' error?","acceptedAnswer":{"@type":"Answer","text":"Usually a typo: an unclosed bracket or parenthesis, a stray backslash, or a quantifier with nothing to repeat. The error message names the exact problem."}},
+        {"@type":"Question","name":"Is my test data uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Matching happens entirely in your browser with JavaScript. Your text never leaves your device."}},
+        {"@type":"Question","name":"How do I use the replace preview?","acceptedAnswer":{"@type":"Answer","text":"Type a replacement string and the preview shows the result live. Use $1, $2 and so on to insert capture groups, $& for the whole match, and $$ for a literal dollar sign."}}
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Regex tester",
+      "url": "https://tools.xsrazy.web.id/regex-tester.html",
+      "description": "Test regex live with highlighting.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+</head>
+<body>
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="index.html" aria-label="Micro Tools Hub home">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+          <span class="brand-word">Micro <em>Tools</em></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="navLinks" aria-label="Site">
+          <a class="nav-link" href="word-counter.html">Word Counter</a>
+          <a class="nav-link" href="password-generator.html">Password Generator</a>
+          <a class="nav-link" href="unit-converter.html">Unit Converter</a>
+          <a class="nav-link" href="timezone-converter.html">Time Zone</a>
+          <a class="nav-link" href="case-converter.html">Case Converter</a>
+          <a class="btn btn-primary btn-sm" href="index.html#tools">Browse tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ADSENSE SLOT 1 of 3 (header leaderboard): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+    <div class="ad-slot" data-ad-slot="header">Advertisement</div>
+
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="index.html#text-tools">Text Tools</a> &nbsp;/&nbsp; Regex tester</nav>
+      <header class="page-head">
+        <h1>Regex tester</h1>
+        <p>Test <strong>regular expressions</strong> with live match <strong>highlighting</strong>, match counts and a replace preview.</p>
+      </header>
+
+      <main>
+        <div class="tool-grid">
+          <div class="card panel">
+            <h2>Pattern</h2>
+            <p class="sub">JavaScript regex flavor. Updates live.</p>
+            <div class="field">
+              <label for="rx-pattern">Regular expression</label>
+              <input class="rx-input" id="rx-pattern" value="\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b" spellcheck="false" autocomplete="off" />
+              <div class="flags" role="group" aria-label="Regex flags">
+                <label class="check-row"><input type="checkbox" id="rx-g" checked /> g <span style="font-weight:400;color:var(--faint)">global</span></label>
+                <label class="check-row"><input type="checkbox" id="rx-i" /> i <span style="font-weight:400;color:var(--faint)">ignore case</span></label>
+                <label class="check-row"><input type="checkbox" id="rx-m" /> m <span style="font-weight:400;color:var(--faint)">multiline</span></label>
+                <label class="check-row"><input type="checkbox" id="rx-s" /> s <span style="font-weight:400;color:var(--faint)">dotAll</span></label>
+                <label class="check-row"><input type="checkbox" id="rx-u" /> u <span style="font-weight:400;color:var(--faint)">unicode</span></label>
+              </div>
+              <div class="err-msg" id="rx-err" aria-live="polite"></div>
+            </div>
+            <div class="field">
+              <label for="rx-text">Test string</label>
+              <textarea class="tool-text mono" id="rx-text" spellcheck="false">Contact the team at support@example.com or sales@example.org.
+My backup is ada.lovelace@mail.io (not a real address).
+Call 555-0134 if email fails.</textarea>
+            </div>
+            <div class="field">
+              <label for="rx-replace">Replace with (preview)</label>
+              <input class="rx-input" id="rx-replace" placeholder="[email hidden]" spellcheck="false" autocomplete="off" />
+              <div class="hint">Use $1, $2 for groups, $&amp; for the whole match, $$ for a literal $.</div>
+            </div>
+            <div class="btn-row">
+              <button class="btn btn-sm" id="rx-sample">Sample: email</button>
+              <button class="btn btn-sm" id="rx-sample2">Sample: date</button>
+              <button class="btn btn-sm" id="rx-clear">Clear</button>
+            </div>
+          </div>
+
+          <div class="card result-card">
+            <div class="result-head">
+              <div class="result-label">Matches</div>
+              <div class="big-number"><span id="rx-count" data-countup>0</span></div>
+              <p class="result-note" id="rx-note">Matches update live as you type.</p>
+            </div>
+            <div style="padding:0 28px">
+              <div class="hl-box mono" id="rx-hl" aria-live="polite"></div>
+              <div class="match-list mono" id="rx-list"></div>
+              <div class="field" style="margin-top:14px">
+                <label>Replace preview</label>
+                <div class="hl-box mono" id="rx-prev" style="min-height:120px"></div>
+              </div>
+            </div>
+            <div class="callout info" style="margin:22px 28px 28px"><strong>Private by design:</strong> matching runs locally in JavaScript. There is no server, no account and no tracking of what you test.</div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ADSENSE SLOT 2 of 3 (in-article): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="in-article">Advertisement</div>
+
+      <section class="explainer">
+        <div class="card">
+          <h3>Quick cheatsheet</h3>
+          <table class="sheet mono" style="width:100%;border-collapse:collapse">
+            <tbody>
+              <tr><td>.</td><td>Any character except newline (or any with s flag)</td></tr>
+              <tr><td>\d \w \s</td><td>Digit, word char, whitespace</td></tr>
+              <tr><td>\D \W \S</td><td>Not a digit, not a word char, not whitespace</td></tr>
+              <tr><td>^ $</td><td>Start / end of string (or line with m flag)</td></tr>
+              <tr><td>* + ?</td><td>0 or more, 1 or more, 0 or 1</td></tr>
+              <tr><td>{n} {n,} {n,m}</td><td>Exactly n, n or more, between n and m</td></tr>
+              <tr><td>( ) (?: )</td><td>Capture group, non-capture group</td></tr>
+              <tr><td>[abc] [^abc]</td><td>One of these, none of these</td></tr>
+              <tr><td>a|b</td><td>a or b</td></tr>
+              <tr><td>\b</td><td>Word boundary</td></tr>
+              <tr><td>(?= ) (?!) </td><td>Lookahead, negative lookahead</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>Flags explained</h3>
+          <ul>
+            <li><strong>g (global):</strong> find every match, not just the first.</li>
+            <li><strong>i (ignore case):</strong> <span class="mono">A</span> matches <span class="mono">a</span>.</li>
+            <li><strong>m (multiline):</strong> <span class="mono">^</span> and <span class="mono">$</span> match the start and end of each line.</li>
+            <li><strong>s (dotAll):</strong> the dot also matches newlines.</li>
+            <li><strong>u (unicode):</strong> full Unicode matching, needed for <span class="mono">\p{...}</span> classes.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="related">
+        <h2>Related tools</h2>
+        <div class="related-grid">
+          <a href="json-formatter.html"><span class="t">JSON formatter</span><span class="d">Format, validate and minify JSON with exact error locations.</span></a>
+          <a href="word-counter.html"><span class="t">Word counter</span><span class="d">Count words, characters and reading time as you type.</span></a>
+          <a href="case-converter.html"><span class="t">Case converter</span><span class="d">UPPERCASE, lowercase, Title Case and more, applied instantly.</span></a>
+        </div>
+      </section>
+
+      <section class="faq faq-narrow">
+        <h2>Regex tester FAQs</h2>
+        <details>
+          <summary>Which regex flavor does this tester use?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">JavaScript. The pattern runs in your browser with the same engine as Node.js and modern browsers, so what you see here matches what your code will do.</div>
+        </details>
+        <details>
+          <summary>What do the g, i, m, s and u flags mean?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">g finds all matches instead of stopping at the first. i ignores case. m makes ^ and $ match line starts and ends. s lets the dot match newlines. u enables full Unicode mode.</div>
+        </details>
+        <details>
+          <summary>Why does my regex show an "Invalid regular expression" error?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Usually a typo: an unclosed bracket or parenthesis, a stray backslash, or a quantifier like * or + with nothing in front of it. The error message names the exact problem.</div>
+        </details>
+        <details>
+          <summary>Is my test data uploaded anywhere?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">No. Matching happens entirely in your browser with JavaScript. Your text never leaves your device.</div>
+        </details>
+        <details>
+          <summary>How do I use the replace preview?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Type a replacement string and the preview shows the result live. Use $1, $2 and so on to insert capture groups, $&amp; for the whole match, and $$ for a literal dollar sign.</div>
+        </details>
+      </section>
+
+      <!-- ADSENSE SLOT 3 of 3 (above footer): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="above-footer">Advertisement</div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="f-brand">
+          <a class="brand brand-light" href="https://tools.xsrazy.web.id/" aria-label="Micro Tools Hub home">
+            <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+            <span class="brand-word">Micro <em>Tools</em></span>
+          </a>
+          <p>Free online tools with instant results, right in your browser.</p>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#text-tools">Text tools</a>
+          <nav aria-label="Popular text tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/word-counter.html">Word Counter</a>
+            <a href="https://tools.xsrazy.web.id/case-converter.html">Case Converter</a>
+            <a href="https://tools.xsrazy.web.id/character-counter.html">Character Counter</a>
+            <a href="https://tools.xsrazy.web.id/word-frequency-counter.html">Word Frequency</a>
+            <a href="https://tools.xsrazy.web.id/text-reverser.html">Text Reverser</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#generators">Generators</a>
+          <nav aria-label="Popular generators" class="flist">
+            <a href="https://tools.xsrazy.web.id/password-generator.html">Password Generator</a>
+            <a href="https://tools.xsrazy.web.id/qr/">QR Code Generator</a>
+            <a href="https://tools.xsrazy.web.id/meme-generator.html">Meme Generator</a>
+            <a href="https://tools.xsrazy.web.id/uuid-v1-generator.html">UUID Generator</a>
+            <a href="https://tools.xsrazy.web.id/fake-name-generator.html">Fake Name Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#converters">Converters</a>
+          <nav aria-label="Popular converters" class="flist">
+            <a href="https://tools.xsrazy.web.id/unit-converter.html">Unit Converter</a>
+            <a href="https://tools.xsrazy.web.id/currency-converter.html">Currency Converter</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/color-converter.html">Color Converter</a>
+            <a href="https://tools.xsrazy.web.id/number-base-converter.html">Number Base Converter</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#image-tools">Image tools</a>
+          <nav aria-label="Popular image tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/image-compressor.html">Image Compressor</a>
+            <a href="https://tools.xsrazy.web.id/image-resizer.html">Image Resizer</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/favicon-generator.html">Favicon Generator</a>
+            <a href="https://tools.xsrazy.web.id/image-cropper.html">Image Cropper</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#calculators">Calculators</a>
+          <nav aria-label="Popular calculators" class="flist">
+            <a href="https://tools.xsrazy.web.id/bmi-calculator.html">BMI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/mortgage-calculator.html">Mortgage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/percentage-toolkit.html">Percentage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/loan-calculator.html">Loan Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/age-calculator.html">Age Calculator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#business-tools">Business</a>
+          <nav aria-label="Popular business tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/invoice/">Invoice Generator</a>
+            <a href="https://tools.xsrazy.web.id/business-name-generator.html">Business Name Generator</a>
+            <a href="https://tools.xsrazy.web.id/roi-calculator.html">ROI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/salary-converter.html">Salary Converter</a>
+            <a href="https://tools.xsrazy.web.id/business-plan-generator.html">Business Plan Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#downloaders">Downloaders</a>
+          <nav aria-label="Popular downloaders" class="flist">
+            <a href="https://tools.xsrazy.web.id/tiktok-video-downloader.html">TikTok Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/twitter-video-downloader.html">Twitter Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/youtube-thumbnail-downloader.html">YouTube Thumbnail Downloader</a>
+            <a href="https://tools.xsrazy.web.id/pinterest-downloader.html">Pinterest Downloader</a>
+            <a href="https://tools.xsrazy.web.id/reddit-downloader.html">Reddit Downloader</a>
+          </nav>
+        </div>
+        <div class="fcol f-company">
+          <span class="fhead-link fhead-static">Company</span>
+          <nav aria-label="Company" class="flist-static">
+            <a href="https://tools.xsrazy.web.id/">Home</a>
+            <a href="https://tools.xsrazy.web.id/about.html">About</a>
+            <a href="https://tools.xsrazy.web.id/contact.html">Contact</a>
+            <a href="https://tools.xsrazy.web.id/privacy-policy.html">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 Micro Tools Hub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="site.js"></script>
+    <script src="animations.js"></script>
+    <script>
+    (function () {
+      "use strict";
+      var patternEl = document.getElementById("rx-pattern");
+      var textEl = document.getElementById("rx-text");
+      var replaceEl = document.getElementById("rx-replace");
+      var hlEl = document.getElementById("rx-hl");
+      var listEl = document.getElementById("rx-list");
+      var prevEl = document.getElementById("rx-prev");
+      var countEl = document.getElementById("rx-count");
+      var noteEl = document.getElementById("rx-note");
+      var errEl = document.getElementById("rx-err");
+
+      function esc(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+          return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+        });
+      }
+      function flags() {
+        var f = "";
+        if (document.getElementById("rx-g").checked) f += "g";
+        if (document.getElementById("rx-i").checked) f += "i";
+        if (document.getElementById("rx-m").checked) f += "m";
+        if (document.getElementById("rx-s").checked) f += "s";
+        if (document.getElementById("rx-u").checked) f += "u";
+        return f;
+      }
+      function buildRe() {
+        var p = patternEl.value;
+        try {
+          var re = new RegExp(p, flags());
+          errEl.textContent = "";
+          patternEl.classList.remove("rx-bad");
+          return re;
+        } catch (e) {
+          errEl.textContent = e.message;
+          patternEl.classList.add("rx-bad");
+          return null;
+        }
+      }
+      function run() {
+        var text = textEl.value;
+        var re = buildRe();
+        if (!re) {
+          countEl.textContent = "0";
+          hlEl.innerHTML = esc(text);
+          listEl.innerHTML = "";
+          prevEl.innerHTML = esc(text);
+          noteEl.textContent = "Fix the pattern to see matches.";
+          return;
+        }
+        // Collect matches with zero-length guard
+        var matches = [];
+        var m;
+        var g = new RegExp(re.source, flags().indexOf("g") === -1 ? flags() + "g" : flags());
+        var guard = 0;
+        while ((m = g.exec(text)) !== null && guard < 2000) {
+          guard++;
+          matches.push({ text: m[0], index: m.index, groups: m.slice(1) });
+          if (m[0] === "") g.lastIndex++;
+          if (flags().indexOf("g") === -1) break;
+        }
+        var limited = matches.length >= 2000;
+        countEl.textContent = limited ? "2000+" : String(matches.length);
+        noteEl.textContent = matches.length === 0
+          ? "No matches. Try adjusting the pattern or flags."
+          : (matches.length === 1 ? "1 match found." : matches.length + " matches found.") + (limited ? " Showing the first 2000." : "");
+        // Highlight
+        var html = "", last = 0;
+        matches.forEach(function (mm) {
+          html += esc(text.slice(last, mm.index));
+          html += '<span class="hl">' + esc(mm.text) + "</span>";
+          last = mm.index + mm.text.length;
+        });
+        html += esc(text.slice(last));
+        hlEl.innerHTML = html || esc(text) || "<span style='color:var(--faint)'>No text to test.</span>";
+        // Match list
+        if (matches.length) {
+          listEl.innerHTML = matches.slice(0, 50).map(function (mm, i) {
+            var grp = mm.groups.length ? ' <span style="color:var(--faint)">groups: ' + mm.groups.map(function (x) { return x === undefined ? "-" : '"' + esc(x) + '"'; }).join(", ") + "</span>" : "";
+            return '<div class="match-item">#' + (i + 1) + ' at ' + mm.index + ': <strong>"' + esc(mm.text.length > 60 ? mm.text.slice(0, 60) + "..." : mm.text) + '"</strong>' + grp + "</div>";
+          }).join("") + (matches.length > 50 ? '<div class="match-item">...and ' + (matches.length - 50) + " more</div>" : "");
+        } else {
+          listEl.innerHTML = "";
+        }
+        // Replace preview
+        try {
+          var out = text.replace(new RegExp(re.source, flags()), replaceEl.value);
+          prevEl.innerHTML = esc(out) || "<span style='color:var(--faint)'>Empty result.</span>";
+        } catch (e) {
+          prevEl.innerHTML = "<span style='color:#f87171'>" + esc(e.message) + "</span>";
+        }
+      }
+      ["rx-pattern", "rx-g", "rx-i", "rx-m", "rx-s", "rx-u"].forEach(function (id) {
+        document.getElementById(id).addEventListener(id === "rx-pattern" ? "input" : "change", run);
+      });
+      var t;
+      textEl.addEventListener("input", function () { clearTimeout(t); t = setTimeout(run, 200); });
+      replaceEl.addEventListener("input", run);
+      document.getElementById("rx-sample").addEventListener("click", function () {
+        patternEl.value = "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\\b";
+        textEl.value = "Contact the team at support@example.com or sales@example.org.\nMy backup is ada.lovelace@mail.io (not a real address).";
+        run();
+      });
+      document.getElementById("rx-sample2").addEventListener("click", function () {
+        patternEl.value = "\\b(\\d{4})-(\\d{2})-(\\d{2})\\b";
+        textEl.value = "The event is on 2026-12-25 and the backup date is 2027-01-05.\nUS style 12/25/2026 will not match this pattern.";
+        replaceEl.value = "$3/$2/$1";
+        run();
+      });
+      document.getElementById("rx-clear").addEventListener("click", function () {
+        patternEl.value = ""; textEl.value = ""; replaceEl.value = ""; run();
+      });
+      run();
+    })();
+    </script>
+</body>
+</html>

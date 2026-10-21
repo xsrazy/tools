@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Fake Name Generator - Random Names by Country | Micro Tools Hub</title>
+    <meta name="keywords" content="fake name generator, random name generator, fake identity generator, random username generator, dummy name generator" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Free fake name generator: pick a country and get realistic full names with a suggested username and email. Perfect for testing and mockups." />
+    <link rel="canonical" href="https://tools.xsrazy.web.id/fake-name-generator.html" />
+    <meta property="og:title" content="Fake Name Generator: Random Names by Country" />
+    <meta property="og:description" content="Realistic names with suggested usernames and emails, in 10 countries. Free, no sign-up." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Micro Tools Hub" />
+    <meta property="og:image:alt" content="Fake Name Generator: Random Names by Country - free online tool" />
+    <meta property="og:url" content="https://tools.xsrazy.web.id/fake-name-generator.html" />
+    <meta property="og:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Fake Name Generator: Random Names by Country" />
+    <meta name="twitter:description" content="Realistic names with suggested usernames and emails, in 10 countries. Free, no sign-up." />
+    <meta name="twitter:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta name="theme-color" content="#0B1220" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="/assets/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=26" />
+    <style>
+      .name-list { display:flex; flex-direction:column; gap:8px; margin-top:12px; }
+      .name-row { display:flex; align-items:center; gap:10px; background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:12px 14px; cursor:pointer; font-weight:700; transition:border-color .15s, box-shadow .15s; }
+      .name-row:hover { border-color:var(--accent); box-shadow:0 0 0 4px rgba(124,58,237,.08); }
+      .name-row .sub2 { display:block; font-size:.78rem; color:var(--faint); font-weight:600; margin-top:3px; }
+      .name-row .copy-hint { margin-left:auto; font-size:.75rem; color:var(--faint); font-weight:600; flex:none; }
+      .btn-row { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 4px; }
+      .text-input { width:100%; font-family:var(--font-body); font-size:.98rem; color:var(--ink); background:var(--surface); border:1.5px solid var(--line); border-radius:12px; padding:12px 14px; outline:0; transition:border-color .15s, box-shadow .15s; }
+      .text-input:focus { border-color:var(--accent); box-shadow:0 0 0 4px rgba(124,58,237,.13); }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How are the fake names generated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each country has lists of common first and last names. The generator pairs them at random, then builds a username from the name plus random digits, and an email address on top of the username."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which countries are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ten: United States, United Kingdom, Canada, Australia, Germany, France, Spain, India, Japan and Brazil."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are these real people?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The combinations are random and assembled from public name lists. Any resemblance to a real person is pure coincidence."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use the suggested email addresses?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They are built on example.com, which is reserved and never delivers mail. They are meant as placeholders for tests and mockups, not real inboxes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is anything uploaded or saved?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Generation happens entirely in your browser and nothing leaves your device."
+      }
+    }
+  ]
+}
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Fake name generator",
+      "url": "https://tools.xsrazy.web.id/fake-name-generator.html",
+      "description": "Realistic names, usernames, emails.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+</head>
+<body>
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="index.html" aria-label="Micro Tools Hub home">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+          <span class="brand-word">Micro <em>Tools</em></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="navLinks" aria-label="Site">
+          <a class="nav-link" href="word-counter.html">Word Counter</a>
+          <a class="nav-link" href="password-generator.html">Password Generator</a>
+          <a class="nav-link" href="unit-converter.html">Unit Converter</a>
+          <a class="nav-link" href="timezone-converter.html">Time Zone</a>
+          <a class="nav-link" href="case-converter.html">Case Converter</a>
+          <a class="btn btn-primary btn-sm" href="index.html#tools">Browse tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ADSENSE SLOT 1 of 3 (header leaderboard): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+    <div class="ad-slot" data-ad-slot="header">Advertisement</div>
+
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="index.html#generators">Generators</a> &nbsp;/&nbsp; Fake name generator</nav>
+      <header class="page-head">
+        <h1>Fake name generator</h1>
+        <p>Pick a <strong>country</strong> and get realistic <strong>full names</strong>, each with a suggested <strong>username and email</strong>. Click a row to copy the name.</p>
+      </header>
+
+      <main>
+        <div class="tool-grid">
+          <div class="card panel">
+            <h2>Identity settings</h2>
+            <p class="sub">Names come from popular first and last names per country.</p>
+            <div class="field">
+              <label for="fnk-country">Country</label>
+              <select id="fnk-country">
+                <option value="us" selected>United States</option>
+                <option value="uk">United Kingdom</option>
+                <option value="ca">Canada</option>
+                <option value="au">Australia</option>
+                <option value="de">Germany</option>
+                <option value="fr">France</option>
+                <option value="es">Spain</option>
+                <option value="in">India</option>
+                <option value="jp">Japan</option>
+                <option value="br">Brazil</option>
+              </select>
+            </div>
+            <button class="btn btn-primary btn-lg" id="fnk-generate">Generate names</button>
+            <div class="hint">Each identity is random. Use these for testing, mockups and placeholder data.</div>
+          </div>
+
+          <div class="card result-card">
+            <div class="result-head">
+              <div class="result-label">Generated identities</div>
+              <div class="big-number"><span id="fnk-total" data-countup>0</span></div>
+              <p class="result-note" id="fnk-note">Pick a country and hit Generate names.</p>
+            </div>
+            <div style="padding:0 28px 28px">
+              <div class="btn-row">
+                <button class="btn btn-primary btn-sm" id="fnk-regen">Regenerate</button>
+              </div>
+              <div class="name-list" id="fnk-list"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ADSENSE SLOT 2 of 3 (in-article): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="in-article">Advertisement</div>
+
+      <section class="explainer">
+        <div class="card">
+          <h3>How the names are built</h3>
+          <p>Each country ships with lists of common first and last names, so combinations feel realistic instead of random gibberish. The generator pairs one first name with one last name, then builds a username from them plus a few random digits, and an email on top of that. Everything is random and nothing here corresponds to a real person.</p>
+        </div>
+        <div class="card">
+          <h3>Good uses for fake names</h3>
+          <ul>
+            <li><strong>App testing:</strong> fill sign-up forms and user tables with plausible data.</li>
+            <li><strong>Design mockups:</strong> realistic names beat Lorem Ipsum in wireframes.</li>
+            <li><strong>Privacy:</strong> use a placeholder name in demos and screenshots.</li>
+            <li><strong>Writing:</strong> quick character names with a believable national flavor.</li>
+          </ul>
+          <p>The suggested emails use example.com, which is reserved for examples and never reaches a real inbox. Do not use fake identities for fraud or impersonation.</p>
+        </div>
+      </section>
+
+      <section class="related">
+        <h2>Related tools</h2>
+        <div class="related-grid">
+          <a href="password-generator.html"><span class="t">Password generator</span><span class="d">Strong random passwords with a strength meter.</span></a>
+          <a href="spin-the-wheel.html"><span class="t">Spin the wheel</span><span class="d">Pick a random winner or decision, fair and fun.</span></a>
+          <a href="meme-generator.html"><span class="t">Meme generator</span><span class="d">Add top and bottom text to classic meme templates.</span></a>
+        </div>
+      </section>
+
+      <section class="faq faq-narrow">
+        <h2>Fake name generator FAQs</h2>
+        <details>
+          <summary>How are the fake names generated?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Each country has lists of common first and last names. The generator pairs them at random, then builds a username from the name plus random digits, and an email address on top of the username.</div>
+        </details>
+        <details>
+          <summary>Which countries are supported?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Ten: United States, United Kingdom, Canada, Australia, Germany, France, Spain, India, Japan and Brazil.</div>
+        </details>
+        <details>
+          <summary>Are these real people?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">No. The combinations are random and assembled from public name lists. Any resemblance to a real person is pure coincidence.</div>
+        </details>
+        <details>
+          <summary>Can I use the suggested email addresses?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">They are built on example.com, which is reserved and never delivers mail. They are meant as placeholders for tests and mockups, not real inboxes.</div>
+        </details>
+        <details>
+          <summary>Is anything uploaded or saved?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">No. Generation happens entirely in your browser and nothing leaves your device.</div>
+        </details>
+      </section>
+
+      <!-- ADSENSE SLOT 3 of 3 (above footer): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="above-footer">Advertisement</div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="f-brand">
+          <a class="brand brand-light" href="https://tools.xsrazy.web.id/" aria-label="Micro Tools Hub home">
+            <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+            <span class="brand-word">Micro <em>Tools</em></span>
+          </a>
+          <p>Free online tools with instant results, right in your browser.</p>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#text-tools">Text tools</a>
+          <nav aria-label="Popular text tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/word-counter.html">Word Counter</a>
+            <a href="https://tools.xsrazy.web.id/case-converter.html">Case Converter</a>
+            <a href="https://tools.xsrazy.web.id/character-counter.html">Character Counter</a>
+            <a href="https://tools.xsrazy.web.id/word-frequency-counter.html">Word Frequency</a>
+            <a href="https://tools.xsrazy.web.id/text-reverser.html">Text Reverser</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#generators">Generators</a>
+          <nav aria-label="Popular generators" class="flist">
+            <a href="https://tools.xsrazy.web.id/password-generator.html">Password Generator</a>
+            <a href="https://tools.xsrazy.web.id/qr/">QR Code Generator</a>
+            <a href="https://tools.xsrazy.web.id/meme-generator.html">Meme Generator</a>
+            <a href="https://tools.xsrazy.web.id/uuid-v1-generator.html">UUID Generator</a>
+            <a href="https://tools.xsrazy.web.id/fake-name-generator.html">Fake Name Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#converters">Converters</a>
+          <nav aria-label="Popular converters" class="flist">
+            <a href="https://tools.xsrazy.web.id/unit-converter.html">Unit Converter</a>
+            <a href="https://tools.xsrazy.web.id/currency-converter.html">Currency Converter</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/color-converter.html">Color Converter</a>
+            <a href="https://tools.xsrazy.web.id/number-base-converter.html">Number Base Converter</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#image-tools">Image tools</a>
+          <nav aria-label="Popular image tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/image-compressor.html">Image Compressor</a>
+            <a href="https://tools.xsrazy.web.id/image-resizer.html">Image Resizer</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/favicon-generator.html">Favicon Generator</a>
+            <a href="https://tools.xsrazy.web.id/image-cropper.html">Image Cropper</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#calculators">Calculators</a>
+          <nav aria-label="Popular calculators" class="flist">
+            <a href="https://tools.xsrazy.web.id/bmi-calculator.html">BMI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/mortgage-calculator.html">Mortgage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/percentage-toolkit.html">Percentage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/loan-calculator.html">Loan Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/age-calculator.html">Age Calculator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#business-tools">Business</a>
+          <nav aria-label="Popular business tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/invoice/">Invoice Generator</a>
+            <a href="https://tools.xsrazy.web.id/business-name-generator.html">Business Name Generator</a>
+            <a href="https://tools.xsrazy.web.id/roi-calculator.html">ROI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/salary-converter.html">Salary Converter</a>
+            <a href="https://tools.xsrazy.web.id/business-plan-generator.html">Business Plan Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#downloaders">Downloaders</a>
+          <nav aria-label="Popular downloaders" class="flist">
+            <a href="https://tools.xsrazy.web.id/tiktok-video-downloader.html">TikTok Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/twitter-video-downloader.html">Twitter Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/youtube-thumbnail-downloader.html">YouTube Thumbnail Downloader</a>
+            <a href="https://tools.xsrazy.web.id/pinterest-downloader.html">Pinterest Downloader</a>
+            <a href="https://tools.xsrazy.web.id/reddit-downloader.html">Reddit Downloader</a>
+          </nav>
+        </div>
+        <div class="fcol f-company">
+          <span class="fhead-link fhead-static">Company</span>
+          <nav aria-label="Company" class="flist-static">
+            <a href="https://tools.xsrazy.web.id/">Home</a>
+            <a href="https://tools.xsrazy.web.id/about.html">About</a>
+            <a href="https://tools.xsrazy.web.id/contact.html">Contact</a>
+            <a href="https://tools.xsrazy.web.id/privacy-policy.html">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 Micro Tools Hub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="site.js"></script>
+    <script src="animations.js"></script>
+
+    <script>
+    (function () {
+      "use strict";
+
+  function copyText(t, row) {
+    function done() {
+      if (row) {
+        var h = row.querySelector(".copy-hint");
+        if (h) { h.textContent = "Copied"; setTimeout(function () { h.textContent = "Click to copy"; }, 1200); }
+      }
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(t).then(done, done);
+    } else {
+      var ta = document.createElement("textarea");
+      ta.value = t; ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(ta); done();
+    }
+  }
+  function makeRow(name, sub) {
+    var row = document.createElement("div");
+    row.className = "name-row";
+    row.setAttribute("role", "button");
+    row.setAttribute("tabindex", "0");
+    var wrap = document.createElement("div");
+    var s = document.createElement("span");
+    s.textContent = name;
+    wrap.appendChild(s);
+    if (sub) {
+      var d = document.createElement("span");
+      d.className = "sub2";
+      d.textContent = sub;
+      wrap.appendChild(d);
+    }
+    var hint = document.createElement("span");
+    hint.className = "copy-hint";
+    hint.textContent = "Click to copy";
+    row.appendChild(wrap);
+    row.appendChild(hint);
+    row.addEventListener("click", function () { copyText(name, row); });
+    row.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); copyText(name, row); }
+    });
+    return row;
+  }
+
+      var NAMES = {
+        us: { first: ["James","Mary","John","Patricia","Robert","Jennifer","Michael","Linda","William","Elizabeth","David","Barbara"], last: ["Smith","Johnson","Williams","Brown","Jones","Garcia","Miller","Davis","Rodriguez","Martinez","Hernandez","Lopez"] },
+        uk: { first: ["Oliver","Amelia","George","Olivia","Harry","Isla","Jack","Poppy","Charlie","Freya","Jacob","Lily"], last: ["Smith","Jones","Taylor","Davies","Brown","Wilson","Evans","Thomas","Roberts","Walker","Wright","Thompson"] },
+        ca: { first: ["Liam","Emma","Noah","Olivia","Lucas","Ava","William","Sophia","Ethan","Mia","Jacob","Chloe"], last: ["Smith","Brown","Tremblay","Martin","Roy","Gagnon","Lee","Wilson","MacDonald","Taylor","Campbell","Johnson"] },
+        au: { first: ["Oliver","Charlotte","Jack","Olivia","William","Amelia","Noah","Mia","Lucas","Harper","Ethan","Ruby"], last: ["Smith","Jones","Williams","Brown","Wilson","Taylor","Johnson","White","Martin","Anderson","Thomas","Harris"] },
+        de: { first: ["Lukas","Marie","Jonas","Anna","Felix","Lena","Leon","Emma","Paul","Mia","Maximilian","Sophia"], last: ["Mueller","Schmidt","Schneider","Fischer","Weber","Meyer","Wagner","Becker","Schulz","Hoffmann","Koch","Richter"] },
+        fr: { first: ["Hugo","Lea","Louis","Chloe","Raphael","Emma","Arthur","Manon","Jules","Camille","Adam","Sarah"], last: ["Martin","Bernard","Dubois","Thomas","Robert","Richard","Petit","Durand","Leroy","Moreau","Simon","Laurent"] },
+        es: { first: ["Hugo","Lucia","Martin","Martina","Mateo","Sofia","Pablo","Valeria","Alejandro","Maria","Daniel","Paula"], last: ["Garcia","Martinez","Lopez","Sanchez","Perez","Gonzalez","Fernandez","Rodriguez","Ramirez","Cruz","Flores","Gomez"] },
+        in: { first: ["Aarav","Diya","Vihaan","Ananya","Arjun","Ishita","Kabir","Myra","Reyansh","Aadhya","Vivaan","Sara"], last: ["Sharma","Verma","Singh","Patel","Reddy","Gupta","Mehta","Iyer","Khan","Nair","Rao","Joshi"] },
+        jp: { first: ["Haruto","Yui","Sota","Hina","Ren","Sakura","Aoi","Rin","Kaito","Mei","Daiki","Akari"], last: ["Sato","Suzuki","Takahashi","Tanaka","Watanabe","Yamamoto","Nakamura","Kobayashi","Ito","Kato","Yoshida","Yamada"] },
+        br: { first: ["Miguel","Alice","Arthur","Helena","Gael","Laura","Heitor","Valentina","Theo","Sophia","Davi","Isabella"], last: ["Silva","Santos","Oliveira","Souza","Rodrigues","Ferreira","Almeida","Pereira","Carvalho","Gomes","Martins","Araujo"] }
+      };
+      function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
+      function slugify(s) {
+        return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z]/g, "");
+      }
+      function generate() {
+        var cEl = document.getElementById("fnk-country");
+        var listEl = document.getElementById("fnk-list");
+        if (!cEl || !listEl) return;
+        var pool = NAMES[cEl.value] || NAMES.us;
+        var seen = {};
+        var items = [];
+        var guard = 0;
+        while (items.length < 5 && guard < 200) {
+          guard++;
+          var first = pick(pool.first);
+          var last = pick(pool.last);
+          var name = first + " " + last;
+          if (seen[name]) continue;
+          seen[name] = 1;
+          var user = slugify(first) + "." + slugify(last) + Math.floor(10 + Math.random() * 90);
+          items.push({ name: name, sub: user + "  |  " + user + "@example.com" });
+        }
+        listEl.innerHTML = "";
+        items.forEach(function (it) { listEl.appendChild(makeRow(it.name, it.sub)); });
+        var total = document.getElementById("fnk-total");
+        if (total) total.textContent = items.length;
+        var note = document.getElementById("fnk-note");
+        if (note) note.textContent = "Click a row to copy the full name.";
+      }
+      function init() {
+        var gen = document.getElementById("fnk-generate");
+        var regen = document.getElementById("fnk-regen");
+        if (!gen) return;
+        gen.addEventListener("click", generate);
+        if (regen) regen.addEventListener("click", generate);
+        var cEl = document.getElementById("fnk-country");
+        if (cEl) cEl.addEventListener("change", generate);
+        generate();
+      }
+      init();
+    })();
+    </script>
+</body>
+</html>

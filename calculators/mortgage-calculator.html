@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Mortgage Calculator: Monthly Payment with Taxes, Insurance and PMI | Finance Calculators</title>
+    <meta name="keywords" content="mortgage calculator, monthly mortgage payment, mortgage amortization, PMI calculator, home loan calculator" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Free mortgage calculator: estimate your monthly payment including property tax, homeowners insurance, HOA dues and PMI, with a year-by-year amortization schedule." />
+    <link rel="canonical" href="https://tools.xsrazy.web.id/calculators/mortgage-calculator.html" />
+    <meta property="og:title" content="Mortgage Calculator: Monthly Payment with Taxes, Insurance and PMI" />
+    <meta property="og:description" content="Estimate the true monthly cost of a home loan, with taxes, insurance, PMI and a full amortization schedule. Free, no sign-up." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Micro Tools Hub" />
+    <meta property="og:image:alt" content="Mortgage Calculator: Monthly Payment with Taxes, Insurance and PMI - free online tool" />
+    <meta property="og:url" content="https://tools.xsrazy.web.id/calculators/mortgage-calculator.html" />
+    <meta property="og:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Mortgage Calculator: Monthly Payment with Taxes, Insurance and PMI" />
+    <meta name="twitter:description" content="Full monthly mortgage cost with taxes, insurance, PMI and amortization schedule. Free, no sign-up." />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="../assets/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css?v=26" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"How is a monthly mortgage payment calculated?","acceptedAnswer":{"@type":"Answer","text":"The principal-and-interest part uses the amortization formula M = P x r(1+r)^n / ((1+r)^n - 1), where P is the loan amount, r is the monthly interest rate (annual rate divided by 12), and n is the number of monthly payments. Property tax, homeowners insurance, HOA dues and PMI are added on top for the true monthly cost."}},
+        {"@type":"Question","name":"What is PMI and when does it go away?","acceptedAnswer":{"@type":"Answer","text":"Private mortgage insurance (PMI) is usually required on a conventional loan when the down payment is under 20%. It typically costs 0.3% to 1.5% of the loan amount per year and can be removed once the balance falls to 80% of the home's value."}},
+        {"@type":"Question","name":"How much house can I afford?","acceptedAnswer":{"@type":"Answer","text":"A common guideline is the 28/36 rule: keep housing costs (payment, tax, insurance) under 28% of gross monthly income, and all debts combined under 36%. Lenders vary, so run the numbers with your real tax and insurance figures for an honest answer."}},
+        {"@type":"Question","name":"Should I choose a 15-year or 30-year mortgage?","acceptedAnswer":{"@type":"Answer","text":"A 15-year loan has higher monthly payments but usually a lower rate and far less total interest, often less than half of a 30-year loan. A 30-year loan keeps payments lower and preserves cash flow. Compare the total interest figures, not just the monthly payment."}}
+      ]
+    }
+    </script>
+  
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Mortgage calculator",
+      "url": "https://tools.xsrazy.web.id/calculators/mortgage-calculator.html",
+      "description": "Monthly cost with taxes, insurance, PMI and payoff schedule.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+</head>
+  <body>
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html" aria-label="Finance Calculators home">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#10B981"/><path d="M10 7.5h12a1 1 0 0 1 1 1V24a1 1 0 0 1-1 1H10a1 1 0 0 1-1-1V8.5a1 1 0 0 1 1-1z" stroke="#fff" stroke-width="2"/><path d="M12.6 13h.01M16 13h.01M19.4 13h.01M12.6 16.6h.01M16 16.6h.01M19.4 16.6h.01M12.6 20.2h6.8" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/></svg>
+          <span class="brand-word">Finance <em>Calculators</em></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="navLinks" aria-label="Site">
+          <a class="nav-link" href="mortgage-calculator.html" aria-current="page">Mortgage</a>
+          <a class="nav-link" href="loan-calculator.html">Loan</a>
+          <a class="nav-link" href="compound-interest-calculator.html">Compound Interest</a>
+          <a class="nav-link" href="refinance-calculator.html">Refinance</a>
+          <a class="nav-link" href="credit-card-payoff-calculator.html">Credit Card Payoff</a>
+          <a class="nav-link" href="paycheck-calculator.html">Paycheck</a>
+          <a class="nav-link" href="hourly-to-salary.html">Hourly to Salary</a>
+          <a class="nav-link" href="overtime-calculator.html">Overtime</a>
+          <a class="btn btn-primary btn-sm" href="mortgage-calculator.html">Calculate now</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ADSENSE SLOT 1 of 3 (header leaderboard): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+    <div class="ad-slot" data-ad-slot="header">Advertisement</div>
+
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a> &nbsp;/&nbsp; Mortgage calculator</nav>
+      <header class="page-head">
+        <h1>Mortgage calculator</h1>
+        <p>Work out the <strong>true monthly cost</strong> of a home loan: principal and interest plus property tax, homeowners insurance, HOA dues and PMI, with a year-by-year amortization schedule.</p>
+      </header>
+
+      <main>
+        <div class="calc-grid">
+          <div class="card panel">
+            <h2>Your loan details</h2>
+            <p class="sub">Monthly payment including taxes, insurance and PMI.</p>
+            <div class="field">
+              <label for="m-price">Home price</label>
+              <div class="input-row">
+                <div class="num-wrap"><span class="affix">$</span><input id="m-price" type="number" inputmode="decimal" value="425000" min="0" step="1000" /></div>
+                <input type="range" id="m-price-r" min="50000" max="1500000" step="5000" value="425000" aria-label="Home price slider" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="m-down">Down payment</label>
+              <div class="input-row">
+                <div class="num-wrap"><input id="m-down" type="number" inputmode="decimal" value="20" min="0" max="90" step="0.5" /><span class="affix right">%</span></div>
+                <input type="range" id="m-down-r" min="0" max="60" step="1" value="20" aria-label="Down payment slider" />
+              </div>
+              <div class="hint" id="m-down-usd"></div>
+            </div>
+            <div class="field">
+              <label for="m-rate">Interest rate</label>
+              <div class="input-row">
+                <div class="num-wrap"><input id="m-rate" type="number" inputmode="decimal" value="7.2" min="0" max="20" step="0.05" /><span class="affix right">%</span></div>
+                <input type="range" id="m-rate-r" min="0" max="15" step="0.05" value="7.2" aria-label="Interest rate slider" />
+              </div>
+              <div class="hint">This default reflects the US national average for a 30-year fixed mortgage in October 2026. Enter your own quoted rate for an accurate result.</div>
+            </div>
+            <div class="field">
+              <label for="m-term">Loan term</label>
+              <select id="m-term">
+                <option value="30" selected>30 years</option>
+                <option value="20">20 years</option>
+                <option value="15">15 years</option>
+                <option value="10">10 years</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="m-tax">Property tax (per year)</label>
+              <div class="num-wrap" style="flex:none;width:100%"><span class="affix">$</span><input id="m-tax" type="number" inputmode="decimal" value="5100" min="0" step="100" /></div>
+            </div>
+            <div class="field">
+              <label for="m-ins">Home insurance (per year)</label>
+              <div class="num-wrap" style="flex:none;width:100%"><span class="affix">$</span><input id="m-ins" type="number" inputmode="decimal" value="1800" min="0" step="50" /></div>
+            </div>
+            <div class="field">
+              <label for="m-hoa">HOA dues (per month)</label>
+              <div class="num-wrap" style="flex:none;width:100%"><span class="affix">$</span><input id="m-hoa" type="number" inputmode="decimal" value="0" min="0" step="10" /></div>
+            </div>
+          </div>
+
+          <div class="card result-card">
+            <div class="result-head">
+              <div class="result-label">Total monthly payment</div>
+              <div class="big-number"><span id="m-total">$0</span> <span class="per">/ month</span></div>
+              <p class="result-note" id="m-note"></p>
+            </div>
+            <div class="stats">
+              <div class="stat"><div class="k">Principal &amp; interest</div><div class="v" id="m-pi">-</div></div>
+              <div class="stat"><div class="k">Loan amount</div><div class="v" id="m-loan">-</div></div>
+              <div class="stat"><div class="k">Total interest</div><div class="v" id="m-interest">-</div></div>
+              <div class="stat"><div class="k">Payoff date</div><div class="v" id="m-payoff">-</div></div>
+            </div>
+            <div class="viz">
+              <h3>What each payment covers</h3>
+              <div id="m-donut"></div>
+              <div class="legend" id="m-legend"></div>
+            </div>
+            <div class="viz" style="padding-top:0">
+              <h3>Balance over time</h3>
+              <div id="m-line"></div>
+            </div>
+            <div id="m-callout"></div>
+          </div>
+        </div>
+
+        <div class="schedule">
+          <div class="table-card">
+            <h3>Amortization schedule</h3>
+            <p class="sub">Year-by-year breakdown of principal, interest and remaining balance.</p>
+            <div class="table-scroll">
+              <table>
+                <thead><tr><th>Year</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead>
+                <tbody id="m-schedule"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ADSENSE SLOT 2 of 3 (in-article): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="in-article">Advertisement</div>
+
+      <section class="explainer">
+        <div class="card">
+          <h3>How the mortgage payment is calculated</h3>
+          <p>The core of the payment, principal and interest, comes from the standard amortization formula:</p>
+          <div class="formula">M = P x r(1 + r)^n / ((1 + r)^n - 1)</div>
+          <p>Where <strong>P</strong> is the loan amount, <strong>r</strong> is the monthly rate (annual rate divided by 12) and <strong>n</strong> is the total number of payments. Early payments are mostly interest; as the balance falls, a growing share goes to principal. That is why the schedule above tilts so heavily toward interest in the first years.</p>
+          <p>Property tax, homeowners insurance, HOA dues and PMI are added on top so the total reflects what actually leaves your bank account each month.</p>
+        </div>
+        <div class="card">
+          <h3>Ways to cut the total cost</h3>
+          <ul>
+            <li><strong>A bigger down payment</strong> shrinks the loan and, at 20% or more, removes PMI entirely.</li>
+            <li><strong>A shorter term</strong> raises the monthly payment but can cut total interest by more than half versus a 30-year loan.</li>
+            <li><strong>One extra payment a year</strong> toward principal can shorten a 30-year mortgage by roughly 4 to 5 years.</li>
+            <li><strong>Rate shopping matters:</strong> a 0.5% lower rate on a $340,000 loan saves about $40,000 in interest over 30 years.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="related">
+        <h2>Related calculators</h2>
+        <div class="related-grid">
+          <a href="refinance-calculator.html"><span class="t">Refinance calculator</span><span class="d">Monthly savings, break-even point and lifetime cost comparison.</span></a>
+          <a href="loan-calculator.html"><span class="t">Loan calculator</span><span class="d">Monthly payment and total interest for auto and personal loans.</span></a>
+          <a href="compound-interest-calculator.html"><span class="t">Compound interest</span><span class="d">Project savings growth with regular monthly contributions.</span></a>
+        </div>
+      </section>
+
+      <section class="faq faq-narrow">
+        <h2>Mortgage calculator FAQs</h2>
+        <details>
+          <summary>How is a monthly mortgage payment calculated?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">The principal-and-interest portion uses the amortization formula M = P x r(1+r)^n / ((1+r)^n - 1), where P is the loan amount, r is the monthly rate and n is the number of payments. Property tax, insurance, HOA dues and PMI are then added to give the true monthly cost.</div>
+        </details>
+        <details>
+          <summary>What is PMI, and when does it go away?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Private mortgage insurance is usually required on a conventional loan with less than 20% down. It typically costs 0.3% to 1.5% of the loan per year, billed monthly. It can generally be removed once your balance reaches 80% of the home's value; on most loans it drops off automatically at 78%.</div>
+        </details>
+        <details>
+          <summary>How much house can I afford?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">A common guideline is the 28/36 rule: housing costs (payment, tax, insurance) under 28% of gross monthly income, and all debts combined under 36%. Lenders vary, and your own comfort level matters more than a lender's maximum. Run the calculator above with your real tax and insurance figures for an honest number.</div>
+        </details>
+        <details>
+          <summary>Should I choose a 15-year or 30-year mortgage?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">A 15-year loan has higher monthly payments but usually a lower rate and far less total interest, often less than half of a 30-year loan. A 30-year loan keeps payments lower and preserves cash flow. Compare the total interest figures, not just the monthly payment.</div>
+        </details>
+      </section>
+
+      <!-- ADSENSE SLOT 3 of 3 (above footer): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="above-footer">Advertisement</div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="f-brand">
+          <a class="brand brand-light" href="https://tools.xsrazy.web.id/" aria-label="Micro Tools Hub home">
+            <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+            <span class="brand-word">Micro <em>Tools</em></span>
+          </a>
+          <p>Free online tools with instant results, right in your browser.</p>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#text-tools">Text tools</a>
+          <nav aria-label="Popular text tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/word-counter.html">Word Counter</a>
+            <a href="https://tools.xsrazy.web.id/case-converter.html">Case Converter</a>
+            <a href="https://tools.xsrazy.web.id/character-counter.html">Character Counter</a>
+            <a href="https://tools.xsrazy.web.id/word-frequency-counter.html">Word Frequency</a>
+            <a href="https://tools.xsrazy.web.id/text-reverser.html">Text Reverser</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#generators">Generators</a>
+          <nav aria-label="Popular generators" class="flist">
+            <a href="https://tools.xsrazy.web.id/password-generator.html">Password Generator</a>
+            <a href="https://tools.xsrazy.web.id/qr/">QR Code Generator</a>
+            <a href="https://tools.xsrazy.web.id/meme-generator.html">Meme Generator</a>
+            <a href="https://tools.xsrazy.web.id/uuid-v1-generator.html">UUID Generator</a>
+            <a href="https://tools.xsrazy.web.id/fake-name-generator.html">Fake Name Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#converters">Converters</a>
+          <nav aria-label="Popular converters" class="flist">
+            <a href="https://tools.xsrazy.web.id/unit-converter.html">Unit Converter</a>
+            <a href="https://tools.xsrazy.web.id/currency-converter.html">Currency Converter</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/color-converter.html">Color Converter</a>
+            <a href="https://tools.xsrazy.web.id/number-base-converter.html">Number Base Converter</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#image-tools">Image tools</a>
+          <nav aria-label="Popular image tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/image-compressor.html">Image Compressor</a>
+            <a href="https://tools.xsrazy.web.id/image-resizer.html">Image Resizer</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/favicon-generator.html">Favicon Generator</a>
+            <a href="https://tools.xsrazy.web.id/image-cropper.html">Image Cropper</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#calculators">Calculators</a>
+          <nav aria-label="Popular calculators" class="flist">
+            <a href="https://tools.xsrazy.web.id/bmi-calculator.html">BMI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/mortgage-calculator.html">Mortgage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/percentage-toolkit.html">Percentage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/loan-calculator.html">Loan Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/age-calculator.html">Age Calculator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#business-tools">Business</a>
+          <nav aria-label="Popular business tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/invoice/">Invoice Generator</a>
+            <a href="https://tools.xsrazy.web.id/business-name-generator.html">Business Name Generator</a>
+            <a href="https://tools.xsrazy.web.id/roi-calculator.html">ROI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/salary-converter.html">Salary Converter</a>
+            <a href="https://tools.xsrazy.web.id/business-plan-generator.html">Business Plan Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#downloaders">Downloaders</a>
+          <nav aria-label="Popular downloaders" class="flist">
+            <a href="https://tools.xsrazy.web.id/tiktok-video-downloader.html">TikTok Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/twitter-video-downloader.html">Twitter Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/youtube-thumbnail-downloader.html">YouTube Thumbnail Downloader</a>
+            <a href="https://tools.xsrazy.web.id/pinterest-downloader.html">Pinterest Downloader</a>
+            <a href="https://tools.xsrazy.web.id/reddit-downloader.html">Reddit Downloader</a>
+          </nav>
+        </div>
+        <div class="fcol f-company">
+          <span class="fhead-link fhead-static">Company</span>
+          <nav aria-label="Company" class="flist-static">
+            <a href="https://tools.xsrazy.web.id/">Home</a>
+            <a href="https://tools.xsrazy.web.id/about.html">About</a>
+            <a href="https://tools.xsrazy.web.id/contact.html">Contact</a>
+            <a href="https://tools.xsrazy.web.id/privacy-policy.html">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 Micro Tools Hub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="../site.js"></script>
+    <script src="../animations.js"></script>
+    <script>initMortgage();</script>
+  </body>
+</html>

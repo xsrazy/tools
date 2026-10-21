@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Font Generator - Fancy Unicode Text Styles | Micro Tools Hub</title>
+    <meta name="keywords" content="font generator, fancy text generator, unicode text styles, cool fonts copy paste, stylish text maker" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Free font generator: type text and see it in 16 fancy Unicode styles, from bold and script to circled and upside down. Tap any style to copy it." />
+    <link rel="canonical" href="https://tools.xsrazy.web.id/font-generator.html" />
+    <meta property="og:title" content="Font Generator - Fancy Unicode Text Styles" />
+    <meta property="og:description" content="16 fancy Unicode text styles with tap-to-copy. Perfect for bios and captions. Free, no sign-up." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Micro Tools Hub" />
+    <meta property="og:image:alt" content="Font Generator - Fancy Unicode Text Styles - free online tool" />
+    <meta property="og:url" content="https://tools.xsrazy.web.id/font-generator.html" />
+    <meta property="og:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Font Generator - Fancy Unicode Text Styles" />
+    <meta name="twitter:description" content="Fancy Unicode text styles with tap-to-copy. Free, no sign-up." />
+    <meta name="twitter:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta name="theme-color" content="#0B1220" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="/assets/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=26" />
+    <style>
+      .fg-rows { display: flex; flex-direction: column; margin: 0 28px 28px; border: 1.5px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface); }
+      .fg-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--line); cursor: pointer; }
+      .fg-row:last-child { border-bottom: 0; }
+      .fg-row:hover { background: var(--surface-2); }
+      .fg-name { display: block; font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--faint); margin-bottom: 3px; }
+      .fg-text { font-size: 1.05rem; color: var(--ink); word-break: break-word; }
+      .fg-copy { font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--faint); flex: none; }
+      .fg-row.copied .fg-copy { color: #10B981; }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"How does the font generator work?","acceptedAnswer":{"@type":"Answer","text":"It swaps your letters for lookalike characters from Unicode's mathematical symbol blocks. The result is plain text, so it pastes anywhere normal text works."}},
+        {"@type":"Question","name":"Will these fonts work on Instagram and TikTok?","acceptedAnswer":{"@type":"Answer","text":"Yes. Bios, captions and comments on Instagram, TikTok, X and most apps accept Unicode text, so the styled text shows up without installing anything."}},
+        {"@type":"Question","name":"Why do some styles show as boxes?","acceptedAnswer":{"@type":"Answer","text":"Boxes mean your device's font does not include that Unicode character. Most modern phones and browsers render all 16 styles correctly."}},
+        {"@type":"Question","name":"How do I copy a style?","acceptedAnswer":{"@type":"Answer","text":"Tap or click any style row and it is copied to your clipboard instantly, ready to paste into your bio, caption or post."}},
+        {"@type":"Question","name":"Is my text uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. The styles are generated in your browser with JavaScript. Your text never leaves your device."}}
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Font generator",
+      "url": "https://tools.xsrazy.web.id/font-generator.html",
+      "description": "Fancy Unicode text, click to copy.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+</head>
+<body>
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="index.html" aria-label="Micro Tools Hub home">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+          <span class="brand-word">Micro <em>Tools</em></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="navLinks" aria-label="Site">
+          <a class="nav-link" href="word-counter.html">Word Counter</a>
+          <a class="nav-link" href="password-generator.html">Password Generator</a>
+          <a class="nav-link" href="unit-converter.html">Unit Converter</a>
+          <a class="nav-link" href="timezone-converter.html">Time Zone</a>
+          <a class="nav-link" href="case-converter.html">Case Converter</a>
+          <a class="btn btn-primary btn-sm" href="index.html#tools">Browse tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ADSENSE SLOT 1 of 3 (header leaderboard): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+    <div class="ad-slot" data-ad-slot="header">Advertisement</div>
+
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="index.html#generators">Generators</a> &nbsp;/&nbsp; Font generator</nav>
+      <header class="page-head">
+        <h1>Font generator</h1>
+        <p>Type anything and see it in <strong>16 fancy Unicode styles</strong>, from bold and script to circled and upside down. <strong>Tap any style to copy it.</strong></p>
+      </header>
+
+      <main>
+        <div class="tool-grid">
+          <div class="card panel">
+            <h2>Your text</h2>
+            <p class="sub">Type something. Every style updates live.</p>
+            <div class="field">
+              <label for="fg-input">Text</label>
+              <div class="num-wrap"><input type="text" id="fg-input" placeholder="Type something cool..." /></div>
+              <div class="hint">Leave it empty to preview the styles with a sample word.</div>
+            </div>
+          </div>
+
+          <div class="card result-card">
+            <div class="result-head">
+              <div class="result-label">Fancy styles</div>
+              <p class="result-note">Tap any style to copy it to your clipboard.</p>
+            </div>
+            <div class="fg-rows" id="fg-rows"></div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ADSENSE SLOT 2 of 3 (in-article): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="in-article">Advertisement</div>
+
+      <section class="explainer">
+        <div class="card">
+          <h3>How Unicode fonts work</h3>
+          <p>These are not real fonts, they are <strong>special Unicode characters</strong> that look like styled letters: bold serif, script, double-struck, circled and more. Because the output is plain text, it pastes into <strong>Instagram bios, TikTok captions, X posts and WhatsApp</strong> with no app or install needed. If a character shows as a box, your device font simply does not include it.</p>
+        </div>
+        <div class="card">
+          <h3>Tips for stylish text</h3>
+          <ul>
+            <li><strong>Bios love bold:</strong> bold serif and sans bold stay readable at small sizes.</li>
+            <li><strong>Script for flair:</strong> script styles suit names and short phrases, not long paragraphs.</li>
+            <li><strong>Mix sparingly:</strong> one or two styles per bio keeps it clean.</li>
+            <li><strong>Test first:</strong> preview the style on the app where you will use it before posting.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="related">
+        <h2>Related tools</h2>
+        <div class="related-grid">
+          <a href="signature-generator.html"><span class="t">Signature generator</span><span class="d">Handwritten-style signatures rendered on a canvas.</span></a>
+          <a href="meme-generator.html"><span class="t">Meme generator</span><span class="d">Add top and bottom text to classic meme templates.</span></a>
+          <a href="password-generator.html"><span class="t">Password generator</span><span class="d">Strong random passwords with a strength meter.</span></a>
+        </div>
+      </section>
+
+      <section class="faq faq-narrow">
+        <h2>Font generator FAQs</h2>
+        <details>
+          <summary>How does the font generator work?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">It swaps your letters for lookalike characters from Unicode's mathematical symbol blocks. The result is plain text, so it pastes anywhere normal text works.</div>
+        </details>
+        <details>
+          <summary>Will these fonts work on Instagram and TikTok?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Yes. Bios, captions and comments on Instagram, TikTok, X and most apps accept Unicode text, so the styled text shows up without installing anything.</div>
+        </details>
+        <details>
+          <summary>Why do some styles show as boxes?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Boxes mean your device's font does not include that Unicode character. Most modern phones and browsers render all 16 styles correctly.</div>
+        </details>
+        <details>
+          <summary>How do I copy a style?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Tap or click any style row and it is copied to your clipboard instantly, ready to paste into your bio, caption or post.</div>
+        </details>
+        <details>
+          <summary>Is my text uploaded anywhere?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">No. The styles are generated in your browser with JavaScript. Your text never leaves your device.</div>
+        </details>
+      </section>
+
+      <!-- ADSENSE SLOT 3 of 3 (above footer): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="above-footer">Advertisement</div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="f-brand">
+          <a class="brand brand-light" href="https://tools.xsrazy.web.id/" aria-label="Micro Tools Hub home">
+            <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+            <span class="brand-word">Micro <em>Tools</em></span>
+          </a>
+          <p>Free online tools with instant results, right in your browser.</p>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#text-tools">Text tools</a>
+          <nav aria-label="Popular text tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/word-counter.html">Word Counter</a>
+            <a href="https://tools.xsrazy.web.id/case-converter.html">Case Converter</a>
+            <a href="https://tools.xsrazy.web.id/character-counter.html">Character Counter</a>
+            <a href="https://tools.xsrazy.web.id/word-frequency-counter.html">Word Frequency</a>
+            <a href="https://tools.xsrazy.web.id/text-reverser.html">Text Reverser</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#generators">Generators</a>
+          <nav aria-label="Popular generators" class="flist">
+            <a href="https://tools.xsrazy.web.id/password-generator.html">Password Generator</a>
+            <a href="https://tools.xsrazy.web.id/qr/">QR Code Generator</a>
+            <a href="https://tools.xsrazy.web.id/meme-generator.html">Meme Generator</a>
+            <a href="https://tools.xsrazy.web.id/uuid-v1-generator.html">UUID Generator</a>
+            <a href="https://tools.xsrazy.web.id/fake-name-generator.html">Fake Name Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#converters">Converters</a>
+          <nav aria-label="Popular converters" class="flist">
+            <a href="https://tools.xsrazy.web.id/unit-converter.html">Unit Converter</a>
+            <a href="https://tools.xsrazy.web.id/currency-converter.html">Currency Converter</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/color-converter.html">Color Converter</a>
+            <a href="https://tools.xsrazy.web.id/number-base-converter.html">Number Base Converter</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#image-tools">Image tools</a>
+          <nav aria-label="Popular image tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/image-compressor.html">Image Compressor</a>
+            <a href="https://tools.xsrazy.web.id/image-resizer.html">Image Resizer</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/favicon-generator.html">Favicon Generator</a>
+            <a href="https://tools.xsrazy.web.id/image-cropper.html">Image Cropper</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#calculators">Calculators</a>
+          <nav aria-label="Popular calculators" class="flist">
+            <a href="https://tools.xsrazy.web.id/bmi-calculator.html">BMI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/mortgage-calculator.html">Mortgage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/percentage-toolkit.html">Percentage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/loan-calculator.html">Loan Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/age-calculator.html">Age Calculator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#business-tools">Business</a>
+          <nav aria-label="Popular business tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/invoice/">Invoice Generator</a>
+            <a href="https://tools.xsrazy.web.id/business-name-generator.html">Business Name Generator</a>
+            <a href="https://tools.xsrazy.web.id/roi-calculator.html">ROI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/salary-converter.html">Salary Converter</a>
+            <a href="https://tools.xsrazy.web.id/business-plan-generator.html">Business Plan Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#downloaders">Downloaders</a>
+          <nav aria-label="Popular downloaders" class="flist">
+            <a href="https://tools.xsrazy.web.id/tiktok-video-downloader.html">TikTok Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/twitter-video-downloader.html">Twitter Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/youtube-thumbnail-downloader.html">YouTube Thumbnail Downloader</a>
+            <a href="https://tools.xsrazy.web.id/pinterest-downloader.html">Pinterest Downloader</a>
+            <a href="https://tools.xsrazy.web.id/reddit-downloader.html">Reddit Downloader</a>
+          </nav>
+        </div>
+        <div class="fcol f-company">
+          <span class="fhead-link fhead-static">Company</span>
+          <nav aria-label="Company" class="flist-static">
+            <a href="https://tools.xsrazy.web.id/">Home</a>
+            <a href="https://tools.xsrazy.web.id/about.html">About</a>
+            <a href="https://tools.xsrazy.web.id/contact.html">Contact</a>
+            <a href="https://tools.xsrazy.web.id/privacy-policy.html">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 Micro Tools Hub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="site.js"></script>
+    <script src="animations.js"></script>
+    <script>
+    (function () {
+      var input = document.getElementById('fg-input');
+      var rowsEl = document.getElementById('fg-rows');
+      if (!input || !rowsEl) return;
+      function fp(cp) { return String.fromCodePoint(cp); }
+      function offsetMap(cap, low, dig) {
+        return function (text) {
+          var out = '';
+          for (var ch of text) {
+            var c = ch.codePointAt(0);
+            if (c >= 65 && c <= 90) out += fp(cap + (c - 65));
+            else if (c >= 97 && c <= 122) out += fp(low + (c - 97));
+            else if (dig && c >= 48 && c <= 57) out += fp(dig + (c - 48));
+            else out += ch;
+          }
+          return out;
+        };
+      }
+      var SCRIPT_CAPS = {
+        A: '\u{1D49C}', B: '\u212C', C: '\u{1D49E}', D: '\u{1D49F}', E: '\u2130',
+        F: '\u2131', G: '\u{1D4A2}', H: '\u210B', I: '\u2110', J: '\u{1D4A5}',
+        K: '\u{1D4A6}', L: '\u2112', M: '\u2133', N: '\u{1D4A9}', O: '\u{1D4AA}',
+        P: '\u{1D4AB}', Q: '\u{1D4AC}', R: '\u211B', S: '\u{1D4AE}', T: '\u{1D4AF}',
+        U: '\u{1D4B0}', V: '\u{1D4B1}', W: '\u{1D4B2}', X: '\u{1D4B3}', Y: '\u{1D4B4}',
+        Z: '\u{1D4B5}'
+      };
+      function scriptMap(text) {
+        var out = '';
+        for (var ch of text) {
+          var c = ch.codePointAt(0);
+          if (SCRIPT_CAPS[ch]) out += SCRIPT_CAPS[ch];
+          else if (c >= 97 && c <= 122) out += fp(0x1D4B6 + (c - 97));
+          else out += ch;
+        }
+        return out;
+      }
+      var SMALL_CAPS = {
+        a: '\u1D00', b: '\u0299', c: '\u1D04', d: '\u1D05', e: '\u1D07', f: '\uA730',
+        g: '\u0262', h: '\u029C', i: '\u026A', j: '\u1D0A', k: '\u1D0B', l: '\u029F',
+        m: '\u1D0D', n: '\u0274', o: '\u1D0F', p: '\u1D18', q: '\u01EB', r: '\u0280',
+        s: 's', t: '\u1D1B', u: '\u1D1C', v: '\u1D20', w: '\u1D21', x: 'x',
+        y: '\u028F', z: '\u1D22'
+      };
+      function smallCaps(text) {
+        var out = '';
+        var low = text.toLowerCase();
+        for (var ch of low) {
+          out += SMALL_CAPS[ch] || ch;
+        }
+        return out;
+      }
+      var FLIP = {
+        a: '\u0250', b: 'q', c: '\u0254', d: 'p', e: '\u01DD', f: '\u025F', g: '\u0183',
+        h: '\u0265', i: '\u0131', j: '\u027E', k: '\u029E', l: '\u05DF', m: '\u026F',
+        n: 'u', o: 'o', p: 'd', q: 'b', r: '\u0279', s: 's', t: '\u0287', u: 'n',
+        v: '\u028C', w: '\u028D', x: 'x', y: '\u028E', z: 'z',
+        A: '\u2200', E: '\u018E', H: 'H', I: 'I', M: '\u019C', N: 'N', O: 'O',
+        S: 'S', T: '\u22A5', U: '\u2229', W: '\u028D', X: 'X', Y: '\u2144', Z: 'Z',
+        '0': '0', '1': '\u0196', '2': '\u1105', '3': '\u0190', '6': '9', '8': '8', '9': '6'
+      };
+      function upsideDown(text) {
+        var out = '';
+        for (var ch of text) {
+          out = (FLIP[ch] || ch) + out;
+        }
+        return out;
+      }
+      function fullwidth(text) {
+        var out = '';
+        for (var ch of text) {
+          var c = ch.codePointAt(0);
+          if (c >= 65 && c <= 90) out += fp(0xFF21 + (c - 65));
+          else if (c >= 97 && c <= 122) out += fp(0xFF41 + (c - 97));
+          else if (c >= 48 && c <= 57) out += fp(0xFF10 + (c - 48));
+          else if (c === 32) out += fp(0x3000);
+          else out += ch;
+        }
+        return out;
+      }
+      function squared(text) {
+        var out = '';
+        for (var ch of text) {
+          var c = ch.codePointAt(0);
+          if (c >= 65 && c <= 90) out += fp(0x1F130 + (c - 65));
+          else out += ch;
+        }
+        return out;
+      }
+      var STYLES = [
+        { name: 'Bold serif', fn: offsetMap(0x1D400, 0x1D41A, 0x1D7CE) },
+        { name: 'Italic serif', fn: offsetMap(0x1D434, 0x1D44E, 0) },
+        { name: 'Bold italic serif', fn: offsetMap(0x1D468, 0x1D482, 0) },
+        { name: 'Script', fn: scriptMap },
+        { name: 'Bold script', fn: offsetMap(0x1D4D0, 0x1D4EA, 0) },
+        { name: 'Fraktur', fn: offsetMap(0x1D504, 0x1D51E, 0) },
+        { name: 'Bold fraktur', fn: offsetMap(0x1D56C, 0x1D586, 0) },
+        { name: 'Monospace', fn: offsetMap(0x1D670, 0x1D68A, 0x1D7F6) },
+        { name: 'Double-struck', fn: offsetMap(0x1D538, 0x1D552, 0x1D7D8) },
+        { name: 'Sans bold', fn: offsetMap(0x1D5A0, 0x1D5BA, 0x1D7EC) },
+        { name: 'Sans italic', fn: offsetMap(0x1D608, 0x1D622, 0) },
+        { name: 'Circled', fn: offsetMap(0x24B6, 0x24D0, 0) },
+        { name: 'Squared', fn: squared },
+        { name: 'Fullwidth', fn: fullwidth },
+        { name: 'Small caps', fn: smallCaps },
+        { name: 'Upside down', fn: upsideDown }
+      ];
+      function copyText(text, row) {
+        var label = row ? row.querySelector('.fg-copy') : null;
+        function done() {
+          if (row) row.classList.add('copied');
+          if (label) label.textContent = 'Copied!';
+          setTimeout(function () {
+            if (row) row.classList.remove('copied');
+            if (label) label.textContent = 'Copy';
+          }, 1200);
+        }
+        function fallback() {
+          var tmp = document.createElement('textarea');
+          tmp.value = text;
+          document.body.appendChild(tmp);
+          tmp.select();
+          try { document.execCommand('copy'); done(); } catch (e) { /* noop */ }
+          document.body.removeChild(tmp);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, fallback);
+        } else {
+          fallback();
+        }
+      }
+      function render() {
+        var text = input.value || 'Micro Tools';
+        rowsEl.innerHTML = '';
+        STYLES.forEach(function (st) {
+          var row = document.createElement('div');
+          row.className = 'fg-row';
+          var styled = st.fn(text);
+          var left = document.createElement('div');
+          var nameEl = document.createElement('span');
+          nameEl.className = 'fg-name';
+          nameEl.textContent = st.name;
+          var textEl = document.createElement('span');
+          textEl.className = 'fg-text';
+          textEl.textContent = styled;
+          left.appendChild(nameEl);
+          left.appendChild(textEl);
+          var copyEl = document.createElement('span');
+          copyEl.className = 'fg-copy';
+          copyEl.textContent = 'Copy';
+          row.appendChild(left);
+          row.appendChild(copyEl);
+          row.addEventListener('click', function () { copyText(styled, row); });
+          rowsEl.appendChild(row);
+        });
+      }
+      input.addEventListener('input', render);
+      render();
+    })();
+    </script>
+</body>
+</html>

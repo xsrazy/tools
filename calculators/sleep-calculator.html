@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Sleep Calculator - Find Your Ideal Bedtime | Micro Tools Hub</title>
+    <meta name="keywords" content="sleep calculator, what time should i go to bed, sleep cycle calculator, ideal bedtime, rem sleep cycles, wake up refreshed" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Free sleep calculator: pick a wake-up time to get ideal bedtimes based on 90-minute sleep cycles, or enter your bedtime to find the best times to wake up. Includes time to fall asleep." />
+    <link rel="canonical" href="https://tools.xsrazy.web.id/calculators/sleep-calculator.html" />
+    <meta property="og:title" content="Sleep Calculator - Find Your Ideal Bedtime" />
+    <meta property="og:description" content="Ideal bedtimes and wake times based on 90-minute sleep cycles. Wake up refreshed. Free, no sign-up." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Micro Tools Hub" />
+    <meta property="og:image:alt" content="Sleep Calculator - Find Your Ideal Bedtime - free online tool" />
+    <meta property="og:url" content="https://tools.xsrazy.web.id/calculators/sleep-calculator.html" />
+    <meta property="og:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Sleep Calculator - Find Your Ideal Bedtime" />
+    <meta name="twitter:description" content="Ideal bedtimes and wake times from 90-minute sleep cycles. Free, no sign-up." />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="../assets/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css?v=26" />
+    <style>
+      .sleep-rows { margin: 0 28px 28px; display: flex; flex-direction: column; gap: 10px; }
+      .sleep-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--surface-2); border: 1.5px solid var(--line); border-radius: 14px; padding: 14px 18px; }
+      .sleep-row .t { font-family: var(--font-display); font-size: 1.45rem; font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+      .sleep-row .d { font-size: .84rem; color: var(--muted); text-align: right; }
+      .sleep-row .d b { color: var(--ink); }
+      .pill { display: inline-block; font-size: .7rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; border-radius: 999px; padding: 4px 12px; margin-top: 6px; background: rgba(16,185,129,.14); color: #10b981; }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"What is a sleep cycle?","acceptedAnswer":{"@type":"Answer","text":"A sleep cycle is the roughly 90-minute journey from light sleep through deep sleep to REM (dream) sleep. Waking up at the end of a cycle, during light sleep, feels much easier than being woken from deep sleep in the middle of one."}},
+        {"@type":"Question","name":"How many hours of sleep do adults need?","acceptedAnswer":{"@type":"Answer","text":"Most adults do best on 7 to 9 hours, which is 5 to 6 full 90-minute cycles. That is why the calculator highlights the 5-cycle (7.5 hours) and 6-cycle (9 hours) options."}},
+        {"@type":"Question","name":"Why does the calculator add time to fall asleep?","acceptedAnswer":{"@type":"Answer","text":"Most people need about 15 minutes to fall asleep after getting into bed. The calculator subtracts (or adds) that buffer so the 90-minute cycles are counted from when you actually fall asleep, not from when your head hits the pillow."}},
+        {"@type":"Question","name":"I wake up groggy even after 8 hours. Why?","acceptedAnswer":{"@type":"Answer","text":"You may be waking mid-cycle. Eight hours is 5.3 cycles, so the alarm can land in deep sleep. Try shifting your bedtime or alarm by 30 to 90 minutes so you wake at a cycle boundary instead."}},
+        {"@type":"Question","name":"Is this medical advice?","acceptedAnswer":{"@type":"Answer","text":"No. This is a general scheduling tool based on average 90-minute sleep cycles. It is not medical advice. If you snore heavily, gasp, or feel exhausted despite enough sleep, talk to a doctor about a possible sleep disorder."}}
+      ]
+    }
+    </script>
+  
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Sleep calculator",
+      "url": "https://tools.xsrazy.web.id/calculators/sleep-calculator.html",
+      "description": "Best bedtimes by 90-minute sleep cycles.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+</head>
+  <body>
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html" aria-label="Micro Tools Hub home">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+          <span class="brand-word">Micro <em>Tools</em></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="navLinks" aria-label="Site">
+          <a class="nav-link" href="mortgage-calculator.html">Mortgage</a>
+          <a class="nav-link" href="loan-calculator.html">Loan</a>
+          <a class="nav-link" href="compound-interest-calculator.html">Compound Interest</a>
+          <a class="nav-link" href="refinance-calculator.html">Refinance</a>
+          <a class="nav-link" href="credit-card-payoff-calculator.html">Credit Card Payoff</a>
+          <a class="nav-link" href="paycheck-calculator.html">Paycheck</a>
+          <a class="nav-link" href="hourly-to-salary.html">Hourly to Salary</a>
+          <a class="nav-link" href="overtime-calculator.html">Overtime</a>
+          <a class="btn btn-primary btn-sm" href="sleep-calculator.html">Calculate now</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ADSENSE SLOT 1 of 3 (header leaderboard): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+    <div class="ad-slot" data-ad-slot="header">Advertisement</div>
+
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a> &nbsp;/&nbsp; <a href="../index.html#calculators">Calculators</a> &nbsp;/&nbsp; Sleep calculator</nav>
+      <header class="page-head">
+        <h1>Sleep calculator</h1>
+        <p>Wake up refreshed by timing <strong>90-minute sleep cycles</strong>. Pick a <strong>wake-up time</strong> to get ideal bedtimes, or enter your <strong>bedtime</strong> to find the best times to wake.</p>
+      </header>
+
+      <main>
+        <div class="calc-grid">
+          <div class="card panel">
+            <h2>Your schedule</h2>
+            <p class="sub">Results update instantly.</p>
+            <div class="seg" role="group" aria-label="Calculator mode" style="margin-bottom:20px">
+              <button type="button" data-smode="wake" aria-pressed="true">I want to wake up at</button>
+              <button type="button" data-smode="bed" aria-pressed="false">I go to bed at</button>
+            </div>
+            <div class="field">
+              <label for="s-time" id="s-time-label">Wake-up time</label>
+              <div class="num-wrap" style="flex:none;width:100%"><input id="s-time" type="time" value="06:30" /></div>
+            </div>
+            <div class="field">
+              <label for="s-fall">Time to fall asleep</label>
+              <select id="s-fall">
+                <option value="5">5 minutes</option>
+                <option value="10">10 minutes</option>
+                <option value="15" selected>15 minutes (average)</option>
+                <option value="20">20 minutes</option>
+                <option value="30">30 minutes</option>
+              </select>
+              <div class="hint">Most people need about 15 minutes to fall asleep after getting into bed.</div>
+            </div>
+          </div>
+
+          <div class="card result-card">
+            <div class="result-head">
+              <div class="result-label" id="s-out-label">Go to bed at</div>
+              <div class="big-number"><span id="s-best">-</span></div>
+              <p class="result-note" id="s-note">Set your time on the left for ideal bedtimes.</p>
+            </div>
+            <div class="sleep-rows" id="s-rows"></div>
+            <div class="callout info" style="margin-top:0"><strong>General information only:</strong> this is a scheduling tool based on average 90-minute sleep cycles, not medical advice.</div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ADSENSE SLOT 2 of 3 (in-article): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="in-article">Advertisement</div>
+
+      <section class="explainer">
+        <div class="card">
+          <h3>The 90-minute sleep cycle</h3>
+          <p>Each night your brain moves through cycles of about <strong>90 minutes</strong>: light sleep, deep sleep, then REM (dream) sleep. Waking at the <strong>end</strong> of a cycle, during light sleep, feels natural. Being ripped out of deep sleep mid-cycle is what causes that heavy, groggy feeling, even after 8 hours in bed.</p>
+          <p>That is why the math is simple: take your wake time (or bedtime), add the minutes you need to fall asleep, then step in 90-minute chunks. Most adults feel best on <strong>5 to 6 cycles</strong>, which is 7.5 to 9 hours of actual sleep.</p>
+        </div>
+        <div class="card">
+          <h3>How to use the results</h3>
+          <ul>
+            <li><strong>Pick the highlighted option</strong> (7.5 or 9 hours) when you can; both land in the recommended range.</li>
+            <li><strong>Short on time?</strong> 6 hours (4 cycles) beats 7 hours, because 7 lands you mid-cycle.</li>
+            <li><strong>Keep it consistent:</strong> going to bed and waking at the same times trains your body to complete cycles cleanly.</li>
+            <li><strong>Naps:</strong> one cycle (90 minutes) or a 20-minute power nap that ends before deep sleep.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="related">
+        <h2>Related calculators</h2>
+        <div class="related-grid">
+          <a href="age-calculator.html"><span class="t">Age calculator</span><span class="d">Exact age, days lived, birthday countdown and zodiac sign.</span></a>
+          <a href="overtime-calculator.html"><span class="t">Overtime calculator</span><span class="d">Time-and-a-half and double-time pay, done right.</span></a>
+          <a href="hourly-to-salary.html"><span class="t">Hourly to salary</span><span class="d">Convert hourly wages to yearly, monthly and weekly pay.</span></a>
+        </div>
+      </section>
+
+      <section class="faq faq-narrow">
+        <h2>Sleep calculator FAQs</h2>
+        <details>
+          <summary>What is a sleep cycle?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">A sleep cycle is the roughly 90-minute journey from light sleep through deep sleep to REM (dream) sleep. Waking up at the end of a cycle, during light sleep, feels much easier than being woken from deep sleep in the middle of one.</div>
+        </details>
+        <details>
+          <summary>How many hours of sleep do adults need?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Most adults do best on 7 to 9 hours, which is 5 to 6 full 90-minute cycles. That is why the calculator highlights the 5-cycle (7.5 hours) and 6-cycle (9 hours) options.</div>
+        </details>
+        <details>
+          <summary>Why does the calculator add time to fall asleep?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Most people need about 15 minutes to fall asleep after getting into bed. The calculator subtracts (or adds) that buffer so the 90-minute cycles are counted from when you actually fall asleep, not from when your head hits the pillow.</div>
+        </details>
+        <details>
+          <summary>I wake up groggy even after 8 hours. Why?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">You may be waking mid-cycle. Eight hours is about 5.3 cycles, so the alarm can land in deep sleep. Try shifting your bedtime or alarm by 30 to 90 minutes so you wake at a cycle boundary instead.</div>
+        </details>
+        <details>
+          <summary>Is this medical advice?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">No. This is a general scheduling tool based on average 90-minute sleep cycles. It is not medical advice. If you snore heavily, gasp, or feel exhausted despite enough sleep, talk to a doctor about a possible sleep disorder.</div>
+        </details>
+      </section>
+
+      <!-- ADSENSE SLOT 3 of 3 (above footer): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="above-footer">Advertisement</div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="f-brand">
+          <a class="brand brand-light" href="https://tools.xsrazy.web.id/" aria-label="Micro Tools Hub home">
+            <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+            <span class="brand-word">Micro <em>Tools</em></span>
+          </a>
+          <p>Free online tools with instant results, right in your browser.</p>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#text-tools">Text tools</a>
+          <nav aria-label="Popular text tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/word-counter.html">Word Counter</a>
+            <a href="https://tools.xsrazy.web.id/case-converter.html">Case Converter</a>
+            <a href="https://tools.xsrazy.web.id/character-counter.html">Character Counter</a>
+            <a href="https://tools.xsrazy.web.id/word-frequency-counter.html">Word Frequency</a>
+            <a href="https://tools.xsrazy.web.id/text-reverser.html">Text Reverser</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#generators">Generators</a>
+          <nav aria-label="Popular generators" class="flist">
+            <a href="https://tools.xsrazy.web.id/password-generator.html">Password Generator</a>
+            <a href="https://tools.xsrazy.web.id/qr/">QR Code Generator</a>
+            <a href="https://tools.xsrazy.web.id/meme-generator.html">Meme Generator</a>
+            <a href="https://tools.xsrazy.web.id/uuid-v1-generator.html">UUID Generator</a>
+            <a href="https://tools.xsrazy.web.id/fake-name-generator.html">Fake Name Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#converters">Converters</a>
+          <nav aria-label="Popular converters" class="flist">
+            <a href="https://tools.xsrazy.web.id/unit-converter.html">Unit Converter</a>
+            <a href="https://tools.xsrazy.web.id/currency-converter.html">Currency Converter</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/color-converter.html">Color Converter</a>
+            <a href="https://tools.xsrazy.web.id/number-base-converter.html">Number Base Converter</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#image-tools">Image tools</a>
+          <nav aria-label="Popular image tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/image-compressor.html">Image Compressor</a>
+            <a href="https://tools.xsrazy.web.id/image-resizer.html">Image Resizer</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/favicon-generator.html">Favicon Generator</a>
+            <a href="https://tools.xsrazy.web.id/image-cropper.html">Image Cropper</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#calculators">Calculators</a>
+          <nav aria-label="Popular calculators" class="flist">
+            <a href="https://tools.xsrazy.web.id/bmi-calculator.html">BMI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/mortgage-calculator.html">Mortgage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/percentage-toolkit.html">Percentage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/loan-calculator.html">Loan Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/age-calculator.html">Age Calculator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#business-tools">Business</a>
+          <nav aria-label="Popular business tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/invoice/">Invoice Generator</a>
+            <a href="https://tools.xsrazy.web.id/business-name-generator.html">Business Name Generator</a>
+            <a href="https://tools.xsrazy.web.id/roi-calculator.html">ROI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/salary-converter.html">Salary Converter</a>
+            <a href="https://tools.xsrazy.web.id/business-plan-generator.html">Business Plan Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#downloaders">Downloaders</a>
+          <nav aria-label="Popular downloaders" class="flist">
+            <a href="https://tools.xsrazy.web.id/tiktok-video-downloader.html">TikTok Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/twitter-video-downloader.html">Twitter Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/youtube-thumbnail-downloader.html">YouTube Thumbnail Downloader</a>
+            <a href="https://tools.xsrazy.web.id/pinterest-downloader.html">Pinterest Downloader</a>
+            <a href="https://tools.xsrazy.web.id/reddit-downloader.html">Reddit Downloader</a>
+          </nav>
+        </div>
+        <div class="fcol f-company">
+          <span class="fhead-link fhead-static">Company</span>
+          <nav aria-label="Company" class="flist-static">
+            <a href="https://tools.xsrazy.web.id/">Home</a>
+            <a href="https://tools.xsrazy.web.id/about.html">About</a>
+            <a href="https://tools.xsrazy.web.id/contact.html">Contact</a>
+            <a href="https://tools.xsrazy.web.id/privacy-policy.html">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 Micro Tools Hub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="../site.js"></script>
+    <script src="../animations.js"></script>
+    <script>
+    function initSleep() {
+      var timeEl = document.getElementById('s-time');
+      var fallEl = document.getElementById('s-fall');
+      var timeLabel = document.getElementById('s-time-label');
+      if (!timeEl || !fallEl) return;
+      var mode = 'wake';
+      var CYCLE_MIN = 90;
+      function fmtTime(d) {
+        var h = d.getHours(), m = d.getMinutes();
+        var ap = h >= 12 ? 'PM' : 'AM';
+        h = h % 12; if (h === 0) h = 12;
+        return h + ':' + String(m).padStart(2, '0') + ' ' + ap;
+      }
+      function dayTag(base, res) {
+        var b = new Date(base.getFullYear(), base.getMonth(), base.getDate()).getTime();
+        var r = new Date(res.getFullYear(), res.getMonth(), res.getDate()).getTime();
+        var diff = Math.round((r - b) / 86400000);
+        if (diff === 0) return '';
+        if (diff === -1) return 'the evening before';
+        if (diff === 1) return 'the next morning';
+        return diff < 0 ? Math.abs(diff) + ' days before' : diff + ' days later';
+      }
+      function update() {
+        if (!timeEl.value) return;
+        var parts = timeEl.value.split(':');
+        var fall = parseInt(fallEl.value, 10) || 0;
+        var base = new Date();
+        base.setHours(+parts[0], +parts[1], 0, 0);
+        var rowsEl = document.getElementById('s-rows');
+        var cycles = [6, 5, 4];
+        var html = '';
+        var bestShown = false;
+        cycles.forEach(function (c) {
+          var sleepMin = c * CYCLE_MIN;
+          var res = new Date(base.getTime() + (mode === 'wake' ? -1 : 1) * (fall + sleepMin) * 60000);
+          var tag = dayTag(base, res);
+          var hoursTxt = (sleepMin / 60) % 1 === 0 ? (sleepMin / 60) + ' hours' : (sleepMin / 60).toFixed(1) + ' hours';
+          var recommended = (c === 6 || c === 5);
+          if (recommended && !bestShown) {
+            document.getElementById('s-best').textContent = fmtTime(res);
+            bestShown = true;
+          }
+          html += '<div class="sleep-row"><div><div class="t">' + fmtTime(res) + '</div>' +
+            (tag ? '<div class="d">' + tag + '</div>' : '') + '</div>' +
+            '<div class="d"><b>' + c + ' cycles</b> &middot; ' + hoursTxt + ' of sleep' +
+            (recommended ? '<br /><span class="pill">Recommended</span>' : '') + '</div></div>';
+        });
+        rowsEl.innerHTML = html;
+        var bestNote = document.getElementById('s-note');
+        if (mode === 'wake') {
+          document.getElementById('s-out-label').textContent = 'Go to bed at';
+          bestNote.textContent = 'For a ' + timeEl.value + ' wake-up, these bedtimes complete full 90-minute cycles.';
+        } else {
+          document.getElementById('s-out-label').textContent = 'Wake up at';
+          bestNote.textContent = 'Going to bed at ' + timeEl.value + ', these alarms land at the end of a cycle.';
+        }
+      }
+      document.querySelectorAll('.seg [data-smode]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          mode = b.getAttribute('data-smode');
+          document.querySelectorAll('.seg [data-smode]').forEach(function (x) {
+            x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
+          });
+          timeLabel.textContent = mode === 'wake' ? 'Wake-up time' : 'Bedtime';
+          update();
+        });
+      });
+      timeEl.addEventListener('change', update);
+      fallEl.addEventListener('change', update);
+      update();
+    }
+    initSleep();
+    </script>
+  </body>
+</html>

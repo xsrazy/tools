@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Loan Calculator: Monthly Payment and Total Interest (Auto and Personal) | Finance Calculators</title>
+    <meta name="keywords" content="loan calculator, auto loan calculator, personal loan calculator, monthly loan payment, loan amortization" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Free loan calculator: find the monthly payment, total interest and full payoff schedule for auto loans, personal loans and any fixed-rate installment loan." />
+    <link rel="canonical" href="https://tools.xsrazy.web.id/calculators/loan-calculator.html" />
+    <meta property="og:title" content="Loan Calculator: Monthly Payment and Total Interest" />
+    <meta property="og:description" content="Monthly payment, total interest and a year-by-year payoff schedule for auto and personal loans. Free, no sign-up." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Micro Tools Hub" />
+    <meta property="og:image:alt" content="Loan Calculator: Monthly Payment and Total Interest - free online tool" />
+    <meta property="og:url" content="https://tools.xsrazy.web.id/calculators/loan-calculator.html" />
+    <meta property="og:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Loan Calculator: Monthly Payment and Total Interest (Auto and Personal)" />
+    <meta name="twitter:description" content="Monthly payment, total interest and a year-by-year payoff schedule for auto and personal loans. Free, no sign-up." />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="../assets/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css?v=26" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"How is a loan monthly payment calculated?","acceptedAnswer":{"@type":"Answer","text":"A fixed-rate loan payment uses the amortization formula: payment = P x r(1+r)^n / ((1+r)^n - 1), where P is the loan amount, r is the monthly rate and n is the number of payments. Interest is charged on the remaining balance, so the interest share shrinks every month."}},
+        {"@type":"Question","name":"What is the difference between APR and interest rate?","acceptedAnswer":{"@type":"Answer","text":"The interest rate is what the lender charges on the balance. APR (annual percentage rate) folds in lender fees and other charges, so it is the fairer number when comparing offers from different lenders."}},
+        {"@type":"Question","name":"Does a longer loan term save money?","acceptedAnswer":{"@type":"Answer","text":"A longer term lowers the monthly payment but raises the total interest, often by thousands of dollars. Compare the total cost figure, not just the monthly payment, before choosing a term."}},
+        {"@type":"Question","name":"Is it worth paying extra principal on a loan?","acceptedAnswer":{"@type":"Answer","text":"Usually yes, unless there is a prepayment penalty. Extra principal payments reduce the balance that future interest is charged on, which shortens the loan and cuts total interest. It is the cheapest way to reduce what a loan costs."}}
+      ]
+    }
+    </script>
+  
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Loan calculator",
+      "url": "https://tools.xsrazy.web.id/calculators/loan-calculator.html",
+      "description": "Monthly payment and interest for auto and personal loans.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+</head>
+  <body>
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="../index.html" aria-label="Finance Calculators home">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#10B981"/><path d="M10 7.5h12a1 1 0 0 1 1 1V24a1 1 0 0 1-1 1H10a1 1 0 0 1-1-1V8.5a1 1 0 0 1 1-1z" stroke="#fff" stroke-width="2"/><path d="M12.6 13h.01M16 13h.01M19.4 13h.01M12.6 16.6h.01M16 16.6h.01M19.4 16.6h.01M12.6 20.2h6.8" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/></svg>
+          <span class="brand-word">Finance <em>Calculators</em></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="navLinks" aria-label="Site">
+          <a class="nav-link" href="mortgage-calculator.html">Mortgage</a>
+          <a class="nav-link" href="loan-calculator.html" aria-current="page">Loan</a>
+          <a class="nav-link" href="compound-interest-calculator.html">Compound Interest</a>
+          <a class="nav-link" href="refinance-calculator.html">Refinance</a>
+          <a class="nav-link" href="credit-card-payoff-calculator.html">Credit Card Payoff</a>
+          <a class="nav-link" href="paycheck-calculator.html">Paycheck</a>
+          <a class="nav-link" href="hourly-to-salary.html">Hourly to Salary</a>
+          <a class="nav-link" href="overtime-calculator.html">Overtime</a>
+          <a class="btn btn-primary btn-sm" href="loan-calculator.html">Calculate now</a>
+        </nav>
+      </div>
+    </header>
+
+<!-- ADSENSE SLOT 1 of 3 (header leaderboard): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+    <div class="ad-slot" data-ad-slot="header">Advertisement</div>
+
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a> &nbsp;/&nbsp; Loan calculator</nav>
+      <header class="page-head">
+        <h1>Loan calculator</h1>
+        <p>Find the <strong>monthly payment</strong>, total interest and full payoff schedule for an auto loan, personal loan or any fixed-rate installment loan.</p>
+      </header>
+
+      <main>
+        <div class="calc-grid">
+          <div class="card panel">
+            <h2>Your loan details</h2>
+            <p class="sub">Auto, personal or any fixed-rate installment loan.</p>
+            <div class="field">
+              <label for="l-amount">Loan amount</label>
+              <div class="input-row">
+                <div class="num-wrap"><span class="affix">$</span><input id="l-amount" type="number" inputmode="decimal" value="32000" min="0" step="500" /></div>
+                <input type="range" id="l-amount-r" min="1000" max="150000" step="500" value="32000" aria-label="Loan amount slider" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="l-rate">Interest rate (APR)</label>
+              <div class="input-row">
+                <div class="num-wrap"><span class="affix right">%</span><input id="l-rate" type="number" inputmode="decimal" value="8.9" min="0" step="0.05" /></div>
+                <input type="range" id="l-rate-r" min="0" max="25" step="0.05" value="8.9" aria-label="Interest rate (APR) slider" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="l-term">Loan term (months)</label>
+              <div class="input-row">
+                <div class="num-wrap"><input id="l-term" type="number" inputmode="numeric" value="60" min="1" max="1200" step="1" /></div>
+                <input type="range" id="l-term-r" min="6" max="120" step="6" value="60" aria-label="Loan term (months) slider" />
+              </div>
+              <div class="hint" id="l-term-hint"></div>
+            </div>
+          </div>
+
+          <div class="card result-card">
+            <div class="result-head">
+              <div class="result-label">Monthly payment</div>
+              <div class="big-number"><span id="l-payment">$0</span> <span class="per">/ month</span></div>
+              <p class="result-note" id="l-note"></p>
+            </div>
+            <div class="stats">
+              <div class="stat"><div class="k">Total interest</div><div class="v" id="l-interest">-</div></div>
+              <div class="stat"><div class="k">Total cost</div><div class="v" id="l-total">-</div></div>
+              <div class="stat"><div class="k">Payoff date</div><div class="v" id="l-payoff">-</div></div>
+            </div>
+            <div class="viz">
+              <h3>Principal vs. interest</h3>
+              <div id="l-donut"></div>
+              <div class="legend" id="l-legend"></div>
+            </div>
+            <div class="viz" style="padding-top:0">
+              <h3>Balance over time</h3>
+              <div id="l-line"></div>
+            </div>
+            <div id="l-callout"></div>
+          </div>
+        </div>
+
+        <div class="schedule">
+          <div class="table-card">
+            <h3>Amortization schedule</h3>
+            <p class="sub">Year-by-year breakdown of principal, interest and remaining balance.</p>
+            <div class="table-scroll">
+              <table>
+                <thead><tr><th>Year</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead>
+                <tbody id="l-schedule"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+
+<!-- ADSENSE SLOT 2 of 3 (in-article): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+    <div class="ad-slot" data-ad-slot="in-article">Advertisement</div>
+
+      <section class="explainer">
+        <div class="card">
+          <h3>How loan payments work</h3>
+<p>A fixed-rate loan splits every payment between interest and principal using the same amortization formula as a mortgage. The payment never changes, but its makeup does: interest is charged on the remaining balance, so the interest share shrinks every month.</p>
+          <div class="formula">Payment = P x r(1 + r)^n / ((1 + r)^n - 1)</div>
+<p>Stretching the term lowers the monthly payment but raises the total interest, often by thousands. Compare the <strong>total cost</strong> figure, not just the monthly payment, before choosing a term.</p>
+        </div>
+        <div class="card">
+          <h3>Before you sign</h3>
+          <ul>
+            <li><strong>APR vs. rate:</strong> APR includes lender fees, so it is the fairer number for comparing offers.</li>
+            <li><strong>Check for prepayment penalties:</strong> paying extra principal is the cheapest way to cut interest.</li>
+            <li><strong>Dealer financing</strong> with a low rate sometimes forfeits a cash rebate worth more than the rate saves.</li>
+            <li><strong>Keep total car costs</strong> (payment + insurance + fuel) under roughly 15 to 20% of take-home pay.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="related">
+        <h2>Related calculators</h2>
+        <div class="related-grid">
+          <a href="mortgage-calculator.html"><span class="t">Mortgage calculator</span><span class="d">Full monthly cost with taxes, insurance, PMI and a year-by-year schedule.</span></a>
+          <a href="credit-card-payoff-calculator.html"><span class="t">Credit card payoff</span><span class="d">Time to debt-free and the true interest cost of a card balance.</span></a>
+          <a href="refinance-calculator.html"><span class="t">Refinance calculator</span><span class="d">Monthly savings, break-even point and lifetime cost comparison.</span></a>
+        </div>
+      </section>
+
+      <section class="faq faq-narrow">
+        <h2>Loan calculator FAQs</h2>
+        <details>
+          <summary>How is a loan monthly payment calculated?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">With the amortization formula: payment = P x r(1+r)^n / ((1+r)^n - 1), where P is the loan amount, r is the monthly rate and n is the number of payments. Interest is charged on the remaining balance, so the interest share shrinks every month while the payment stays flat.</div>
+        </details>
+        <details>
+          <summary>What is the difference between APR and interest rate?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">The interest rate is what the lender charges on the balance. APR (annual percentage rate) folds in lender fees and other charges, so it is the fairer number when comparing offers from different lenders.</div>
+        </details>
+        <details>
+          <summary>Does a longer loan term save money?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">No. A longer term lowers the monthly payment but raises the total interest, often by thousands of dollars. Always compare the total cost figure, not just the monthly payment, before choosing a term.</div>
+        </details>
+        <details>
+          <summary>Is it worth paying extra principal on a loan?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Usually yes, unless the loan has a prepayment penalty. Extra principal payments reduce the balance that future interest is charged on, which shortens the loan and cuts total interest. It is the cheapest way to reduce what a loan costs.</div>
+        </details>
+      </section>
+
+<!-- ADSENSE SLOT 3 of 3 (above footer): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+    <div class="ad-slot" data-ad-slot="above-footer">Advertisement</div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="f-brand">
+          <a class="brand brand-light" href="https://tools.xsrazy.web.id/" aria-label="Micro Tools Hub home">
+            <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+            <span class="brand-word">Micro <em>Tools</em></span>
+          </a>
+          <p>Free online tools with instant results, right in your browser.</p>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#text-tools">Text tools</a>
+          <nav aria-label="Popular text tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/word-counter.html">Word Counter</a>
+            <a href="https://tools.xsrazy.web.id/case-converter.html">Case Converter</a>
+            <a href="https://tools.xsrazy.web.id/character-counter.html">Character Counter</a>
+            <a href="https://tools.xsrazy.web.id/word-frequency-counter.html">Word Frequency</a>
+            <a href="https://tools.xsrazy.web.id/text-reverser.html">Text Reverser</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#generators">Generators</a>
+          <nav aria-label="Popular generators" class="flist">
+            <a href="https://tools.xsrazy.web.id/password-generator.html">Password Generator</a>
+            <a href="https://tools.xsrazy.web.id/qr/">QR Code Generator</a>
+            <a href="https://tools.xsrazy.web.id/meme-generator.html">Meme Generator</a>
+            <a href="https://tools.xsrazy.web.id/uuid-v1-generator.html">UUID Generator</a>
+            <a href="https://tools.xsrazy.web.id/fake-name-generator.html">Fake Name Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#converters">Converters</a>
+          <nav aria-label="Popular converters" class="flist">
+            <a href="https://tools.xsrazy.web.id/unit-converter.html">Unit Converter</a>
+            <a href="https://tools.xsrazy.web.id/currency-converter.html">Currency Converter</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/color-converter.html">Color Converter</a>
+            <a href="https://tools.xsrazy.web.id/number-base-converter.html">Number Base Converter</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#image-tools">Image tools</a>
+          <nav aria-label="Popular image tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/image-compressor.html">Image Compressor</a>
+            <a href="https://tools.xsrazy.web.id/image-resizer.html">Image Resizer</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/favicon-generator.html">Favicon Generator</a>
+            <a href="https://tools.xsrazy.web.id/image-cropper.html">Image Cropper</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#calculators">Calculators</a>
+          <nav aria-label="Popular calculators" class="flist">
+            <a href="https://tools.xsrazy.web.id/bmi-calculator.html">BMI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/mortgage-calculator.html">Mortgage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/percentage-toolkit.html">Percentage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/loan-calculator.html">Loan Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/age-calculator.html">Age Calculator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#business-tools">Business</a>
+          <nav aria-label="Popular business tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/invoice/">Invoice Generator</a>
+            <a href="https://tools.xsrazy.web.id/business-name-generator.html">Business Name Generator</a>
+            <a href="https://tools.xsrazy.web.id/roi-calculator.html">ROI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/salary-converter.html">Salary Converter</a>
+            <a href="https://tools.xsrazy.web.id/business-plan-generator.html">Business Plan Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#downloaders">Downloaders</a>
+          <nav aria-label="Popular downloaders" class="flist">
+            <a href="https://tools.xsrazy.web.id/tiktok-video-downloader.html">TikTok Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/twitter-video-downloader.html">Twitter Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/youtube-thumbnail-downloader.html">YouTube Thumbnail Downloader</a>
+            <a href="https://tools.xsrazy.web.id/pinterest-downloader.html">Pinterest Downloader</a>
+            <a href="https://tools.xsrazy.web.id/reddit-downloader.html">Reddit Downloader</a>
+          </nav>
+        </div>
+        <div class="fcol f-company">
+          <span class="fhead-link fhead-static">Company</span>
+          <nav aria-label="Company" class="flist-static">
+            <a href="https://tools.xsrazy.web.id/">Home</a>
+            <a href="https://tools.xsrazy.web.id/about.html">About</a>
+            <a href="https://tools.xsrazy.web.id/contact.html">Contact</a>
+            <a href="https://tools.xsrazy.web.id/privacy-policy.html">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 Micro Tools Hub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="../site.js"></script>
+    <script src="../animations.js"></script>
+    <script>initLoan();</script>
+  </body>
+</html>

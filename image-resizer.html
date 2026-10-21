@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Image Resizer - Resize Images Online Free | Micro Tools Hub</title>
+    <meta name="keywords" content="image resizer, resize image online, resize photo, reduce image dimensions, resize picture free" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Free image resizer: upload an image, set new width and height, lock the aspect ratio, pick PNG or JPG, and download. 100% in-browser, nothing uploaded." />
+    <link rel="canonical" href="https://tools.xsrazy.web.id/image-resizer.html" />
+    <meta property="og:title" content="Image Resizer - Resize Images Online Free" />
+    <meta property="og:description" content="Resize any image to exact dimensions with aspect ratio lock and PNG/JPG output. Free, no sign-up." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Micro Tools Hub" />
+    <meta property="og:image:alt" content="Image Resizer - Resize Images Online Free - free online tool" />
+    <meta property="og:url" content="https://tools.xsrazy.web.id/image-resizer.html" />
+    <meta property="og:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Image Resizer - Resize Images Online Free" />
+    <meta name="twitter:description" content="Resize images to any size in your browser. Free, no uploads, no sign-up." />
+    <meta name="twitter:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta name="theme-color" content="#0B1220" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="/assets/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=26" />
+    <style>
+      .range-row { display: flex; align-items: center; gap: 12px; }
+      .range-row output { min-width: 52px; text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
+      input[type="range"] { flex: 1; accent-color: #7C3AED; }
+      .check-row { display: flex; align-items: center; gap: 10px; margin: 6px 0 16px; font-size: .92rem; font-weight: 600; cursor: pointer; }
+      .check-row input { width: 18px; height: 18px; accent-color: #7C3AED; cursor: pointer; }
+      .rs-preview-wrap { margin-top: 14px; }
+      .rs-preview-wrap img { max-width: 100%; border-radius: 12px; border: 1px solid var(--line); display: block; }
+      .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+      select.tool-text, input[type="number"] { background: var(--surface); color: var(--ink); border: 1px solid var(--line); }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"How do I resize an image without distorting it?","acceptedAnswer":{"@type":"Answer","text":"Keep Lock aspect ratio checked and change only the width or only the height. The other dimension updates automatically, so the picture never stretches."}},
+        {"@type":"Question","name":"Should I download as PNG or JPG?","acceptedAnswer":{"@type":"Answer","text":"Use PNG for graphics, screenshots and anything with transparency. Use JPG for photos, where the quality slider lets you trade a little detail for a much smaller file."}},
+        {"@type":"Question","name":"Is my image uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Resizing happens in your browser with the Canvas API. Your image never leaves your device."}},
+        {"@type":"Question","name":"Does resizing make the image bigger than the original?","acceptedAnswer":{"@type":"Answer","text":"You can enter larger dimensions, but upscaling adds no real detail and the file usually gets bigger. For best quality, resize down from a larger original."}},
+        {"@type":"Question","name":"What happens to transparency when I pick JPG?","acceptedAnswer":{"@type":"Answer","text":"JPEG cannot store transparency, so transparent areas are filled with white before the JPG is exported."}}
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Image resizer",
+      "url": "https://tools.xsrazy.web.id/image-resizer.html",
+      "description": "Resize images to exact dimensions.",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+</head>
+<body>
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="index.html" aria-label="Micro Tools Hub home">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+          <span class="brand-word">Micro <em>Tools</em></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="navLinks" aria-label="Site">
+          <a class="nav-link" href="word-counter.html">Word Counter</a>
+          <a class="nav-link" href="password-generator.html">Password Generator</a>
+          <a class="nav-link" href="unit-converter.html">Unit Converter</a>
+          <a class="nav-link" href="timezone-converter.html">Time Zone</a>
+          <a class="nav-link" href="case-converter.html">Case Converter</a>
+          <a class="btn btn-primary btn-sm" href="index.html#tools">Browse tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ADSENSE SLOT 1 of 3 (header leaderboard): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+    <div class="ad-slot" data-ad-slot="header">Advertisement</div>
+
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="index.html#image-tools">Image Tools</a> &nbsp;/&nbsp; Image resizer</nav>
+      <header class="page-head">
+        <h1>Image resizer</h1>
+        <p>Resize any <strong>image</strong> to exact dimensions. Lock the <strong>aspect ratio</strong>, pick <strong>PNG or JPG</strong>, preview the result and download. Nothing is uploaded.</p>
+      </header>
+
+      <main>
+        <div class="tool-grid">
+          <div class="card panel">
+            <h2>Resize settings</h2>
+            <p class="sub">Pick a file, set the new size, download.</p>
+            <div class="field">
+              <label for="rs-file">Image file</label>
+              <input type="file" id="rs-file" accept="image/*" />
+              <div class="hint">The file is read locally. Nothing is uploaded.</div>
+            </div>
+            <div class="field">
+              <label for="rs-width">Width (px)</label>
+              <div class="num-wrap"><input type="number" id="rs-width" min="1" max="12000" step="1" /></div>
+            </div>
+            <div class="field">
+              <label for="rs-height">Height (px)</label>
+              <div class="num-wrap"><input type="number" id="rs-height" min="1" max="12000" step="1" /></div>
+            </div>
+            <label class="check-row"><input type="checkbox" id="rs-lock" checked /> Lock aspect ratio</label>
+            <div class="field">
+              <label for="rs-format">Output format</label>
+              <div class="num-wrap"><select id="rs-format">
+                <option value="png">PNG</option>
+                <option value="jpg">JPG</option>
+              </select></div>
+            </div>
+            <div class="field" id="rs-quality-row" style="display:none">
+              <label for="rs-quality">JPG quality</label>
+              <div class="range-row">
+                <input type="range" id="rs-quality" min="1" max="100" value="90" step="1" />
+                <output id="rs-quality-val" for="rs-quality">90%</output>
+              </div>
+            </div>
+            <div class="btn-row">
+              <button class="btn btn-primary btn-lg" id="rs-download" disabled>Resize &amp; Download</button>
+            </div>
+          </div>
+
+          <div class="card result-card">
+            <div class="result-head">
+              <div class="result-label">Preview</div>
+              <p class="result-note" id="rs-status">Choose an image to get started.</p>
+            </div>
+            <div class="rs-preview-wrap" id="rs-preview-wrap" style="display:none">
+              <img id="rs-preview" alt="Resized image preview" />
+            </div>
+            <div class="stats">
+              <div class="stat"><div class="k">Original</div><div class="v" id="rs-orig-dims">-</div></div>
+              <div class="stat"><div class="k">Original size</div><div class="v" id="rs-orig-size">-</div></div>
+              <div class="stat"><div class="k">New size</div><div class="v" id="rs-new-dims">-</div></div>
+              <div class="stat"><div class="k">Output file</div><div class="v" id="rs-new-size">-</div></div>
+            </div>
+            <div class="callout info" style="margin-top:16px"><strong>Private by design:</strong> resizing runs on your device with the Canvas API. There is no server and no upload.</div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ADSENSE SLOT 2 of 3 (in-article): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="in-article">Advertisement</div>
+
+      <section class="explainer">
+        <div class="card">
+          <h3>How it works</h3>
+          <p>Pick an image and its dimensions load into the width and height fields. Change either side (with <strong>Lock aspect ratio</strong> on, the other follows), choose <strong>PNG or JPG</strong>, then press <strong>Resize and Download</strong>. The resized image draws to a canvas and downloads with a <strong>-resized</strong> suffix.</p>
+        </div>
+        <div class="card">
+          <h3>Resizing tips</h3>
+          <ul>
+            <li><strong>Keep the lock on</strong> unless you want a stretched or squashed image on purpose.</li>
+            <li><strong>Resize down</strong> from a bigger original for the sharpest result.</li>
+            <li><strong>PNG</strong> for graphics and transparency, <strong>JPG</strong> for smaller photo files.</li>
+            <li>Match the exact pixel size a platform asks for, e.g. 1080 x 1080 for a square post.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="related">
+        <h2>Related tools</h2>
+        <div class="related-grid">
+          <a href="image-compressor.html"><span class="t">Image compressor</span><span class="d">Shrink JPG and PNG file sizes without visible quality loss.</span></a>
+          <a href="heic-to-jpg.html"><span class="t">HEIC to JPG</span><span class="d">Convert iPhone HEIC photos to widely supported JPEG.</span></a>
+          <a href="base64-encoder.html"><span class="t">Base64 encoder</span><span class="d">Encode files and text to Base64, or decode them back.</span></a>
+        </div>
+      </section>
+
+      <section class="faq faq-narrow">
+        <h2>Image resizer FAQs</h2>
+        <details>
+          <summary>How do I resize an image without distorting it?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Keep Lock aspect ratio checked and change only the width or only the height. The other dimension updates automatically, so the picture never stretches.</div>
+        </details>
+        <details>
+          <summary>Should I download as PNG or JPG?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Use PNG for graphics, screenshots and anything with transparency. Use JPG for photos, where the quality slider lets you trade a little detail for a much smaller file.</div>
+        </details>
+        <details>
+          <summary>Is my image uploaded to a server?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">No. Resizing happens in your browser with the Canvas API. Your image never leaves your device.</div>
+        </details>
+        <details>
+          <summary>Does resizing make the image bigger than the original?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">You can enter larger dimensions, but upscaling adds no real detail and the file usually gets bigger. For best quality, resize down from a larger original.</div>
+        </details>
+        <details>
+          <summary>What happens to transparency when I pick JPG?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">JPEG cannot store transparency, so transparent areas are filled with white before the JPG is exported.</div>
+        </details>
+      </section>
+
+      <!-- ADSENSE SLOT 3 of 3 (above footer): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="above-footer">Advertisement</div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="f-brand">
+          <a class="brand brand-light" href="https://tools.xsrazy.web.id/" aria-label="Micro Tools Hub home">
+            <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+            <span class="brand-word">Micro <em>Tools</em></span>
+          </a>
+          <p>Free online tools with instant results, right in your browser.</p>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#text-tools">Text tools</a>
+          <nav aria-label="Popular text tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/word-counter.html">Word Counter</a>
+            <a href="https://tools.xsrazy.web.id/case-converter.html">Case Converter</a>
+            <a href="https://tools.xsrazy.web.id/character-counter.html">Character Counter</a>
+            <a href="https://tools.xsrazy.web.id/word-frequency-counter.html">Word Frequency</a>
+            <a href="https://tools.xsrazy.web.id/text-reverser.html">Text Reverser</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#generators">Generators</a>
+          <nav aria-label="Popular generators" class="flist">
+            <a href="https://tools.xsrazy.web.id/password-generator.html">Password Generator</a>
+            <a href="https://tools.xsrazy.web.id/qr/">QR Code Generator</a>
+            <a href="https://tools.xsrazy.web.id/meme-generator.html">Meme Generator</a>
+            <a href="https://tools.xsrazy.web.id/uuid-v1-generator.html">UUID Generator</a>
+            <a href="https://tools.xsrazy.web.id/fake-name-generator.html">Fake Name Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#converters">Converters</a>
+          <nav aria-label="Popular converters" class="flist">
+            <a href="https://tools.xsrazy.web.id/unit-converter.html">Unit Converter</a>
+            <a href="https://tools.xsrazy.web.id/currency-converter.html">Currency Converter</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/color-converter.html">Color Converter</a>
+            <a href="https://tools.xsrazy.web.id/number-base-converter.html">Number Base Converter</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#image-tools">Image tools</a>
+          <nav aria-label="Popular image tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/image-compressor.html">Image Compressor</a>
+            <a href="https://tools.xsrazy.web.id/image-resizer.html">Image Resizer</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/favicon-generator.html">Favicon Generator</a>
+            <a href="https://tools.xsrazy.web.id/image-cropper.html">Image Cropper</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#calculators">Calculators</a>
+          <nav aria-label="Popular calculators" class="flist">
+            <a href="https://tools.xsrazy.web.id/bmi-calculator.html">BMI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/mortgage-calculator.html">Mortgage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/percentage-toolkit.html">Percentage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/loan-calculator.html">Loan Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/age-calculator.html">Age Calculator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#business-tools">Business</a>
+          <nav aria-label="Popular business tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/invoice/">Invoice Generator</a>
+            <a href="https://tools.xsrazy.web.id/business-name-generator.html">Business Name Generator</a>
+            <a href="https://tools.xsrazy.web.id/roi-calculator.html">ROI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/salary-converter.html">Salary Converter</a>
+            <a href="https://tools.xsrazy.web.id/business-plan-generator.html">Business Plan Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#downloaders">Downloaders</a>
+          <nav aria-label="Popular downloaders" class="flist">
+            <a href="https://tools.xsrazy.web.id/tiktok-video-downloader.html">TikTok Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/twitter-video-downloader.html">Twitter Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/youtube-thumbnail-downloader.html">YouTube Thumbnail Downloader</a>
+            <a href="https://tools.xsrazy.web.id/pinterest-downloader.html">Pinterest Downloader</a>
+            <a href="https://tools.xsrazy.web.id/reddit-downloader.html">Reddit Downloader</a>
+          </nav>
+        </div>
+        <div class="fcol f-company">
+          <span class="fhead-link fhead-static">Company</span>
+          <nav aria-label="Company" class="flist-static">
+            <a href="https://tools.xsrazy.web.id/">Home</a>
+            <a href="https://tools.xsrazy.web.id/about.html">About</a>
+            <a href="https://tools.xsrazy.web.id/contact.html">Contact</a>
+            <a href="https://tools.xsrazy.web.id/privacy-policy.html">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 Micro Tools Hub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="site.js"></script>
+    <script src="animations.js"></script>
+    <script>
+    (function () {
+      var fileInput = document.getElementById('rs-file');
+      if (!fileInput) return;
+      var widthEl = document.getElementById('rs-width');
+      var heightEl = document.getElementById('rs-height');
+      var lockEl = document.getElementById('rs-lock');
+      var formatEl = document.getElementById('rs-format');
+      var qualityEl = document.getElementById('rs-quality');
+      var qualityVal = document.getElementById('rs-quality-val');
+      var qualityRow = document.getElementById('rs-quality-row');
+      var dlBtn = document.getElementById('rs-download');
+      var statusEl = document.getElementById('rs-status');
+      var previewWrap = document.getElementById('rs-preview-wrap');
+      var previewImg = document.getElementById('rs-preview');
+      var origDimsEl = document.getElementById('rs-orig-dims');
+      var origSizeEl = document.getElementById('rs-orig-size');
+      var newDimsEl = document.getElementById('rs-new-dims');
+      var newSizeEl = document.getElementById('rs-new-size');
+      if (!widthEl || !heightEl || !lockEl || !formatEl || !qualityEl || !qualityVal || !qualityRow ||
+          !dlBtn || !statusEl || !previewWrap || !previewImg || !origDimsEl || !origSizeEl || !newDimsEl || !newSizeEl) return;
+
+      var img = null;
+      var origName = '';
+      var origSize = 0;
+      var aspect = 1;
+      var adjusting = false;
+
+      function fmtBytes(n) {
+        if (!isFinite(n) || n < 0) return '-';
+        if (n < 1024) return n + ' B';
+        var units = ['KB', 'MB', 'GB'];
+        var u = -1, v = n;
+        do { v /= 1024; u++; } while (v >= 1024 && u < units.length - 1);
+        return (u === 0 ? Math.round(v) : v.toFixed(1)) + ' ' + units[u];
+      }
+      function setStatus(t) { statusEl.textContent = t; }
+
+      function updateDimsLine() {
+        var w = parseInt(widthEl.value, 10);
+        var h = parseInt(heightEl.value, 10);
+        newDimsEl.textContent = (isFinite(w) && w > 0 && isFinite(h) && h > 0)
+          ? w + ' x ' + h + ' px' : '-';
+      }
+
+      fileInput.addEventListener('change', function () {
+        var f = fileInput.files && fileInput.files[0];
+        if (!f) return;
+        origName = (f.name || 'image').replace(/\.[^.]+$/, '') || 'image';
+        origSize = f.size;
+        setStatus('Reading image...');
+        var reader = new FileReader();
+        reader.onload = function () {
+          var im = new Image();
+          im.onload = function () {
+            img = im;
+            aspect = im.naturalWidth / Math.max(1, im.naturalHeight);
+            adjusting = true;
+            widthEl.value = String(im.naturalWidth);
+            heightEl.value = String(im.naturalHeight);
+            adjusting = false;
+            origDimsEl.textContent = im.naturalWidth + ' x ' + im.naturalHeight + ' px';
+            origSizeEl.textContent = fmtBytes(origSize);
+            updateDimsLine();
+            newSizeEl.textContent = '-';
+            previewImg.src = reader.result;
+            previewWrap.style.display = 'block';
+            dlBtn.disabled = false;
+            setStatus('Ready. Set the new dimensions, then resize and download.');
+          };
+          im.onerror = function () {
+            img = null;
+            dlBtn.disabled = true;
+            setStatus('Could not read that image. Please try another file.');
+          };
+          im.src = reader.result;
+        };
+        reader.onerror = function () { setStatus('Could not read the file. Please try again.'); };
+        reader.readAsDataURL(f);
+      });
+
+      widthEl.addEventListener('input', function () {
+        if (adjusting) return;
+        if (lockEl.checked && img) {
+          var w = parseInt(widthEl.value, 10);
+          if (isFinite(w) && w > 0) {
+            adjusting = true;
+            heightEl.value = String(Math.max(1, Math.round(w / aspect)));
+            adjusting = false;
+          }
+        }
+        updateDimsLine();
+      });
+      heightEl.addEventListener('input', function () {
+        if (adjusting) return;
+        if (lockEl.checked && img) {
+          var h = parseInt(heightEl.value, 10);
+          if (isFinite(h) && h > 0) {
+            adjusting = true;
+            widthEl.value = String(Math.max(1, Math.round(h * aspect)));
+            adjusting = false;
+          }
+        }
+        updateDimsLine();
+      });
+
+      formatEl.addEventListener('change', function () {
+        qualityRow.style.display = formatEl.value === 'jpg' ? '' : 'none';
+      });
+      qualityEl.addEventListener('input', function () {
+        qualityVal.textContent = qualityEl.value + '%';
+      });
+
+      dlBtn.addEventListener('click', function () {
+        if (!img) return;
+        var w = parseInt(widthEl.value, 10);
+        var h = parseInt(heightEl.value, 10);
+        if (!isFinite(w) || w < 1 || !isFinite(h) || h < 1) {
+          setStatus('Enter a valid width and height (at least 1 px).');
+          return;
+        }
+        if (w > 12000 || h > 12000) {
+          setStatus('Dimensions are capped at 12000 px per side.');
+          return;
+        }
+        dlBtn.disabled = true;
+        setStatus('Resizing...');
+        try {
+          var isJpg = formatEl.value === 'jpg';
+          var canvas = document.createElement('canvas');
+          canvas.width = w;
+          canvas.height = h;
+          var ctx = canvas.getContext('2d');
+          if (isJpg) {
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, w, h);
+          }
+          ctx.drawImage(img, 0, 0, w, h);
+          var mime = isJpg ? 'image/jpeg' : 'image/png';
+          var q = Math.min(100, Math.max(1, parseInt(qualityEl.value, 10) || 90)) / 100;
+          canvas.toBlob(function (blob) {
+            dlBtn.disabled = false;
+            if (!blob) {
+              setStatus('Resize failed. Please try again.');
+              return;
+            }
+            newDimsEl.textContent = w + ' x ' + h + ' px';
+            newSizeEl.textContent = fmtBytes(blob.size);
+            var ext = isJpg ? '.jpg' : '.png';
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = origName + '-resized' + ext;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+            setStatus('Downloaded ' + origName + '-resized' + ext + ' (' + fmtBytes(blob.size) + ').');
+          }, mime, q);
+        } catch (e) {
+          dlBtn.disabled = false;
+          setStatus('Resize failed. Please try again.');
+        }
+      });
+    })();
+    </script>
+</body>
+</html>

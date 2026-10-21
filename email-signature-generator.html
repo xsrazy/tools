@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Email Signature Generator - Create a Professional Email Signature | Micro Tools Hub</title>
+    <meta name="keywords" content="email signature generator, professional email signature, free email signature maker, gmail signature generator, outlook signature" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Free email signature generator: enter your name, title, company and contact details, preview a styled signature live, then copy the HTML for Gmail or Outlook. Everything runs in your browser." />
+    <link rel="canonical" href="https://tools.xsrazy.web.id/email-signature-generator.html" />
+    <meta property="og:title" content="Email Signature Generator - Create a Professional Email Signature" />
+    <meta property="og:description" content="Build a professional email signature in seconds. Live preview and copy-ready HTML. Free, no sign-up." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Micro Tools Hub" />
+    <meta property="og:image:alt" content="Email Signature Generator - Create a Professional Email Signature - free online tool" />
+    <meta property="og:url" content="https://tools.xsrazy.web.id/email-signature-generator.html" />
+    <meta property="og:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Email Signature Generator - Create a Professional Email Signature" />
+    <meta name="twitter:description" content="Build a professional email signature in seconds. Live preview and copy-ready HTML. Free, no sign-up." />
+    <meta name="twitter:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta name="theme-color" content="#0B1220" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="/assets/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=26" />
+    <style>
+      .esg-preview-box { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; margin-bottom: 16px; overflow-x: auto; }
+
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"How do I add the signature to Gmail?","acceptedAnswer":{"@type":"Answer","text":"Click Copy HTML, then open Gmail Settings, See all settings, scroll to Signature, create a new signature and paste. The formatted signature appears, not the raw code."}},
+        {"@type":"Question","name":"Will the signature work in Outlook?","acceptedAnswer":{"@type":"Answer","text":"Yes. Paste it under Settings, Mail, Compose and reply in Outlook on the web, or in the Signatures editor in the desktop app. The table layout is built for Outlook compatibility."}},
+        {"@type":"Question","name":"Can I include a logo image?","acceptedAnswer":{"@type":"Answer","text":"This generator keeps signatures text-based because images often arrive as attachments or get blocked. If you need a logo, host it online and add an image tag to the copied HTML manually."}},
+        {"@type":"Question","name":"Does the copied HTML include styling?","acceptedAnswer":{"@type":"Answer","text":"Yes. All styling is inline on each element, which is what email clients require. No external stylesheet or style block is needed."}},
+        {"@type":"Question","name":"Is my information uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. The signature is generated in your browser with JavaScript. Your details never leave your device."}}
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Email signatures",
+      "url": "https://tools.xsrazy.web.id/email-signature-generator.html",
+      "description": "Pro email signatures, copy HTML.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+</head>
+<body>
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="index.html" aria-label="Micro Tools Hub home">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+          <span class="brand-word">Micro <em>Tools</em></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="navLinks" aria-label="Site">
+          <a class="nav-link" href="word-counter.html">Word Counter</a>
+          <a class="nav-link" href="password-generator.html">Password Generator</a>
+          <a class="nav-link" href="unit-converter.html">Unit Converter</a>
+          <a class="nav-link" href="timezone-converter.html">Time Zone</a>
+          <a class="nav-link" href="case-converter.html">Case Converter</a>
+          <a class="btn btn-primary btn-sm" href="index.html#tools">Browse tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ADSENSE SLOT 1 of 3 (header leaderboard): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+    <div class="ad-slot" data-ad-slot="header">Advertisement</div>
+
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="index.html#business-tools">Business</a> &nbsp;/&nbsp; Email Signature Generator</nav>
+      <header class="page-head">
+        <h1>Email Signature Generator</h1>
+        <p>Type your details and watch a <strong>professional email signature</strong> build itself in the preview. Copy the <strong>HTML</strong> and paste it into Gmail or Outlook.</p>
+      </header>
+
+      <main>
+        <div class="tool-grid">
+          <div class="card panel">
+
+            <h2>Your details</h2>
+            <p class="sub">Fill in what you want shown. The preview updates live.</p>
+            <div class="field">
+              <label for="esg-name">Full name</label>
+              <input type="text" id="esg-name" placeholder="Jane Smith" autocomplete="name" />
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="esg-title">Job title</label>
+                <input type="text" id="esg-title" placeholder="Marketing Manager" />
+              </div>
+              <div class="field">
+                <label for="esg-company">Company</label>
+                <input type="text" id="esg-company" placeholder="Acme Inc." />
+              </div>
+            </div>
+            <div class="field">
+              <label for="esg-phone">Phone</label>
+              <input type="text" id="esg-phone" placeholder="+1 555 123 4567" autocomplete="tel" />
+            </div>
+            <div class="field">
+              <label for="esg-email">Email</label>
+              <input type="email" id="esg-email" placeholder="jane@acme.com" autocomplete="email" />
+            </div>
+            <div class="field">
+              <label for="esg-website">Website</label>
+              <input type="text" id="esg-website" placeholder="www.acme.com" />
+              <div class="hint">Empty fields are left out of the signature automatically.</div>
+            </div>
+
+          </div>
+
+          <div class="card result-card">
+
+            <div class="result-label">Live preview</div>
+            <div class="esg-preview-box" id="esg-preview"></div>
+            <div class="btn-row" style="margin-top:0">
+              <button class="btn btn-primary" id="esg-copy" type="button">Copy HTML</button>
+            </div>
+            <div class="hint" id="esg-status" role="status"></div>
+            <div class="callout info"><strong>How to use it:</strong> click Copy HTML, then in Gmail go to Settings, See all settings, Signature, and paste. In Outlook, paste it under Settings, Mail, Compose and reply.</div>
+
+          </div>
+        </div>
+      </main>
+
+      <!-- ADSENSE SLOT 2 of 3 (in-article): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="in-article">Advertisement</div>
+
+      <section class="explainer">
+
+        <div class="card">
+          <h3>Why a table layout?</h3>
+          <p>Email clients are stuck in the past: most of them ignore modern CSS. A simple <strong>table with inline styles</strong> is the only layout that renders consistently in Gmail, Outlook, Apple Mail and Yahoo. That is what this generator builds for you.</p>
+        </div>
+        <div class="card">
+          <h3>Tips for a clean signature</h3>
+          <ul>
+            <li>Keep it to 3 to 5 lines: name, role, company and one or two contact lines.</li>
+            <li>Skip images and logos unless you must: they often show as attachments.</li>
+            <li>Use a full international phone format, e.g. +1 555 123 4567.</li>
+            <li>Test it by sending yourself an email and opening it on your phone.</li>
+          </ul>
+        </div>
+
+      </section>
+
+      <section class="related">
+        <h2>Related tools</h2>
+        <div class="related-grid">
+          <a href="invoice/index.html"><span class="t">Invoice generator</span><span class="d">Full invoices with taxes, discounts and line items.</span></a>
+          <a href="qr/index.html"><span class="t">QR code generator</span><span class="d">QR codes for links, WiFi, vCards and more.</span></a>
+          <a href="business-name-generator.html"><span class="t">Business name generator</span><span class="d">Creative business name ideas from a keyword.</span></a>
+        </div>
+      </section>
+
+      <section class="faq faq-narrow">
+        <h2>Email Signature Generator FAQs</h2>
+        <details>
+          <summary>How do I add the signature to Gmail?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Click Copy HTML, then open Gmail Settings, See all settings, scroll to Signature, create a new signature and paste. The formatted signature appears, not the raw code.</div>
+        </details>
+        <details>
+          <summary>Will the signature work in Outlook?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Yes. Paste it under Settings, Mail, Compose and reply in Outlook on the web, or in the Signatures editor in the desktop app. The table layout is built for Outlook compatibility.</div>
+        </details>
+        <details>
+          <summary>Can I include a logo image?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">This generator keeps signatures text-based because images often arrive as attachments or get blocked. If you need a logo, host it online and add an image tag to the copied HTML manually.</div>
+        </details>
+        <details>
+          <summary>Does the copied HTML include styling?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Yes. All styling is inline on each element, which is what email clients require. No external stylesheet or style block is needed.</div>
+        </details>
+        <details>
+          <summary>Is my information uploaded anywhere?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">No. The signature is generated in your browser with JavaScript. Your details never leave your device.</div>
+        </details>
+      </section>
+
+      <!-- ADSENSE SLOT 3 of 3 (above footer): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="above-footer">Advertisement</div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="f-brand">
+          <a class="brand brand-light" href="https://tools.xsrazy.web.id/" aria-label="Micro Tools Hub home">
+            <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+            <span class="brand-word">Micro <em>Tools</em></span>
+          </a>
+          <p>Free online tools with instant results, right in your browser.</p>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#text-tools">Text tools</a>
+          <nav aria-label="Popular text tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/word-counter.html">Word Counter</a>
+            <a href="https://tools.xsrazy.web.id/case-converter.html">Case Converter</a>
+            <a href="https://tools.xsrazy.web.id/character-counter.html">Character Counter</a>
+            <a href="https://tools.xsrazy.web.id/word-frequency-counter.html">Word Frequency</a>
+            <a href="https://tools.xsrazy.web.id/text-reverser.html">Text Reverser</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#generators">Generators</a>
+          <nav aria-label="Popular generators" class="flist">
+            <a href="https://tools.xsrazy.web.id/password-generator.html">Password Generator</a>
+            <a href="https://tools.xsrazy.web.id/qr/">QR Code Generator</a>
+            <a href="https://tools.xsrazy.web.id/meme-generator.html">Meme Generator</a>
+            <a href="https://tools.xsrazy.web.id/uuid-v1-generator.html">UUID Generator</a>
+            <a href="https://tools.xsrazy.web.id/fake-name-generator.html">Fake Name Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#converters">Converters</a>
+          <nav aria-label="Popular converters" class="flist">
+            <a href="https://tools.xsrazy.web.id/unit-converter.html">Unit Converter</a>
+            <a href="https://tools.xsrazy.web.id/currency-converter.html">Currency Converter</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/color-converter.html">Color Converter</a>
+            <a href="https://tools.xsrazy.web.id/number-base-converter.html">Number Base Converter</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#image-tools">Image tools</a>
+          <nav aria-label="Popular image tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/image-compressor.html">Image Compressor</a>
+            <a href="https://tools.xsrazy.web.id/image-resizer.html">Image Resizer</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/favicon-generator.html">Favicon Generator</a>
+            <a href="https://tools.xsrazy.web.id/image-cropper.html">Image Cropper</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#calculators">Calculators</a>
+          <nav aria-label="Popular calculators" class="flist">
+            <a href="https://tools.xsrazy.web.id/bmi-calculator.html">BMI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/mortgage-calculator.html">Mortgage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/percentage-toolkit.html">Percentage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/loan-calculator.html">Loan Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/age-calculator.html">Age Calculator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#business-tools">Business</a>
+          <nav aria-label="Popular business tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/invoice/">Invoice Generator</a>
+            <a href="https://tools.xsrazy.web.id/business-name-generator.html">Business Name Generator</a>
+            <a href="https://tools.xsrazy.web.id/roi-calculator.html">ROI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/salary-converter.html">Salary Converter</a>
+            <a href="https://tools.xsrazy.web.id/business-plan-generator.html">Business Plan Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#downloaders">Downloaders</a>
+          <nav aria-label="Popular downloaders" class="flist">
+            <a href="https://tools.xsrazy.web.id/tiktok-video-downloader.html">TikTok Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/twitter-video-downloader.html">Twitter Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/youtube-thumbnail-downloader.html">YouTube Thumbnail Downloader</a>
+            <a href="https://tools.xsrazy.web.id/pinterest-downloader.html">Pinterest Downloader</a>
+            <a href="https://tools.xsrazy.web.id/reddit-downloader.html">Reddit Downloader</a>
+          </nav>
+        </div>
+        <div class="fcol f-company">
+          <span class="fhead-link fhead-static">Company</span>
+          <nav aria-label="Company" class="flist-static">
+            <a href="https://tools.xsrazy.web.id/">Home</a>
+            <a href="https://tools.xsrazy.web.id/about.html">About</a>
+            <a href="https://tools.xsrazy.web.id/contact.html">Contact</a>
+            <a href="https://tools.xsrazy.web.id/privacy-policy.html">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 Micro Tools Hub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="site.js"></script>
+    <script src="animations.js"></script>
+    <script>
+(function () {
+  function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function val(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+  var preview = document.getElementById('esg-preview');
+  if (!preview) return;
+  var IDS = ['esg-name', 'esg-title', 'esg-company', 'esg-phone', 'esg-email', 'esg-website'];
+  function contactLine(icon, text, href) {
+    var t = esc(text);
+    if (href) t = '<a href="' + esc(href) + '" style="color:#7C3AED;text-decoration:none">' + t + '</a>';
+    return '<tr><td style="padding:1px 0;font-size:12px;color:#4b5563;font-family:Arial,sans-serif">' + t + '</td></tr>';
+  }
+  function build() {
+    var v = {};
+    IDS.forEach(function (id) { v[id] = val(id); });
+    var name = esc(v['esg-name'] || 'Your Name');
+    var roleBits = [];
+    if (v['esg-title']) roleBits.push(esc(v['esg-title']));
+    if (v['esg-company']) roleBits.push(esc(v['esg-company']));
+    var html = '<table cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,sans-serif;max-width:420px">';
+    html += '<tr><td style="padding:0 0 2px;font-size:17px;font-weight:bold;color:#111827">' + name + '</td></tr>';
+    if (roleBits.length) html += '<tr><td style="padding:0 0 6px;font-size:13px;color:#6b7280">' + roleBits.join(' &middot; ') + '</td></tr>';
+    html += '<tr><td style="padding:6px 0 0"><table cellpadding="0" cellspacing="0" border="0"><tr><td style="border-left:3px solid #7C3AED;padding-left:12px">';
+    var lines = '';
+    if (v['esg-phone']) lines += contactLine('', v['esg-phone'], null);
+    if (v['esg-email']) lines += contactLine('', v['esg-email'], 'mailto:' + v['esg-email']);
+    if (v['esg-website']) lines += contactLine('', v['esg-website'], (/^https?:\/\//i.test(v['esg-website']) ? '' : 'https://') + v['esg-website']);
+    if (!lines) lines = '<tr><td style="padding:1px 0;font-size:12px;color:#9ca3af;font-family:Arial,sans-serif">+1 555 123 4567</td></tr>';
+    html += '<table cellpadding="0" cellspacing="0" border="0">' + lines + '</table>';
+    html += '</td></tr></table></td></tr></table>';
+    preview.innerHTML = html;
+  }
+  IDS.forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', build);
+  });
+  build();
+  var copyBtn = document.getElementById('esg-copy');
+  var status = document.getElementById('esg-status');
+  function say(msg) { if (status) status.textContent = msg; }
+  if (copyBtn) copyBtn.addEventListener('click', function () {
+    var code = preview.innerHTML;
+    function done() { say('Signature HTML copied. Paste it into your email client\u2019s signature editor.'); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code).then(done, function () { fallback(); });
+    } else { fallback(); }
+    function fallback() {
+      var ta = document.createElement('textarea');
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); done(); } catch (e) { say('Copy failed. Select the preview and copy manually.'); }
+      document.body.removeChild(ta);
+    }
+  });
+})();
+    </script>
+</body>
+</html>

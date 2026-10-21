@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Random Number Generator - Generate Random Numbers Online | Micro Tools Hub</title>
+    <meta name="keywords" content="random number generator, random numbers, pick random number, random number no duplicates, random picker" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Free random number generator: pick numbers between a min and max, choose how many, and optionally remove duplicates. Fast, fair and private." />
+    <link rel="canonical" href="https://tools.xsrazy.web.id/random-number-generator.html" />
+    <meta property="og:title" content="Random Number Generator - Generate Random Numbers Online" />
+    <meta property="og:description" content="Pick random numbers in a range, with optional no-duplicates mode. Free, fast, no sign-up." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Micro Tools Hub" />
+    <meta property="og:image:alt" content="Random Number Generator - Generate Random Numbers Online - free online tool" />
+    <meta property="og:url" content="https://tools.xsrazy.web.id/random-number-generator.html" />
+    <meta property="og:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Random Number Generator - Generate Random Numbers Online" />
+    <meta name="twitter:description" content="Generate fair random numbers in any range. Free, no sign-up." />
+    <meta name="twitter:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta name="theme-color" content="#0B1220" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="/assets/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=26" />
+    <style>
+      .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+      .chip { display: inline-flex; align-items: center; justify-content: center; min-width: 52px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); font-weight: 800; font-size: 1.05rem; font-variant-numeric: tabular-nums; }
+      #rng-error { display: none; margin-top: 10px; }
+      .check-row { display: flex; align-items: center; gap: 10px; margin: 6px 0 16px; font-size: .92rem; font-weight: 600; cursor: pointer; }
+      .check-row input { width: 18px; height: 18px; accent-color: #7C3AED; cursor: pointer; }
+      .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"How random are the numbers?","acceptedAnswer":{"@type":"Answer","text":"Numbers come from the browser's cryptographic random source, crypto.getRandomValues, the same source used for security features. Each value in the range has an equal chance of being picked, with no modulo bias."}},
+        {"@type":"Question","name":"What does no duplicates do?","acceptedAnswer":{"@type":"Answer","text":"It guarantees every number in the result is unique, like drawing names from a hat. The count is capped at the size of the range, since you cannot pick more unique numbers than exist."}},
+        {"@type":"Question","name":"Can I use it for dice, coin flips or giveaways?","acceptedAnswer":{"@type":"Answer","text":"Yes. Min 1 and max 6 simulates a die, min 1 max 2 simulates a coin, and a range of ticket numbers with no duplicates works for fair draws."}},
+        {"@type":"Question","name":"Can I use it for lotteries or gambling?","acceptedAnswer":{"@type":"Answer","text":"It is fine for casual draws and games, but it is not certified for regulated gambling or official lotteries, which require audited random number hardware."}},
+        {"@type":"Question","name":"Are my numbers sent anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Generation happens in your browser and the results stay on the page. Nothing is uploaded or logged."}}
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Random numbers",
+      "url": "https://tools.xsrazy.web.id/random-number-generator.html",
+      "description": "Random numbers, no-duplicate option.",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+</head>
+<body>
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="index.html" aria-label="Micro Tools Hub home">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+          <span class="brand-word">Micro <em>Tools</em></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="navLinks" aria-label="Site">
+          <a class="nav-link" href="word-counter.html">Word Counter</a>
+          <a class="nav-link" href="password-generator.html">Password Generator</a>
+          <a class="nav-link" href="unit-converter.html">Unit Converter</a>
+          <a class="nav-link" href="timezone-converter.html">Time Zone</a>
+          <a class="nav-link" href="case-converter.html">Case Converter</a>
+          <a class="btn btn-primary btn-sm" href="index.html#tools">Browse tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ADSENSE SLOT 1 of 3 (header leaderboard): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+    <div class="ad-slot" data-ad-slot="header">Advertisement</div>
+
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="index.html#everyday-tools">Everyday Tools</a> &nbsp;/&nbsp; Random number generator</nav>
+      <header class="page-head">
+        <h1>Random number generator</h1>
+        <p>Generate <strong>random numbers</strong> between a minimum and maximum. Choose how many, allow or block <strong>duplicates</strong>, and roll again as much as you like.</p>
+      </header>
+
+      <main>
+        <div class="tool-grid">
+          <div class="card panel">
+            <h2>Settings</h2>
+            <p class="sub">Set the range and how many numbers to draw.</p>
+            <div class="field">
+              <label for="rng-min">Minimum</label>
+              <div class="num-wrap"><input type="number" id="rng-min" value="1" step="1" /></div>
+            </div>
+            <div class="field">
+              <label for="rng-max">Maximum</label>
+              <div class="num-wrap"><input type="number" id="rng-max" value="100" step="1" /></div>
+            </div>
+            <div class="field">
+              <label for="rng-count">How many numbers</label>
+              <div class="num-wrap"><input type="number" id="rng-count" value="5" min="1" step="1" /></div>
+            </div>
+            <label class="check-row"><input type="checkbox" id="rng-nodup" /> No duplicates</label>
+            <div class="btn-row">
+              <button class="btn btn-primary btn-lg" id="rng-generate">Generate</button>
+              <button class="btn btn-lg" id="rng-reroll" disabled>Roll again</button>
+            </div>
+            <div class="callout" id="rng-error" role="alert"></div>
+          </div>
+
+          <div class="card result-card">
+            <div class="result-head">
+              <div class="result-label">Your numbers</div>
+              <p class="result-note" id="rng-note">Press Generate to draw your first numbers.</p>
+            </div>
+            <div class="chips" id="rng-results" aria-live="polite"></div>
+            <div class="callout info" style="margin-top:16px"><strong>Fair by design:</strong> numbers come from your browser's cryptographic random source, with no bias toward any value in the range.</div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ADSENSE SLOT 2 of 3 (in-article): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="in-article">Advertisement</div>
+
+      <section class="explainer">
+        <div class="card">
+          <h3>How it works</h3>
+          <p>Set a <strong>minimum</strong> and <strong>maximum</strong>, then choose how many numbers to draw. Each value in the range has an <strong>equal chance</strong> of being picked, using the browser's secure random source. Turn on <strong>No duplicates</strong> to guarantee every result is unique, like drawing names from a hat.</p>
+        </div>
+        <div class="card">
+          <h3>Handy presets</h3>
+          <ul>
+            <li><strong>Die roll:</strong> min 1, max 6, count 1.</li>
+            <li><strong>Coin flip:</strong> min 1, max 2, count 1 (1 = heads, 2 = tails).</li>
+            <li><strong>Lottery-style:</strong> min 1, max 49, count 6, no duplicates.</li>
+            <li><strong>Giveaway draw:</strong> ticket numbers as the range, no duplicates on.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="related">
+        <h2>Related tools</h2>
+        <div class="related-grid">
+          <a href="spin-the-wheel.html"><span class="t">Spin the wheel</span><span class="d">Spin a prize wheel to pick a random winner.</span></a>
+          <a href="password-generator.html"><span class="t">Password generator</span><span class="d">Strong random passwords with a strength meter.</span></a>
+          <a href="countdown-timer.html"><span class="t">Countdown timer</span><span class="d">A simple countdown with an alarm when time is up.</span></a>
+        </div>
+      </section>
+
+      <section class="faq faq-narrow">
+        <h2>Random number generator FAQs</h2>
+        <details>
+          <summary>How random are the numbers?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Numbers come from the browser's cryptographic random source, crypto.getRandomValues, the same source used for security features. Each value in the range has an equal chance of being picked, with no modulo bias.</div>
+        </details>
+        <details>
+          <summary>What does no duplicates do?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">It guarantees every number in the result is unique, like drawing names from a hat. The count is capped at the size of the range, since you cannot pick more unique numbers than exist.</div>
+        </details>
+        <details>
+          <summary>Can I use it for dice, coin flips or giveaways?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Yes. Min 1 and max 6 simulates a die, min 1 max 2 simulates a coin, and a range of ticket numbers with no duplicates works for fair draws.</div>
+        </details>
+        <details>
+          <summary>Can I use it for lotteries or gambling?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">It is fine for casual draws and games, but it is not certified for regulated gambling or official lotteries, which require audited random number hardware.</div>
+        </details>
+        <details>
+          <summary>Are my numbers sent anywhere?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">No. Generation happens in your browser and the results stay on the page. Nothing is uploaded or logged.</div>
+        </details>
+      </section>
+
+      <!-- ADSENSE SLOT 3 of 3 (above footer): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="above-footer">Advertisement</div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="f-brand">
+          <a class="brand brand-light" href="https://tools.xsrazy.web.id/" aria-label="Micro Tools Hub home">
+            <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+            <span class="brand-word">Micro <em>Tools</em></span>
+          </a>
+          <p>Free online tools with instant results, right in your browser.</p>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#text-tools">Text tools</a>
+          <nav aria-label="Popular text tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/word-counter.html">Word Counter</a>
+            <a href="https://tools.xsrazy.web.id/case-converter.html">Case Converter</a>
+            <a href="https://tools.xsrazy.web.id/character-counter.html">Character Counter</a>
+            <a href="https://tools.xsrazy.web.id/word-frequency-counter.html">Word Frequency</a>
+            <a href="https://tools.xsrazy.web.id/text-reverser.html">Text Reverser</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#generators">Generators</a>
+          <nav aria-label="Popular generators" class="flist">
+            <a href="https://tools.xsrazy.web.id/password-generator.html">Password Generator</a>
+            <a href="https://tools.xsrazy.web.id/qr/">QR Code Generator</a>
+            <a href="https://tools.xsrazy.web.id/meme-generator.html">Meme Generator</a>
+            <a href="https://tools.xsrazy.web.id/uuid-v1-generator.html">UUID Generator</a>
+            <a href="https://tools.xsrazy.web.id/fake-name-generator.html">Fake Name Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#converters">Converters</a>
+          <nav aria-label="Popular converters" class="flist">
+            <a href="https://tools.xsrazy.web.id/unit-converter.html">Unit Converter</a>
+            <a href="https://tools.xsrazy.web.id/currency-converter.html">Currency Converter</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/color-converter.html">Color Converter</a>
+            <a href="https://tools.xsrazy.web.id/number-base-converter.html">Number Base Converter</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#image-tools">Image tools</a>
+          <nav aria-label="Popular image tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/image-compressor.html">Image Compressor</a>
+            <a href="https://tools.xsrazy.web.id/image-resizer.html">Image Resizer</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/favicon-generator.html">Favicon Generator</a>
+            <a href="https://tools.xsrazy.web.id/image-cropper.html">Image Cropper</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#calculators">Calculators</a>
+          <nav aria-label="Popular calculators" class="flist">
+            <a href="https://tools.xsrazy.web.id/bmi-calculator.html">BMI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/mortgage-calculator.html">Mortgage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/percentage-toolkit.html">Percentage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/loan-calculator.html">Loan Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/age-calculator.html">Age Calculator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#business-tools">Business</a>
+          <nav aria-label="Popular business tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/invoice/">Invoice Generator</a>
+            <a href="https://tools.xsrazy.web.id/business-name-generator.html">Business Name Generator</a>
+            <a href="https://tools.xsrazy.web.id/roi-calculator.html">ROI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/salary-converter.html">Salary Converter</a>
+            <a href="https://tools.xsrazy.web.id/business-plan-generator.html">Business Plan Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#downloaders">Downloaders</a>
+          <nav aria-label="Popular downloaders" class="flist">
+            <a href="https://tools.xsrazy.web.id/tiktok-video-downloader.html">TikTok Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/twitter-video-downloader.html">Twitter Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/youtube-thumbnail-downloader.html">YouTube Thumbnail Downloader</a>
+            <a href="https://tools.xsrazy.web.id/pinterest-downloader.html">Pinterest Downloader</a>
+            <a href="https://tools.xsrazy.web.id/reddit-downloader.html">Reddit Downloader</a>
+          </nav>
+        </div>
+        <div class="fcol f-company">
+          <span class="fhead-link fhead-static">Company</span>
+          <nav aria-label="Company" class="flist-static">
+            <a href="https://tools.xsrazy.web.id/">Home</a>
+            <a href="https://tools.xsrazy.web.id/about.html">About</a>
+            <a href="https://tools.xsrazy.web.id/contact.html">Contact</a>
+            <a href="https://tools.xsrazy.web.id/privacy-policy.html">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 Micro Tools Hub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="site.js"></script>
+    <script src="animations.js"></script>
+    <script>
+    (function () {
+      var minEl = document.getElementById('rng-min');
+      if (!minEl) return;
+      var maxEl = document.getElementById('rng-max');
+      var countEl = document.getElementById('rng-count');
+      var nodupEl = document.getElementById('rng-nodup');
+      var genBtn = document.getElementById('rng-generate');
+      var rerollBtn = document.getElementById('rng-reroll');
+      var resultsEl = document.getElementById('rng-results');
+      var noteEl = document.getElementById('rng-note');
+      var errBox = document.getElementById('rng-error');
+      if (!maxEl || !countEl || !nodupEl || !genBtn || !rerollBtn || !resultsEl || !noteEl || !errBox) return;
+
+      function randInt(min, max) {
+        var range = max - min + 1;
+        var buf = new Uint32Array(1);
+        var limit = Math.floor(4294967296 / range) * range;
+        var x;
+        do {
+          window.crypto.getRandomValues(buf);
+          x = buf[0];
+        } while (x >= limit);
+        return min + (x % range);
+      }
+
+      function readInputs() {
+        var min = Math.floor(parseFloat(minEl.value));
+        var max = Math.floor(parseFloat(maxEl.value));
+        var count = Math.floor(parseFloat(countEl.value));
+        return { min: min, max: max, count: count, nodup: nodupEl.checked };
+      }
+
+      function showError(t) {
+        errBox.textContent = t;
+        errBox.style.display = 'block';
+      }
+      function hideError() {
+        errBox.textContent = '';
+        errBox.style.display = 'none';
+      }
+
+      function generate() {
+        hideError();
+        var p = readInputs();
+        if (!isFinite(p.min) || !isFinite(p.max) || !isFinite(p.count)) {
+          showError('Enter numbers for minimum, maximum and count.');
+          return false;
+        }
+        if (p.min > p.max) {
+          showError('Minimum cannot be bigger than maximum.');
+          return false;
+        }
+        if (p.count < 1) {
+          showError('Count must be at least 1.');
+          return false;
+        }
+        if (p.count > 1000) {
+          showError('Count is capped at 1000 to keep the page fast.');
+          p.count = 1000;
+        }
+        var rangeSize = p.max - p.min + 1;
+        if (p.nodup && p.count > rangeSize) {
+          showError('No duplicates is on, but the range only holds ' + rangeSize + ' unique number' + (rangeSize === 1 ? '' : 's') + '. Count was clamped to ' + rangeSize + '.');
+          p.count = rangeSize;
+          countEl.value = String(p.count);
+        }
+        var out = [];
+        if (p.nodup) {
+          var seen = {};
+          while (out.length < p.count) {
+            var n = randInt(p.min, p.max);
+            if (!seen[n]) { seen[n] = true; out.push(n); }
+          }
+        } else {
+          for (var i = 0; i < p.count; i++) out.push(randInt(p.min, p.max));
+        }
+        resultsEl.innerHTML = '';
+        out.forEach(function (n) {
+          var chip = document.createElement('span');
+          chip.className = 'chip';
+          chip.textContent = String(n);
+          resultsEl.appendChild(chip);
+        });
+        noteEl.textContent = 'Drew ' + out.length + ' number' + (out.length === 1 ? '' : 's') + ' between ' + p.min + ' and ' + p.max + (p.nodup ? ' (no duplicates).' : '.');
+        rerollBtn.disabled = false;
+        return true;
+      }
+
+      genBtn.addEventListener('click', generate);
+      rerollBtn.addEventListener('click', function () {
+        if (!rerollBtn.disabled) generate();
+      });
+      [minEl, maxEl, countEl].forEach(function (el) {
+        el.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter') { e.preventDefault(); generate(); }
+        });
+      });
+    })();
+    </script>
+</body>
+</html>

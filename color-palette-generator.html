@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Color Palette Generator - Create Color Schemes | Micro Tools Hub</title>
+    <meta name="keywords" content="color palette generator, color scheme generator, hex color picker, complementary colors, color combinations" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Free color palette generator: create harmonious color schemes, copy HEX, RGB or HSL with one click, lock colors, or extract a palette from any image. Runs in your browser." />
+    <link rel="canonical" href="https://tools.xsrazy.web.id/color-palette-generator/" />
+    <meta property="og:title" content="Color Palette Generator - Create Color Schemes" />
+    <meta property="og:description" content="Generate beautiful palettes, copy HEX/RGB/HSL codes, or pull colors from an image. Free, no sign-up." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Micro Tools Hub" />
+    <meta property="og:image:alt" content="Color Palette Generator - Create Color Schemes - free online tool" />
+    <meta property="og:url" content="https://tools.xsrazy.web.id/color-palette-generator/" />
+    <meta property="og:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Color Palette Generator - Create Color Schemes" />
+    <meta name="twitter:description" content="Generate palettes, copy color codes, extract colors from images. Free, no sign-up." />
+    <meta name="twitter:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta name="theme-color" content="#0B1220" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="/assets/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=26" />
+    <style>
+      .swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; padding: 28px 28px 8px; }
+      @media (max-width: 640px){ .swatches { grid-template-columns: repeat(5, 1fr); gap: 6px; } }
+      .swatch { border-radius: 14px; height: 150px; position: relative; cursor: pointer; border: 1px solid var(--line); overflow: hidden; transition: transform .15s; }
+      .swatch:hover { transform: translateY(-3px); }
+      .swatch .hex { position: absolute; left: 0; right: 0; bottom: 0; padding: 8px 6px; font-size: .78rem; font-weight: 800; text-align: center; background: rgba(11,18,32,.55); color: #fff; font-family: ui-monospace, Menlo, monospace; }
+      .swatch .lock { position: absolute; top: 8px; right: 8px; width: 30px; height: 30px; border-radius: 9px; border: 0; background: rgba(11,18,32,.55); color: #fff; font-size: .95rem; cursor: pointer; line-height: 1; }
+      .swatch .lock[aria-pressed="true"] { background: var(--accent); }
+      .color-rows { padding: 18px 28px 8px; display: flex; flex-direction: column; gap: 8px; }
+      .color-row { display: flex; align-items: center; gap: 10px; font-size: .88rem; }
+      .color-row .dot { width: 26px; height: 26px; border-radius: 8px; border: 1px solid var(--line); flex: none; }
+      .color-row button.code { border: 1px solid var(--line); background: var(--surface-2); border-radius: 8px; padding: 6px 10px; font-family: ui-monospace, Menlo, monospace; font-size: .8rem; cursor: pointer; color: var(--ink); }
+      .color-row button.code:hover { border-color: var(--accent); color: var(--accent-dark); }
+      .palette-actions { display: flex; gap: 10px; flex-wrap: wrap; padding: 16px 28px 8px; }
+      .contrast-box { margin: 18px 28px 28px; padding: 18px; border-radius: 14px; background: var(--surface-2); }
+      .contrast-inputs { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
+      .contrast-inputs label { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: .88rem; }
+      .contrast-inputs input[type="color"] { width: 44px; height: 36px; border: 1px solid var(--line); border-radius: 8px; padding: 2px; background: var(--surface); cursor: pointer; }
+      .contrast-result { font-size: .92rem; font-weight: 600; }
+      .contrast-result .pass { color: #059669; font-weight: 800; }
+      .contrast-result .fail { color: #DC2626; font-weight: 800; }
+      .field select { width: 100%; box-sizing: border-box; }
+      .copied-toast { position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%) translateY(20px); background: #0B1220; color: #fff; padding: 12px 22px; border-radius: 12px; font-weight: 700; font-size: .9rem; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; z-index: 99; }
+      .copied-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"How do I copy a color code?","acceptedAnswer":{"@type":"Answer","text":"Click any swatch to copy its HEX code, or click the HEX, RGB or HSL buttons under the palette to copy that exact format."}},
+        {"@type":"Question","name":"What do the harmony rules mean?","acceptedAnswer":{"@type":"Answer","text":"Complementary pairs opposite colors on the color wheel. Analogous uses neighbors. Triadic picks three evenly spaced colors. Monochromatic varies one hue from light to dark."}},
+        {"@type":"Question","name":"What does the lock button do?","acceptedAnswer":{"@type":"Answer","text":"Locking a color keeps it fixed while the other four regenerate, so you can build a palette around a color you love."}},
+        {"@type":"Question","name":"How does palette from image work?","acceptedAnswer":{"@type":"Answer","text":"Your image is drawn to a small hidden canvas in your browser, the most common colors are counted and the top five distinct ones become your palette. The image never leaves your device."}},
+        {"@type":"Question","name":"What is a good contrast ratio?","acceptedAnswer":{"@type":"Answer","text":"WCAG guidelines ask for at least 4.5 to 1 for normal text and 3 to 1 for large text. A ratio of 7 to 1 or higher meets the strictest AAA level."}}
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Color palettes",
+      "url": "https://tools.xsrazy.web.id/color-palette-generator.html",
+      "description": "Harmonious palettes, palette from image, and contrast checker.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+</head>
+<body>
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="index.html" aria-label="Micro Tools Hub home">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+          <span class="brand-word">Micro <em>Tools</em></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="navLinks" aria-label="Site">
+          <a class="nav-link" href="word-counter.html">Word Counter</a>
+          <a class="nav-link" href="password-generator.html">Password Generator</a>
+          <a class="nav-link" href="unit-converter.html">Unit Converter</a>
+          <a class="nav-link" href="timezone-converter.html">Time Zone</a>
+          <a class="nav-link" href="case-converter.html">Case Converter</a>
+          <a class="btn btn-primary btn-sm" href="index.html#tools">Browse tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ADSENSE SLOT 1 of 3 (header leaderboard): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+    <div class="ad-slot" data-ad-slot="header">Advertisement</div>
+
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="index.html#generators">Generators</a> &nbsp;/&nbsp; Color palette generator</nav>
+      <header class="page-head">
+        <h1>Color palette generator</h1>
+        <p>Generate <strong>harmonious color palettes</strong>, copy HEX, RGB or HSL with one click, lock favorites, or extract a palette from any image.</p>
+      </header>
+
+      <main>
+        <div class="tool-grid">
+          <div class="card panel">
+            <h2>Palette settings</h2>
+            <p class="sub">Press spacebar anywhere to generate a new palette.</p>
+            <div class="field">
+              <label for="pal-harmony">Harmony rule</label>
+              <select id="pal-harmony">
+                <option value="random">Random</option>
+                <option value="complementary">Complementary</option>
+                <option value="analogous">Analogous</option>
+                <option value="triadic">Triadic</option>
+                <option value="monochromatic">Monochromatic</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Palette from image</label>
+              <div class="input-row">
+                <input type="file" id="pal-file" accept="image/*" style="flex:1" />
+              </div>
+              <div class="hint">The five most common colors in your image become the palette. The image never leaves your browser.</div>
+            </div>
+            <div class="callout info" style="margin:18px 0 0"><strong>Tip:</strong> click a swatch to copy its HEX code. Use the lock button to keep a color while the rest regenerate.</div>
+          </div>
+
+          <div class="card result-card">
+            <div class="swatches" id="swatches" aria-label="Color palette"></div>
+            <div class="palette-actions">
+              <button class="btn btn-primary btn-lg" id="pal-generate" type="button">Generate</button>
+              <button class="btn btn-outline" id="pal-copy-all" type="button">Copy all HEX</button>
+            </div>
+            <div class="color-rows" id="color-rows"></div>
+            <div class="contrast-box">
+              <h3 style="margin:0 0 10px;font-size:1rem">Contrast checker</h3>
+              <div class="contrast-inputs">
+                <label>Text <input type="color" id="cc-fg" value="#0B1220" /></label>
+                <label>Background <input type="color" id="cc-bg" value="#FFFFFF" /></label>
+              </div>
+              <div class="contrast-result" id="cc-result"></div>
+              <p class="hint" style="margin:8px 0 0">WCAG needs 4.5:1 for normal text and 3:1 for large text. 7:1 or higher is AAA.</p>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ADSENSE SLOT 2 of 3 (in-article): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="in-article">Advertisement</div>
+
+      <section class="explainer">
+        <div class="card">
+          <h3>How palettes are built</h3>
+          <p>Each palette starts from a random base hue, then the harmony rule places the other colors: <strong>complementary</strong> takes the opposite side of the color wheel, <strong>analogous</strong> takes neighbors, <strong>triadic</strong> takes three evenly spaced points, and <strong>monochromatic</strong> keeps one hue while lightness varies.</p>
+          <p>Saturation and lightness are kept in ranges that look good on screens, so you rarely get muddy or neon accidents.</p>
+        </div>
+        <div class="card">
+          <h3>Copy formats</h3>
+          <ul>
+            <li><strong>HEX:</strong> <span style="font-family:ui-monospace,monospace">#8B5CF6</span>, the web standard.</li>
+            <li><strong>RGB:</strong> <span style="font-family:ui-monospace,monospace">rgb(139, 92, 246)</span>, handy for design tools.</li>
+            <li><strong>HSL:</strong> <span style="font-family:ui-monospace,monospace">hsl(258, 90%, 66%)</span>, easiest to tweak by hand.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="related">
+        <h2>Related tools</h2>
+        <div class="related-grid">
+          <a href="meme-generator.html"><span class="t">Meme generator</span><span class="d">Add classic top and bottom captions to any image.</span></a>
+          <a href="case-converter.html"><span class="t">Case converter</span><span class="d">UPPERCASE, lowercase, Title Case and more, applied instantly.</span></a>
+          <a href="word-counter.html"><span class="t">Word counter</span><span class="d">Count words and characters as you type.</span></a>
+        </div>
+      </section>
+
+      <section class="faq faq-narrow">
+        <h2>Color palette generator FAQs</h2>
+        <details>
+          <summary>How do I copy a color code?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Click any swatch to copy its HEX code, or click the HEX, RGB or HSL buttons under the palette to copy that exact format.</div>
+        </details>
+        <details>
+          <summary>What do the harmony rules mean?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Complementary pairs opposite colors on the color wheel. Analogous uses neighbors. Triadic picks three evenly spaced colors. Monochromatic varies one hue from light to dark.</div>
+        </details>
+        <details>
+          <summary>What does the lock button do?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Locking a color keeps it fixed while the other four regenerate, so you can build a palette around a color you love.</div>
+        </details>
+        <details>
+          <summary>How does palette from image work?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Your image is drawn to a small hidden canvas in your browser, the most common colors are counted and the top five distinct ones become your palette. The image never leaves your device.</div>
+        </details>
+        <details>
+          <summary>What is a good contrast ratio?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">WCAG guidelines ask for at least 4.5 to 1 for normal text and 3 to 1 for large text. A ratio of 7 to 1 or higher meets the strictest AAA level.</div>
+        </details>
+      </section>
+
+      <!-- ADSENSE SLOT 3 of 3 (above footer): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="above-footer">Advertisement</div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="f-brand">
+          <a class="brand brand-light" href="https://tools.xsrazy.web.id/" aria-label="Micro Tools Hub home">
+            <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+            <span class="brand-word">Micro <em>Tools</em></span>
+          </a>
+          <p>Free online tools with instant results, right in your browser.</p>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#text-tools">Text tools</a>
+          <nav aria-label="Popular text tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/word-counter.html">Word Counter</a>
+            <a href="https://tools.xsrazy.web.id/case-converter.html">Case Converter</a>
+            <a href="https://tools.xsrazy.web.id/character-counter.html">Character Counter</a>
+            <a href="https://tools.xsrazy.web.id/word-frequency-counter.html">Word Frequency</a>
+            <a href="https://tools.xsrazy.web.id/text-reverser.html">Text Reverser</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#generators">Generators</a>
+          <nav aria-label="Popular generators" class="flist">
+            <a href="https://tools.xsrazy.web.id/password-generator.html">Password Generator</a>
+            <a href="https://tools.xsrazy.web.id/qr/">QR Code Generator</a>
+            <a href="https://tools.xsrazy.web.id/meme-generator.html">Meme Generator</a>
+            <a href="https://tools.xsrazy.web.id/uuid-v1-generator.html">UUID Generator</a>
+            <a href="https://tools.xsrazy.web.id/fake-name-generator.html">Fake Name Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#converters">Converters</a>
+          <nav aria-label="Popular converters" class="flist">
+            <a href="https://tools.xsrazy.web.id/unit-converter.html">Unit Converter</a>
+            <a href="https://tools.xsrazy.web.id/currency-converter.html">Currency Converter</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/color-converter.html">Color Converter</a>
+            <a href="https://tools.xsrazy.web.id/number-base-converter.html">Number Base Converter</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#image-tools">Image tools</a>
+          <nav aria-label="Popular image tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/image-compressor.html">Image Compressor</a>
+            <a href="https://tools.xsrazy.web.id/image-resizer.html">Image Resizer</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/favicon-generator.html">Favicon Generator</a>
+            <a href="https://tools.xsrazy.web.id/image-cropper.html">Image Cropper</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#calculators">Calculators</a>
+          <nav aria-label="Popular calculators" class="flist">
+            <a href="https://tools.xsrazy.web.id/bmi-calculator.html">BMI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/mortgage-calculator.html">Mortgage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/percentage-toolkit.html">Percentage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/loan-calculator.html">Loan Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/age-calculator.html">Age Calculator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#business-tools">Business</a>
+          <nav aria-label="Popular business tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/invoice/">Invoice Generator</a>
+            <a href="https://tools.xsrazy.web.id/business-name-generator.html">Business Name Generator</a>
+            <a href="https://tools.xsrazy.web.id/roi-calculator.html">ROI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/salary-converter.html">Salary Converter</a>
+            <a href="https://tools.xsrazy.web.id/business-plan-generator.html">Business Plan Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#downloaders">Downloaders</a>
+          <nav aria-label="Popular downloaders" class="flist">
+            <a href="https://tools.xsrazy.web.id/tiktok-video-downloader.html">TikTok Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/twitter-video-downloader.html">Twitter Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/youtube-thumbnail-downloader.html">YouTube Thumbnail Downloader</a>
+            <a href="https://tools.xsrazy.web.id/pinterest-downloader.html">Pinterest Downloader</a>
+            <a href="https://tools.xsrazy.web.id/reddit-downloader.html">Reddit Downloader</a>
+          </nav>
+        </div>
+        <div class="fcol f-company">
+          <span class="fhead-link fhead-static">Company</span>
+          <nav aria-label="Company" class="flist-static">
+            <a href="https://tools.xsrazy.web.id/">Home</a>
+            <a href="https://tools.xsrazy.web.id/about.html">About</a>
+            <a href="https://tools.xsrazy.web.id/contact.html">Contact</a>
+            <a href="https://tools.xsrazy.web.id/privacy-policy.html">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 Micro Tools Hub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <div class="copied-toast" id="copied-toast">Copied</div>
+    <script src="site.js"></script>
+    <script src="animations.js"></script>
+    <script>
+    (function initPaletteGenerator(){
+      var swatchesEl = document.getElementById('swatches');
+      if(!swatchesEl) return;
+      var rowsEl = document.getElementById('color-rows');
+      var harmonySel = document.getElementById('pal-harmony');
+      var toast = document.getElementById('copied-toast');
+      var toastTimer = null;
+      var colors = []; // {h,s,l,locked}
+      function rnd(a,b){ return a + Math.random()*(b-a); }
+      function hslToHex(h,s,l){
+        s/=100; l/=100;
+        var k = function(n){ return (n + h/30) % 12; };
+        var a = s*Math.min(l,1-l);
+        var f = function(n){ return l - a*Math.max(-1, Math.min(k(n)-3, Math.min(9-k(n), 1))); };
+        function to(x){ var v = Math.round(255*x); return (v<16?'0':'')+v.toString(16); }
+        return '#' + to(f(0)) + to(f(8)) + to(f(4));
+      }
+      function hexToRgb(hex){
+        var n = parseInt(hex.slice(1),16);
+        return { r:(n>>16)&255, g:(n>>8)&255, b:n&255 };
+      }
+      function fmt(h,s,l){
+        var hex = hslToHex(h,s,l).toUpperCase();
+        var rgb = hexToRgb(hex);
+        return { hex:hex, rgb:'rgb('+rgb.r+', '+rgb.g+', '+rgb.b+')', hsl:'hsl('+Math.round(h)+', '+Math.round(s)+'%, '+Math.round(l)+'%)' };
+      }
+      function makeSet(){
+        var h = Math.floor(rnd(0,360));
+        var rule = harmonySel.value;
+        var set = [];
+        if(rule === 'complementary'){
+          set = [[h,rnd(55,80),rnd(40,60)],[h,rnd(55,80),rnd(65,80)],[(h+180)%360,rnd(55,80),rnd(40,60)],[(h+180)%360,rnd(55,80),rnd(65,80)],[h,rnd(40,60),rnd(25,35)]];
+        } else if(rule === 'analogous'){
+          set = [[(h+330)%360,rnd(55,80),rnd(45,60)],[(h+345)%360,rnd(55,80),rnd(45,60)],[h,rnd(60,85),rnd(45,60)],[(h+15)%360,rnd(55,80),rnd(45,60)],[(h+30)%360,rnd(55,80),rnd(45,60)]];
+        } else if(rule === 'triadic'){
+          set = [[h,rnd(55,80),rnd(45,60)],[(h+120)%360,rnd(55,80),rnd(45,60)],[(h+240)%360,rnd(55,80),rnd(45,60)],[h,rnd(50,70),rnd(70,82)],[(h+120)%360,rnd(50,70),rnd(28,38)]];
+        } else if(rule === 'monochromatic'){
+          set = [[h,rnd(45,65),78],[h,rnd(45,65),64],[h,rnd(50,70),50],[h,rnd(50,70),38],[h,rnd(50,70),26]];
+        } else {
+          for(var i=0;i<5;i++) set.push([Math.floor(rnd(0,360)), Math.floor(rnd(55,85)), Math.floor(rnd(42,66))]);
+        }
+        return set;
+      }
+      function generate(){
+        var set = makeSet();
+        if(colors.length !== 5){ colors = set.map(function(c){ return {h:c[0],s:c[1],l:c[2],locked:false}; }); }
+        else {
+          for(var i=0;i<5;i++){ if(!colors[i].locked){ colors[i].h=set[i][0]; colors[i].s=set[i][1]; colors[i].l=set[i][2]; } }
+        }
+        render();
+      }
+      function showToast(msg){
+        toast.textContent = msg; toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function(){ toast.classList.remove('show'); }, 1400);
+      }
+      function copyText(t, msg){
+        function done(){ showToast(msg || ('Copied ' + t)); }
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(t).then(done, function(){ fallback(); });
+        } else fallback();
+        function fallback(){
+          var ta = document.createElement('textarea'); ta.value = t;
+          document.body.appendChild(ta); ta.select();
+          try{ document.execCommand('copy'); }catch(e){}
+          ta.remove(); done();
+        }
+      }
+      function render(){
+        swatchesEl.innerHTML = ''; rowsEl.innerHTML = '';
+        colors.forEach(function(c, i){
+          var f = fmt(c.h, c.s, c.l);
+          var sw = document.createElement('div');
+          sw.className = 'swatch'; sw.style.background = f.hex;
+          sw.title = 'Click to copy ' + f.hex;
+          var lock = document.createElement('button');
+          lock.className = 'lock'; lock.type = 'button';
+          lock.setAttribute('aria-pressed', c.locked ? 'true' : 'false');
+          lock.setAttribute('aria-label', (c.locked ? 'Unlock' : 'Lock') + ' color ' + f.hex);
+          lock.innerHTML = c.locked
+            ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>'
+            : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 7.5-2"/></svg>';
+          lock.addEventListener('click', function(e){ e.stopPropagation(); c.locked = !c.locked; render(); });
+          var hexLabel = document.createElement('span'); hexLabel.className = 'hex'; hexLabel.textContent = f.hex;
+          sw.appendChild(lock); sw.appendChild(hexLabel);
+          sw.addEventListener('click', function(){ copyText(f.hex); });
+          swatchesEl.appendChild(sw);
+          var row = document.createElement('div'); row.className = 'color-row';
+          var dot = document.createElement('span'); dot.className = 'dot'; dot.style.background = f.hex;
+          row.appendChild(dot);
+          [['hex',f.hex],['rgb',f.rgb],['hsl',f.hsl]].forEach(function(pair){
+            var b = document.createElement('button'); b.type='button'; b.className='code'; b.textContent = pair[1];
+            b.title = 'Copy ' + pair[0].toUpperCase();
+            b.addEventListener('click', function(){ copyText(pair[1]); });
+            row.appendChild(b);
+          });
+          rowsEl.appendChild(row);
+        });
+      }
+      document.getElementById('pal-generate').addEventListener('click', generate);
+      document.getElementById('pal-copy-all').addEventListener('click', function(){
+        copyText(colors.map(function(c){ return fmt(c.h,c.s,c.l).hex; }).join(', '), 'Copied all 5 HEX codes');
+      });
+      document.addEventListener('keydown', function(e){
+        if(e.code === 'Space' && !/INPUT|TEXTAREA|SELECT|BUTTON/.test(document.activeElement.tagName)){
+          e.preventDefault(); generate();
+        }
+      });
+      document.getElementById('pal-file').addEventListener('change', function(e){
+        var file = e.target.files[0]; if(!file) return;
+        var reader = new FileReader();
+        reader.onload = function(){
+          var im = new Image();
+          im.onload = function(){
+            var c = document.createElement('canvas');
+            var s = Math.min(1, 120/Math.max(im.naturalWidth, im.naturalHeight));
+            c.width = Math.max(1, Math.round(im.naturalWidth*s));
+            c.height = Math.max(1, Math.round(im.naturalHeight*s));
+            var x = c.getContext('2d');
+            x.drawImage(im, 0, 0, c.width, c.height);
+            var d = x.getImageData(0, 0, c.width, c.height).data;
+            var buckets = {};
+            for(var i=0;i<d.length;i+=16){
+              var r = d[i]>>5, g = d[i+1]>>5, b = d[i+2]>>5;
+              var key = r+','+g+','+b;
+              buckets[key] = (buckets[key]||0)+1;
+            }
+            var sorted = Object.keys(buckets).sort(function(a,b){ return buckets[b]-buckets[a]; });
+            var picked = [];
+            sorted.forEach(function(key){
+              if(picked.length >= 5) return;
+              var parts = key.split(',').map(Number);
+              var rr = parts[0]*32+16, gg = parts[1]*32+16, bb = parts[2]*32+16;
+              var ok = picked.every(function(p){
+                var dr=p.r-rr, dg=p.g-gg, db=p.b-bb;
+                return Math.sqrt(dr*dr+dg*dg+db*db) > 60;
+              });
+              if(ok) picked.push({r:rr,g:gg,b:bb});
+            });
+            function rgbToHsl(r,g,b){
+              r/=255; g/=255; b/=255;
+              var mx=Math.max(r,g,b), mn=Math.min(r,g,b), hh=0, ss=0, ll=(mx+mn)/2;
+              if(mx!==mn){ var dlt=mx-mn; ss=ll>0.5?dlt/(2-mx-mn):dlt/(mx+mn);
+                if(mx===r) hh=(g-b)/dlt+(g<b?6:0); else if(mx===g) hh=(b-r)/dlt+2; else hh=(r-g)/dlt+4; hh*=60; }
+              return [Math.round(hh), Math.round(ss*100), Math.round(ll*100)];
+            }
+            if(picked.length){
+              colors = picked.map(function(p){ var hsl=rgbToHsl(p.r,p.g,p.b); return {h:hsl[0],s:Math.max(hsl[1],25),l:Math.min(Math.max(hsl[2],20),85),locked:false}; });
+              render(); showToast('Palette extracted from image');
+            }
+          };
+          im.src = reader.result;
+        };
+        reader.readAsDataURL(file);
+        e.target.value = '';
+      });
+      function luminance(hex){
+        var c = hexToRgb(hex);
+        function ch(v){ v/=255; return v<=0.03928 ? v/12.92 : Math.pow((v+0.055)/1.055, 2.4); }
+        return 0.2126*ch(c.r) + 0.7152*ch(c.g) + 0.0722*ch(c.b);
+      }
+      function checkContrast(){
+        var fg = document.getElementById('cc-fg').value;
+        var bg = document.getElementById('cc-bg').value;
+        var l1 = luminance(fg), l2 = luminance(bg);
+        var ratio = (Math.max(l1,l2)+0.05)/(Math.min(l1,l2)+0.05);
+        var r = (Math.round(ratio*100)/100).toFixed(2);
+        var el = document.getElementById('cc-result');
+        function mark(ok){ return ok ? '<span class="pass">Pass</span>' : '<span class="fail">Fail</span>'; }
+        el.innerHTML = 'Contrast ratio: <strong>' + r + ':1</strong> &nbsp;|&nbsp; Normal text (AA 4.5): ' + mark(ratio>=4.5) +
+          ' &nbsp;|&nbsp; Large text (AA 3): ' + mark(ratio>=3) + ' &nbsp;|&nbsp; AAA (7): ' + mark(ratio>=7);
+      }
+      document.getElementById('cc-fg').addEventListener('input', checkContrast);
+      document.getElementById('cc-bg').addEventListener('input', checkContrast);
+      generate(); checkContrast();
+    })();
+    </script>
+</body>
+</html>

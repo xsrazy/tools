@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Business Name Generator - Creative Business Name Ideas Instantly | Micro Tools Hub</title>
+    <meta name="keywords" content="business name generator, company name ideas, brand name generator, startup name ideas, free business name generator" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Free business name generator: type a keyword, pick an industry and get instant brand name ideas built from curated prefix and suffix lists. Click any name to copy it. Runs entirely in your browser." />
+    <link rel="canonical" href="https://tools.xsrazy.web.id/business-name-generator.html" />
+    <meta property="og:title" content="Business Name Generator - Creative Business Name Ideas Instantly" />
+    <meta property="og:description" content="Instant business name ideas from your keyword. Pick an industry, click to copy. Free, no sign-up." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Micro Tools Hub" />
+    <meta property="og:image:alt" content="Business Name Generator - Creative Business Name Ideas Instantly - free online tool" />
+    <meta property="og:url" content="https://tools.xsrazy.web.id/business-name-generator.html" />
+    <meta property="og:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Business Name Generator - Creative Business Name Ideas Instantly" />
+    <meta name="twitter:description" content="Instant business name ideas from your keyword. Pick an industry, click to copy. Free, no sign-up." />
+    <meta name="twitter:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta name="theme-color" content="#0B1220" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="/assets/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=26" />
+    <style>
+      .name-results { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-bottom: 14px; }
+      .name-item { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 10px; text-align: center; font-weight: 700; font-size: .95rem; cursor: pointer; transition: transform .12s ease, border-color .12s ease; user-select: none; }
+      .name-item:hover { transform: translateY(-2px); border-color: #7C3AED; }
+      .name-empty { color: var(--muted); padding: 26px 10px; text-align: center; border: 1px dashed var(--line); border-radius: 12px; grid-column: 1 / -1; }
+
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"How does the business name generator work?","acceptedAnswer":{"@type":"Answer","text":"It combines your keyword with curated prefix and suffix lists for the industry you pick, in three patterns: prefix plus keyword, keyword plus suffix, and all three together. Each run shuffles a fresh set."}},
+        {"@type":"Question","name":"Are the generated names trademark-safe?","acceptedAnswer":{"@type":"Answer","text":"No. Generated names are starting points, not legal clearance. Always search your trademark office database and check domain availability before using a name commercially."}},
+        {"@type":"Question","name":"Can I use these names for my company?","acceptedAnswer":{"@type":"Answer","text":"Yes, the ideas are free to use, but a name being generated here does not mean it is available. Do your own availability and trademark checks first."}},
+        {"@type":"Question","name":"Why do some names repeat between runs?","acceptedAnswer":{"@type":"Answer","text":"The prefix and suffix lists are finite, so with a short keyword the best combinations can reappear. Try a different keyword or industry for a wider spread."}},
+        {"@type":"Question","name":"Is my keyword uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Everything is generated in your browser with JavaScript. Your keyword never leaves your device."}}
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Business names",
+      "url": "https://tools.xsrazy.web.id/business-name-generator.html",
+      "description": "Business name ideas by industry.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+</head>
+<body>
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="index.html" aria-label="Micro Tools Hub home">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+          <span class="brand-word">Micro <em>Tools</em></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="navLinks" aria-label="Site">
+          <a class="nav-link" href="word-counter.html">Word Counter</a>
+          <a class="nav-link" href="password-generator.html">Password Generator</a>
+          <a class="nav-link" href="unit-converter.html">Unit Converter</a>
+          <a class="nav-link" href="timezone-converter.html">Time Zone</a>
+          <a class="nav-link" href="case-converter.html">Case Converter</a>
+          <a class="btn btn-primary btn-sm" href="index.html#tools">Browse tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ADSENSE SLOT 1 of 3 (header leaderboard): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+    <div class="ad-slot" data-ad-slot="header">Advertisement</div>
+
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="index.html#business-tools">Business</a> &nbsp;/&nbsp; Business Name Generator</nav>
+      <header class="page-head">
+        <h1>Business Name Generator</h1>
+        <p>Enter a <strong>keyword</strong>, pick an <strong>industry</strong>, and get instant <strong>business name ideas</strong>. Click any name to copy it.</p>
+      </header>
+
+      <main>
+        <div class="tool-grid">
+          <div class="card panel">
+
+            <h2>Name settings</h2>
+            <p class="sub">One keyword is enough. The industry tunes the style.</p>
+            <div class="field">
+              <label for="bng-keyword">Keyword</label>
+              <input type="text" id="bng-keyword" placeholder="coffee, fit, bloom..." autocomplete="off" />
+              <div class="hint">Use the core word of what you sell or do.</div>
+            </div>
+            <div class="field">
+              <label for="bng-industry">Industry</label>
+              <select id="bng-industry">
+                <option value="tech">Tech</option>
+                <option value="food">Food &amp; Drink</option>
+                <option value="fashion">Fashion</option>
+                <option value="fitness">Fitness</option>
+                <option value="finance">Finance</option>
+                <option value="creative">Creative</option>
+                <option value="health">Health &amp; Wellness</option>
+                <option value="travel">Travel</option>
+                <option value="realestate">Real Estate</option>
+                <option value="consulting">Consulting</option>
+                <option value="general">General</option>
+              </select>
+            </div>
+            <div class="btn-row">
+              <button class="btn btn-primary btn-lg" id="bng-generate" type="button">Generate names</button>
+            </div>
+            <div class="hint" id="bng-status" role="status"></div>
+
+          </div>
+
+          <div class="card result-card">
+
+            <div class="result-label">Name ideas</div>
+            <div class="name-results" id="bng-results">
+              <div class="name-empty">Your ideas will appear here. Click any name to copy it.</div>
+            </div>
+            <div class="callout info"><strong>Tip:</strong> short names are easier to remember and to turn into a domain. Check domain and trademark availability before you commit to a name.</div>
+
+          </div>
+        </div>
+      </main>
+
+      <!-- ADSENSE SLOT 2 of 3 (in-article): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="in-article">Advertisement</div>
+
+      <section class="explainer">
+
+        <div class="card">
+          <h3>How the names are built</h3>
+          <p>Each industry has curated <strong>prefix</strong> and <strong>suffix</strong> lists. The generator combines them with your keyword in three patterns: prefix + keyword, keyword + suffix, and prefix + keyword + suffix. Duplicates are removed and you get a fresh shuffled set every time.</p>
+        </div>
+        <div class="card">
+          <h3>Picking a winner</h3>
+          <ul>
+            <li>Say it out loud: if you have to spell it twice, drop it.</li>
+            <li>Shorter is better for domains, logos and social handles.</li>
+            <li>Avoid names that box you into one product if you plan to expand.</li>
+            <li>Always check the .com and your local trademark database before launch.</li>
+          </ul>
+        </div>
+
+      </section>
+
+      <section class="related">
+        <h2>Related tools</h2>
+        <div class="related-grid">
+          <a href="invoice/index.html"><span class="t">Invoice generator</span><span class="d">Full invoices with taxes, discounts and line items.</span></a>
+          <a href="qr/index.html"><span class="t">QR code generator</span><span class="d">QR codes for links, WiFi, vCards and more.</span></a>
+          <a href="email-signature-generator.html"><span class="t">Email signature generator</span><span class="d">A professional email signature for your new brand.</span></a>
+        </div>
+      </section>
+
+      <section class="faq faq-narrow">
+        <h2>Business Name Generator FAQs</h2>
+        <details>
+          <summary>How does the business name generator work?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">It combines your keyword with curated prefix and suffix lists for the industry you pick, in three patterns: prefix plus keyword, keyword plus suffix, and all three together. Each run shuffles a fresh set.</div>
+        </details>
+        <details>
+          <summary>Are the generated names trademark-safe?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">No. Generated names are starting points, not legal clearance. Always search your trademark office database and check domain availability before using a name commercially.</div>
+        </details>
+        <details>
+          <summary>Can I use these names for my company?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Yes, the ideas are free to use, but a name being generated here does not mean it is available. Do your own availability and trademark checks first.</div>
+        </details>
+        <details>
+          <summary>Why do some names repeat between runs?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">The prefix and suffix lists are finite, so with a short keyword the best combinations can reappear. Try a different keyword or industry for a wider spread.</div>
+        </details>
+        <details>
+          <summary>Is my keyword uploaded anywhere?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">No. Everything is generated in your browser with JavaScript. Your keyword never leaves your device.</div>
+        </details>
+      </section>
+
+      <!-- ADSENSE SLOT 3 of 3 (above footer): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="above-footer">Advertisement</div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="f-brand">
+          <a class="brand brand-light" href="https://tools.xsrazy.web.id/" aria-label="Micro Tools Hub home">
+            <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+            <span class="brand-word">Micro <em>Tools</em></span>
+          </a>
+          <p>Free online tools with instant results, right in your browser.</p>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#text-tools">Text tools</a>
+          <nav aria-label="Popular text tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/word-counter.html">Word Counter</a>
+            <a href="https://tools.xsrazy.web.id/case-converter.html">Case Converter</a>
+            <a href="https://tools.xsrazy.web.id/character-counter.html">Character Counter</a>
+            <a href="https://tools.xsrazy.web.id/word-frequency-counter.html">Word Frequency</a>
+            <a href="https://tools.xsrazy.web.id/text-reverser.html">Text Reverser</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#generators">Generators</a>
+          <nav aria-label="Popular generators" class="flist">
+            <a href="https://tools.xsrazy.web.id/password-generator.html">Password Generator</a>
+            <a href="https://tools.xsrazy.web.id/qr/">QR Code Generator</a>
+            <a href="https://tools.xsrazy.web.id/meme-generator.html">Meme Generator</a>
+            <a href="https://tools.xsrazy.web.id/uuid-v1-generator.html">UUID Generator</a>
+            <a href="https://tools.xsrazy.web.id/fake-name-generator.html">Fake Name Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#converters">Converters</a>
+          <nav aria-label="Popular converters" class="flist">
+            <a href="https://tools.xsrazy.web.id/unit-converter.html">Unit Converter</a>
+            <a href="https://tools.xsrazy.web.id/currency-converter.html">Currency Converter</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/color-converter.html">Color Converter</a>
+            <a href="https://tools.xsrazy.web.id/number-base-converter.html">Number Base Converter</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#image-tools">Image tools</a>
+          <nav aria-label="Popular image tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/image-compressor.html">Image Compressor</a>
+            <a href="https://tools.xsrazy.web.id/image-resizer.html">Image Resizer</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/favicon-generator.html">Favicon Generator</a>
+            <a href="https://tools.xsrazy.web.id/image-cropper.html">Image Cropper</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#calculators">Calculators</a>
+          <nav aria-label="Popular calculators" class="flist">
+            <a href="https://tools.xsrazy.web.id/bmi-calculator.html">BMI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/mortgage-calculator.html">Mortgage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/percentage-toolkit.html">Percentage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/loan-calculator.html">Loan Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/age-calculator.html">Age Calculator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#business-tools">Business</a>
+          <nav aria-label="Popular business tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/invoice/">Invoice Generator</a>
+            <a href="https://tools.xsrazy.web.id/business-name-generator.html">Business Name Generator</a>
+            <a href="https://tools.xsrazy.web.id/roi-calculator.html">ROI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/salary-converter.html">Salary Converter</a>
+            <a href="https://tools.xsrazy.web.id/business-plan-generator.html">Business Plan Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#downloaders">Downloaders</a>
+          <nav aria-label="Popular downloaders" class="flist">
+            <a href="https://tools.xsrazy.web.id/tiktok-video-downloader.html">TikTok Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/twitter-video-downloader.html">Twitter Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/youtube-thumbnail-downloader.html">YouTube Thumbnail Downloader</a>
+            <a href="https://tools.xsrazy.web.id/pinterest-downloader.html">Pinterest Downloader</a>
+            <a href="https://tools.xsrazy.web.id/reddit-downloader.html">Reddit Downloader</a>
+          </nav>
+        </div>
+        <div class="fcol f-company">
+          <span class="fhead-link fhead-static">Company</span>
+          <nav aria-label="Company" class="flist-static">
+            <a href="https://tools.xsrazy.web.id/">Home</a>
+            <a href="https://tools.xsrazy.web.id/about.html">About</a>
+            <a href="https://tools.xsrazy.web.id/contact.html">Contact</a>
+            <a href="https://tools.xsrazy.web.id/privacy-policy.html">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 Micro Tools Hub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="site.js"></script>
+    <script src="animations.js"></script>
+    <script>
+(function () {
+  function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  var PRE = {
+    tech: ['Quantum', 'Nex', 'Hyper', 'Cloud', 'Data', 'Pixel', 'Cyber', 'Nova', 'Syn', 'Digi'],
+    food: ['Tasty', 'Golden', 'Fresh', 'Sizzling', 'Savory', 'Crispy', 'Hearty', 'Spiced', 'Zesty', 'Rustic'],
+    fashion: ['Luxe', 'Chic', 'Velvet', 'Glam', 'Atelier', 'Moda', 'Vogue', 'Allure', 'Opal', 'Noir'],
+    fitness: ['Peak', 'Iron', 'Pulse', 'Apex', 'Vital', 'Forge', 'Titan', 'Sprint', 'Primal', 'Zenith'],
+    finance: ['Prime', 'Vault', 'Capital', 'Prosper', 'Ledger', 'Wealth', 'Summit', 'True', 'Bold', 'North'],
+    creative: ['Bright', 'Muse', 'Canvas', 'Craft', 'Ink', 'Story', 'Lumen', 'Wander', 'Fable', 'Onyx'],
+    health: ['Vital', 'Pure', 'Nurture', 'Balance', 'Bloom', 'Serene', 'Thrive', 'Calma', 'Verde', 'Aura'],
+    travel: ['Wander', 'Voyage', 'Roam', 'Atlas', 'Trail', 'Compass', 'Drift', 'Horizon', 'Nomad', 'Terra'],
+    realestate: ['Haven', 'Keystone', 'Summit', 'Beacon', 'Terra', 'Landmark', 'Nest', 'Harbor', 'Stone', 'Vista'],
+    consulting: ['Strata', 'Clarity', 'Beacon', 'Catalyst', 'North', 'Apex', 'Vision', 'Meridian', 'Axiom', 'Cobalt'],
+    general: ['Bright', 'Prime', 'True', 'Nova', 'Bold', 'Ever', 'Blue', 'Golden', 'Silver', 'Swift']
+  };
+  var SUF = {
+    tech: ['labs', 'ly', 'ify', 'hub', 'ware', 'stack', 'base', 'flow', 'OS', 'AI'],
+    food: ['Bites', 'Kitchen', 'Table', 'House', 'Eats', 'Corner', 'Oven', 'Plate', 'Co.', 'Lab'],
+    fashion: ['Co.', 'Atelier', 'House', 'Label', 'Studio', 'Maison', 'Boutique', 'Line', 'Club', 'NYC'],
+    fitness: ['Fit', 'Lab', 'Club', 'Co.', 'House', 'Method', 'Crew', 'Squad', 'Zone', 'Works'],
+    finance: ['Capital', 'Partners', 'Group', 'Advisors', 'Wealth', 'Co.', 'Fund', 'Trust', 'Pay', 'Mint'],
+    creative: ['Studio', 'Works', 'Lab', 'Co.', 'Collective', 'House', 'Supply', 'Club', 'Dept.', ' Bureau'],
+    health: ['Well', 'Lab', 'Co.', 'House', 'Care', 'Club', 'Studio', 'Roots', 'Spa', 'Life'],
+    travel: ['Go', 'Trips', 'Tours', 'Co.', 'Club', 'Away', 'Routes', 'Escape', 'Air', 'Ways'],
+    realestate: ['Homes', 'Properties', 'Realty', 'Estates', 'Group', 'Co.', 'Living', 'Spaces', 'Point', 'Key'],
+    consulting: ['Partners', 'Group', 'Advisors', 'Co.', 'Collective', 'Labs', 'Works', 'Strategies', 'Edge', 'Point'],
+    general: ['Co.', 'Labs', 'Studio', 'Hub', 'Works', 'ly', 'ify', 'Club', 'House', 'Supply']
+  };
+  function cap(s) { s = String(s); return s.charAt(0).toUpperCase() + s.slice(1); }
+  function shuffle(a) {
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+  var kwEl = document.getElementById('bng-keyword');
+  var indEl = document.getElementById('bng-industry');
+  var box = document.getElementById('bng-results');
+  var status = document.getElementById('bng-status');
+  var btn = document.getElementById('bng-generate');
+  if (!kwEl || !box || !btn) return;
+  function say(m) { if (status) status.textContent = m; }
+  function generate() {
+    var kw = kwEl.value.trim().replace(/\s+/g, ' ');
+    if (!kw) { say('Type a keyword first, for example coffee or fit.'); kwEl.focus(); return; }
+    var ind = indEl ? indEl.value : 'general';
+    var pres = shuffle((PRE[ind] || PRE.general).slice());
+    var sufs = shuffle((SUF[ind] || SUF.general).slice());
+    var K = cap(kw.toLowerCase());
+    var seen = {}, names = [];
+    function add(n) { n = String(n).replace(/\s+/g, ' ').trim(); if (n && !seen[n]) { seen[n] = 1; names.push(n); } }
+    pres.slice(0, 6).forEach(function (p) { add(p + K); });
+    sufs.slice(0, 6).forEach(function (s) { add(K + (/^[a-z]/.test(s) ? s : ' ' + s.trim())); });
+    for (var i = 0; i < 3 && i < pres.length && i < sufs.length; i++) {
+      var s = sufs[i];
+      add(pres[i] + K + (/^[a-z]/.test(s) ? s : ''));
+    }
+    names = names.slice(0, 15);
+    box.innerHTML = names.map(function (n) { return '<div class="name-item" data-name="' + esc(n) + '" role="button" tabindex="0">' + esc(n) + '</div>'; }).join('');
+    say(names.length + ' ideas generated. Click any name to copy it, or hit Generate again for more.');
+  }
+  box.addEventListener('click', function (e) {
+    var item = e.target.closest ? e.target.closest('.name-item') : null;
+    if (!item) return;
+    var name = item.getAttribute('data-name') || item.textContent;
+    function done() { say('Copied: ' + name); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(name).then(done, function () { say('Copy failed. Select the name manually.'); });
+    } else { say('Copy is not supported in this browser. Select the name manually.'); }
+  });
+  box.addEventListener('keydown', function (e) {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.classList && e.target.classList.contains('name-item')) {
+      e.preventDefault(); e.target.click();
+    }
+  });
+  btn.addEventListener('click', generate);
+  kwEl.addEventListener('keydown', function (e) { if (e.key === 'Enter') generate(); });
+})();
+    </script>
+</body>
+</html>

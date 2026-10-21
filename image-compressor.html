@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Image Compressor - Reduce Image Size Online | Micro Tools Hub</title>
+    <meta name="keywords" content="image compressor, compress image, reduce image size, compress jpg, compress png, compress webp, compress image to 100kb" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Free image compressor: reduce JPG, PNG and WebP file size with a quality slider, or compress to an exact target size like 100KB. 100% in your browser, nothing uploaded." />
+    <link rel="canonical" href="https://tools.xsrazy.web.id/image-compressor.html" />
+    <meta property="og:title" content="Image Compressor: Reduce Image Size Online" />
+    <meta property="og:description" content="Shrink JPG, PNG and WebP files, or hit an exact target size. Free, no sign-up, private by design." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Micro Tools Hub" />
+    <meta property="og:image:alt" content="Image Compressor: Reduce Image Size Online - free online tool" />
+    <meta property="og:url" content="https://tools.xsrazy.web.id/image-compressor.html" />
+    <meta property="og:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Image Compressor: Reduce Image Size Online" />
+    <meta name="twitter:description" content="Compress images to an exact target size, right in your browser. Free, no sign-up." />
+    <meta name="twitter:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta name="theme-color" content="#0B1220" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="/assets/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=26" />
+    <style>
+      .dropzone { border: 2px dashed var(--line); border-radius: 14px; padding: 34px 20px; text-align: center; cursor: pointer; transition: border-color .15s, background .15s; }
+      .dropzone:hover, .dropzone.drag { border-color: var(--accent); background: rgba(124, 58, 237, .06); }
+      .dropzone input { display: none; }
+      .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px; }
+      @media (max-width: 640px) { .compare { grid-template-columns: 1fr; } }
+      .compare figure { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+      .compare img { width: 100%; height: 220px; object-fit: contain; display: block; background: repeating-conic-gradient(#1e293b 0 25%, #0f172a 0 50%) 0 0 / 24px 24px; }
+      .compare img:not([src]) { visibility: hidden; }
+      .compare figcaption { padding: 10px 14px; font-size: .85rem; font-weight: 700; display: flex; justify-content: space-between; gap: 8px; }
+      .mode-tabs { display: flex; gap: 8px; margin: 14px 0; }
+      .mode-tab { flex: 1; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 12px; padding: 10px 8px; font-weight: 700; font-size: .9rem; cursor: pointer; }
+      .mode-tab.active { border-color: var(--accent); background: rgba(124, 58, 237, .1); }
+      .save-bar { height: 10px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); overflow: hidden; margin-top: 10px; }
+      .save-bar i { display: block; height: 100%; background: linear-gradient(90deg, #8B5CF6, #6D28D9); border-radius: 999px; transition: width .3s; }
+      .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 4px; }
+      .num-input { width: 110px; border: 1.5px solid var(--line); border-radius: 10px; padding: 9px 12px; background: var(--surface); color: var(--ink); font-weight: 700; }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"How does the target size mode work?","acceptedAnswer":{"@type":"Answer","text":"Pick a target like 100KB and the tool tries different quality levels, narrowing down until it finds the highest quality that fits under your target. It runs entirely in your browser."}},
+        {"@type":"Question","name":"Will compressing change my image dimensions?","acceptedAnswer":{"@type":"Answer","text":"No. Compression only reduces the quality level, never the width or height. Your 4000x3000 photo stays 4000x3000, just with a smaller file."}},
+        {"@type":"Question","name":"Is my photo uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. The image is drawn to a canvas and re-encoded locally in your browser. Your photo never leaves your device."}},
+        {"@type":"Question","name":"Which output format should I choose?","acceptedAnswer":{"@type":"Answer","text":"JPEG is best for photos, WebP usually gives the smallest files for the same quality, and PNG is best for graphics with sharp edges or transparency but compresses very little."}},
+        {"@type":"Question","name":"Why does my PNG barely get smaller?","acceptedAnswer":{"@type":"Answer","text":"PNG is a lossless format, so the quality slider does almost nothing for it. For big savings, convert the PNG to JPEG or WebP instead."}}
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Image compressor",
+      "url": "https://tools.xsrazy.web.id/image-compressor.html",
+      "description": "Shrink images to a target size or quality. Compress to exact KB.",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+</head>
+<body>
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="index.html" aria-label="Micro Tools Hub home">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+          <span class="brand-word">Micro <em>Tools</em></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="navLinks" aria-label="Site">
+          <a class="nav-link" href="word-counter.html">Word Counter</a>
+          <a class="nav-link" href="password-generator.html">Password Generator</a>
+          <a class="nav-link" href="unit-converter.html">Unit Converter</a>
+          <a class="nav-link" href="timezone-converter.html">Time Zone</a>
+          <a class="nav-link" href="case-converter.html">Case Converter</a>
+          <a class="btn btn-primary btn-sm" href="index.html#tools">Browse tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ADSENSE SLOT 1 of 3 (header leaderboard): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+    <div class="ad-slot" data-ad-slot="header">Advertisement</div>
+
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="index.html#converters">Converters</a> &nbsp;/&nbsp; Image compressor</nav>
+      <header class="page-head">
+        <h1>Image compressor</h1>
+        <p>Shrink <strong>JPG, PNG and WebP</strong> photos with a quality slider, or hit an <strong>exact target size</strong> like 100KB.</p>
+      </header>
+
+      <main>
+        <div class="tool-grid">
+          <div class="card panel">
+            <h2>Your image</h2>
+            <p class="sub">Drop a file or click to browse. Never uploaded.</p>
+            <div class="dropzone" id="ic-drop" role="button" tabindex="0" aria-label="Choose an image file">
+              <input type="file" id="ic-file" accept="image/jpeg,image/png,image/webp" />
+              <div style="font-weight:800;font-size:1.02rem">Drop an image here</div>
+              <div class="hint">or click to browse. JPG, PNG or WebP.</div>
+            </div>
+
+            <div class="mode-tabs" role="tablist" aria-label="Compression mode">
+              <button class="mode-tab active" id="ic-mode-q" role="tab" aria-selected="true">Quality slider</button>
+              <button class="mode-tab" id="ic-mode-t" role="tab" aria-selected="false">Target size</button>
+            </div>
+
+            <div id="ic-qpanel">
+              <div class="field">
+                <label for="ic-quality">Quality: <span id="ic-qval">80</span>%</label>
+                <input type="range" id="ic-quality" min="1" max="100" value="80" />
+              </div>
+            </div>
+            <div id="ic-tpanel" style="display:none">
+              <div class="field">
+                <label for="ic-target">Target size (KB)</label>
+                <div><input class="num-input" type="number" id="ic-target" min="5" max="20000" value="100" /> <span class="hint" style="display:inline">e.g. 100 for a 100KB file</span></div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="ic-format">Output format</label>
+              <select id="ic-format" style="width:100%;border:1.5px solid var(--line);border-radius:12px;padding:11px 14px;background:var(--surface);color:var(--ink);font-weight:600">
+                <option value="auto">Same as input</option>
+                <option value="image/jpeg">JPEG (photos, smallest)</option>
+                <option value="image/webp">WebP (modern, very small)</option>
+                <option value="image/png">PNG (lossless)</option>
+              </select>
+              <div class="hint">PNG is lossless: the quality slider barely changes it.</div>
+            </div>
+            <div class="btn-row">
+              <button class="btn btn-primary btn-sm" id="ic-download" disabled>Download compressed</button>
+              <button class="btn btn-sm" id="ic-reset">New image</button>
+            </div>
+          </div>
+
+          <div class="card result-card">
+            <div class="result-head">
+              <div class="result-label">Savings</div>
+              <div class="big-number"><span id="ic-savepct" data-countup>0</span>%</div>
+              <p class="result-note" id="ic-note">Choose an image to start.</p>
+            </div>
+            <div class="stats">
+              <div class="stat"><div class="k">Original</div><div class="v" id="ic-orig">-</div></div>
+              <div class="stat"><div class="k">Compressed</div><div class="v" id="ic-comp">-</div></div>
+              <div class="stat"><div class="k">Saved</div><div class="v" id="ic-saved">-</div></div>
+              <div class="stat"><div class="k">Quality used</div><div class="v" id="ic-usedq">-</div></div>
+            </div>
+            <div style="padding:0 28px">
+              <div class="save-bar"><i id="ic-bar" style="width:0%"></i></div>
+              <div class="compare">
+                <figure><img id="ic-prev-orig" alt="Original image preview" /><figcaption><span>Original</span><span id="ic-cap-orig">-</span></figcaption></figure>
+                <figure><img id="ic-prev-comp" alt="Compressed image preview" /><figcaption><span>Compressed</span><span id="ic-cap-comp">-</span></figcaption></figure>
+              </div>
+            </div>
+            <div class="callout info" style="margin:22px 28px 28px"><strong>Private by design:</strong> your photo is drawn to a canvas and re-encoded locally. There is no server, no account and no upload.</div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ADSENSE SLOT 2 of 3 (in-article): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="in-article">Advertisement</div>
+
+      <section class="explainer">
+        <div class="card">
+          <h3>How target size mode works</h3>
+          <p>Set a target like 100KB and the tool tries several quality levels, narrowing in on the highest quality that still fits under your target. It works best with JPEG or WebP output, since PNG is lossless and its size barely moves with quality.</p>
+        </div>
+        <div class="card">
+          <h3>Tips for smaller files</h3>
+          <ul>
+            <li><strong>Photos:</strong> JPEG at 70 to 80% looks nearly identical and is much smaller.</li>
+            <li><strong>WebP:</strong> usually 25 to 35% smaller than JPEG at the same quality.</li>
+            <li><strong>Dimensions stay the same:</strong> compression only changes quality, never width or height.</li>
+            <li><strong>Forms and uploads:</strong> target 100KB to 200KB to pass most file limits.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="related">
+        <h2>Related tools</h2>
+        <div class="related-grid">
+          <a href="heic-to-jpg.html"><span class="t">HEIC to JPG converter</span><span class="d">Convert iPhone HEIC photos to JPG in your browser.</span></a>
+          <a href="unit-converter.html"><span class="t">Unit converter</span><span class="d">Length, weight, temperature and more, converted instantly.</span></a>
+          <a href="qr/index.html"><span class="t">QR code generator</span><span class="d">Create custom QR codes and download them as PNG.</span></a>
+        </div>
+      </section>
+
+      <section class="faq faq-narrow">
+        <h2>Image compressor FAQs</h2>
+        <details>
+          <summary>How does the target size mode work?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Pick a target like 100KB and the tool tries different quality levels, narrowing down until it finds the highest quality that fits under your target. It runs entirely in your browser.</div>
+        </details>
+        <details>
+          <summary>Will compressing change my image dimensions?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">No. Compression only reduces the quality level, never the width or height. Your 4000x3000 photo stays 4000x3000, just with a smaller file.</div>
+        </details>
+        <details>
+          <summary>Is my photo uploaded anywhere?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">No. The image is drawn to a canvas and re-encoded locally in your browser. Your photo never leaves your device.</div>
+        </details>
+        <details>
+          <summary>Which output format should I choose?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">JPEG is best for photos, WebP usually gives the smallest files for the same quality, and PNG is best for graphics with sharp edges or transparency but compresses very little.</div>
+        </details>
+        <details>
+          <summary>Why does my PNG barely get smaller?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">PNG is a lossless format, so the quality slider does almost nothing for it. For big savings, convert the PNG to JPEG or WebP instead.</div>
+        </details>
+      </section>
+
+      <!-- ADSENSE SLOT 3 of 3 (above footer): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="above-footer">Advertisement</div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="f-brand">
+          <a class="brand brand-light" href="https://tools.xsrazy.web.id/" aria-label="Micro Tools Hub home">
+            <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+            <span class="brand-word">Micro <em>Tools</em></span>
+          </a>
+          <p>Free online tools with instant results, right in your browser.</p>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#text-tools">Text tools</a>
+          <nav aria-label="Popular text tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/word-counter.html">Word Counter</a>
+            <a href="https://tools.xsrazy.web.id/case-converter.html">Case Converter</a>
+            <a href="https://tools.xsrazy.web.id/character-counter.html">Character Counter</a>
+            <a href="https://tools.xsrazy.web.id/word-frequency-counter.html">Word Frequency</a>
+            <a href="https://tools.xsrazy.web.id/text-reverser.html">Text Reverser</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#generators">Generators</a>
+          <nav aria-label="Popular generators" class="flist">
+            <a href="https://tools.xsrazy.web.id/password-generator.html">Password Generator</a>
+            <a href="https://tools.xsrazy.web.id/qr/">QR Code Generator</a>
+            <a href="https://tools.xsrazy.web.id/meme-generator.html">Meme Generator</a>
+            <a href="https://tools.xsrazy.web.id/uuid-v1-generator.html">UUID Generator</a>
+            <a href="https://tools.xsrazy.web.id/fake-name-generator.html">Fake Name Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#converters">Converters</a>
+          <nav aria-label="Popular converters" class="flist">
+            <a href="https://tools.xsrazy.web.id/unit-converter.html">Unit Converter</a>
+            <a href="https://tools.xsrazy.web.id/currency-converter.html">Currency Converter</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/color-converter.html">Color Converter</a>
+            <a href="https://tools.xsrazy.web.id/number-base-converter.html">Number Base Converter</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#image-tools">Image tools</a>
+          <nav aria-label="Popular image tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/image-compressor.html">Image Compressor</a>
+            <a href="https://tools.xsrazy.web.id/image-resizer.html">Image Resizer</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/favicon-generator.html">Favicon Generator</a>
+            <a href="https://tools.xsrazy.web.id/image-cropper.html">Image Cropper</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#calculators">Calculators</a>
+          <nav aria-label="Popular calculators" class="flist">
+            <a href="https://tools.xsrazy.web.id/bmi-calculator.html">BMI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/mortgage-calculator.html">Mortgage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/percentage-toolkit.html">Percentage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/loan-calculator.html">Loan Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/age-calculator.html">Age Calculator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#business-tools">Business</a>
+          <nav aria-label="Popular business tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/invoice/">Invoice Generator</a>
+            <a href="https://tools.xsrazy.web.id/business-name-generator.html">Business Name Generator</a>
+            <a href="https://tools.xsrazy.web.id/roi-calculator.html">ROI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/salary-converter.html">Salary Converter</a>
+            <a href="https://tools.xsrazy.web.id/business-plan-generator.html">Business Plan Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#downloaders">Downloaders</a>
+          <nav aria-label="Popular downloaders" class="flist">
+            <a href="https://tools.xsrazy.web.id/tiktok-video-downloader.html">TikTok Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/twitter-video-downloader.html">Twitter Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/youtube-thumbnail-downloader.html">YouTube Thumbnail Downloader</a>
+            <a href="https://tools.xsrazy.web.id/pinterest-downloader.html">Pinterest Downloader</a>
+            <a href="https://tools.xsrazy.web.id/reddit-downloader.html">Reddit Downloader</a>
+          </nav>
+        </div>
+        <div class="fcol f-company">
+          <span class="fhead-link fhead-static">Company</span>
+          <nav aria-label="Company" class="flist-static">
+            <a href="https://tools.xsrazy.web.id/">Home</a>
+            <a href="https://tools.xsrazy.web.id/about.html">About</a>
+            <a href="https://tools.xsrazy.web.id/contact.html">Contact</a>
+            <a href="https://tools.xsrazy.web.id/privacy-policy.html">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 Micro Tools Hub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="site.js"></script>
+    <script src="animations.js"></script>
+    <script>
+    (function () {
+      "use strict";
+      var drop = document.getElementById("ic-drop");
+      var fileInput = document.getElementById("ic-file");
+      var qualityEl = document.getElementById("ic-quality");
+      var qVal = document.getElementById("ic-qval");
+      var formatEl = document.getElementById("ic-format");
+      var targetEl = document.getElementById("ic-target");
+      var modeQ = document.getElementById("ic-mode-q");
+      var modeT = document.getElementById("ic-mode-t");
+      var mode = "quality";
+      var state = { img: null, name: "", type: "", origBytes: 0, blob: null, url: null };
+
+      function fmtBytes(n) {
+        if (n < 1024) return n + " B";
+        if (n < 1048576) return (n / 1024).toFixed(1) + " KB";
+        return (n / 1048576).toFixed(2) + " MB";
+      }
+      function outMime() {
+        var f = formatEl.value;
+        if (f !== "auto") return f;
+        return state.type === "image/png" ? "image/png" : state.type === "image/webp" ? "image/webp" : "image/jpeg";
+      }
+      function outExt(mime) {
+        return mime === "image/png" ? "png" : mime === "image/webp" ? "webp" : "jpg";
+      }
+      function encode(mime, q) {
+        return new Promise(function (res) {
+          var c = document.createElement("canvas");
+          c.width = state.img.naturalWidth;
+          c.height = state.img.naturalHeight;
+          var ctx = c.getContext("2d");
+          if (mime === "image/jpeg") { ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, c.width, c.height); }
+          ctx.drawImage(state.img, 0, 0);
+          c.toBlob(function (b) { res(b || null); }, mime, q);
+        });
+      }
+      function setResult(blob, usedQ, note) {
+        if (state.url) URL.revokeObjectURL(state.url);
+        state.blob = blob;
+        state.url = URL.createObjectURL(blob);
+        var pct = Math.max(0, Math.round((1 - blob.size / state.origBytes) * 100));
+        document.getElementById("ic-savepct").textContent = pct;
+        document.getElementById("ic-bar").style.width = pct + "%";
+        document.getElementById("ic-orig").textContent = fmtBytes(state.origBytes);
+        document.getElementById("ic-comp").textContent = fmtBytes(blob.size);
+        document.getElementById("ic-saved").textContent = fmtBytes(state.origBytes - blob.size);
+        document.getElementById("ic-usedq").textContent = usedQ === null ? "lossless" : Math.round(usedQ * 100) + "%";
+        document.getElementById("ic-cap-orig").textContent = fmtBytes(state.origBytes);
+        document.getElementById("ic-cap-comp").textContent = fmtBytes(blob.size);
+        document.getElementById("ic-prev-comp").src = state.url;
+        document.getElementById("ic-note").textContent = note;
+        document.getElementById("ic-download").disabled = false;
+      }
+      async function compress() {
+        if (!state.img) return;
+        var mime = outMime();
+        document.getElementById("ic-note").textContent = "Compressing...";
+        function encodeFailed() {
+          document.getElementById("ic-note").textContent = "Could not encode that image. Try a different file or format.";
+        }
+        if (mode === "quality") {
+          var q = qualityEl.value / 100;
+          var blob = await encode(mime, mime === "image/png" ? undefined : q);
+          if (!blob) { encodeFailed(); return; }
+          setResult(blob, mime === "image/png" ? null : q,
+            mime === "image/png" ? "PNG is lossless, so quality changes almost nothing. Try JPEG or WebP for big savings."
+              : "Compressed at " + qualityEl.value + "% quality to " + outExt(mime).toUpperCase() + ".");
+        } else {
+          var target = Math.max(5, Math.min(20000, parseInt(targetEl.value, 10) || 100)) * 1024;
+          if (mime === "image/png") {
+            var b = await encode(mime);
+            if (!b) { encodeFailed(); return; }
+            setResult(b, null, "PNG is lossless, so a target size cannot be enforced. Switch to JPEG or WebP to hit " + fmtBytes(target) + ".");
+            return;
+          }
+          // Binary search the highest quality that fits under target
+          var lo = 0.05, hi = 1.0, best = null, bestQ = 0.05;
+          for (var i = 0; i < 9; i++) {
+            var mid = (lo + hi) / 2;
+            var bb = await encode(mime, mid);
+            if (!bb) { encodeFailed(); return; }
+            if (bb.size <= target) { best = bb; bestQ = mid; lo = mid; }
+            else { hi = mid; }
+          }
+          if (!best) { best = await encode(mime, 0.05); bestQ = 0.05; }
+          if (!best) { encodeFailed(); return; }
+          setResult(best, bestQ, best.size <= target
+            ? "Hit " + fmtBytes(best.size) + " at " + Math.round(bestQ * 100) + "% quality, under your " + fmtBytes(target) + " target."
+            : "Even the lowest quality is " + fmtBytes(best.size) + ", above your " + fmtBytes(target) + " target. Try a bigger target or WebP.");
+        }
+      }
+      function loadFile(file) {
+        if (!file || !/^image\/(jpeg|png|webp)$/.test(file.type)) {
+          document.getElementById("ic-note").textContent = "Please choose a JPG, PNG or WebP image.";
+          return;
+        }
+        var img = new Image();
+        var url = URL.createObjectURL(file);
+        img.onload = function () {
+          state.img = img; state.name = file.name.replace(/\.[^.]+$/, ""); state.type = file.type; state.origBytes = file.size;
+          document.getElementById("ic-prev-orig").src = url;
+          document.getElementById("ic-note").textContent = "Compressing...";
+          compress();
+        };
+        img.onerror = function () { document.getElementById("ic-note").textContent = "Could not read that image."; };
+        img.src = url;
+      }
+      drop.addEventListener("click", function () { fileInput.click(); });
+      drop.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") fileInput.click(); });
+      fileInput.addEventListener("change", function () { loadFile(fileInput.files[0]); });
+      ["dragover", "dragenter"].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add("drag"); }); });
+      ["dragleave", "drop"].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove("drag"); }); });
+      drop.addEventListener("drop", function (e) { loadFile(e.dataTransfer.files[0]); });
+      qualityEl.addEventListener("input", function () { qVal.textContent = qualityEl.value; });
+      qualityEl.addEventListener("change", compress);
+      formatEl.addEventListener("change", compress);
+      targetEl.addEventListener("change", compress);
+      modeQ.addEventListener("click", function () {
+        mode = "quality"; modeQ.classList.add("active"); modeT.classList.remove("active");
+        modeQ.setAttribute("aria-selected", "true"); modeT.setAttribute("aria-selected", "false");
+        document.getElementById("ic-qpanel").style.display = ""; document.getElementById("ic-tpanel").style.display = "none";
+        compress();
+      });
+      modeT.addEventListener("click", function () {
+        mode = "target"; modeT.classList.add("active"); modeQ.classList.remove("active");
+        modeT.setAttribute("aria-selected", "true"); modeQ.setAttribute("aria-selected", "false");
+        document.getElementById("ic-tpanel").style.display = ""; document.getElementById("ic-qpanel").style.display = "none";
+        compress();
+      });
+      document.getElementById("ic-download").addEventListener("click", function () {
+        if (!state.blob) return;
+        var a = document.createElement("a");
+        a.href = state.url;
+        a.download = state.name + "-compressed." + outExt(outMime());
+        document.body.appendChild(a); a.click(); a.remove();
+      });
+      document.getElementById("ic-reset").addEventListener("click", function () {
+        state = { img: null, name: "", type: "", origBytes: 0, blob: null, url: null };
+        fileInput.value = "";
+        document.getElementById("ic-download").disabled = true;
+        document.getElementById("ic-savepct").textContent = "0";
+        document.getElementById("ic-bar").style.width = "0%";
+        ["ic-orig", "ic-comp", "ic-saved"].forEach(function (id) { document.getElementById(id).textContent = "-"; });
+        document.getElementById("ic-usedq").textContent = "-";
+        document.getElementById("ic-prev-orig").removeAttribute("src");
+        document.getElementById("ic-prev-comp").removeAttribute("src");
+        document.getElementById("ic-note").textContent = "Choose an image to start.";
+      });
+    })();
+    </script>
+</body>
+</html>

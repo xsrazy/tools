@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>WebP Converter - Convert WebP to PNG or JPG Online | Micro Tools Hub</title>
+    <meta name="keywords" content="webp converter, convert webp to png, convert webp to jpg, webp to png online, webp to jpeg" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Free WebP converter: convert WebP images to PNG or JPG entirely in your browser, with a quality slider for JPG and original vs output size comparison." />
+    <link rel="canonical" href="https://tools.xsrazy.web.id/webp-converter.html" />
+    <meta property="og:title" content="WebP Converter: Convert WebP to PNG or JPG Online" />
+    <meta property="og:description" content="Convert WebP images to PNG or JPG fully in your browser. Free, no sign-up." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Micro Tools Hub" />
+    <meta property="og:image:alt" content="WebP Converter: Convert WebP to PNG or JPG Online - free online tool" />
+    <meta property="og:url" content="https://tools.xsrazy.web.id/webp-converter.html" />
+    <meta property="og:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="WebP Converter: Convert WebP to PNG or JPG Online" />
+    <meta name="twitter:description" content="Convert WebP images to PNG or JPG fully in your browser. Free, no sign-up." />
+    <meta name="twitter:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta name="theme-color" content="#0B1220" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="/assets/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=26" />
+    <style>
+      .dropzone { border: 2px dashed var(--line); border-radius: 14px; padding: 34px 20px; text-align: center; cursor: pointer; transition: border-color .15s, background .15s; }
+      .dropzone:hover, .dropzone.drag { border-color: var(--accent); background: rgba(124, 58, 237, .06); }
+      .dropzone input { display: none; }
+      .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 4px; }
+      .preview-img { max-width: 100%; border-radius: 12px; border: 1px solid var(--line); display: block; }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I convert WebP to PNG?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Drop or pick a WebP file, choose PNG as the output format, and press Convert and download. The PNG downloads automatically."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I convert WebP to JPG?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Choose JPG as the output format and set the quality slider. JPG output is usually much smaller than PNG, which is handy for sharing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does converting lose image quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PNG output is lossless: zero quality loss. JPG output loses a tiny amount depending on the quality slider, though 92% looks identical in normal viewing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are my images uploaded anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The conversion runs entirely in your browser using the canvas API. Your image never leaves your device."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I convert multiple files at once?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This tool converts one image at a time. Drop a new file to convert the next one; each conversion downloads separately."
+      }
+    }
+  ]
+}
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "WebP converter",
+      "url": "https://tools.xsrazy.web.id/webp-converter.html",
+      "description": "Convert WebP to PNG or JPG.",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+</head>
+<body>
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="index.html" aria-label="Micro Tools Hub home">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+          <span class="brand-word">Micro <em>Tools</em></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="navLinks" aria-label="Site">
+          <a class="nav-link" href="word-counter.html">Word Counter</a>
+          <a class="nav-link" href="password-generator.html">Password Generator</a>
+          <a class="nav-link" href="unit-converter.html">Unit Converter</a>
+          <a class="nav-link" href="timezone-converter.html">Time Zone</a>
+          <a class="nav-link" href="case-converter.html">Case Converter</a>
+          <a class="btn btn-primary btn-sm" href="index.html#tools">Browse tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ADSENSE SLOT 1 of 3 (header leaderboard): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+    <div class="ad-slot" data-ad-slot="header">Advertisement</div>
+
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="index.html#image-tools">Image Tools</a> &nbsp;/&nbsp; WebP converter</nav>
+      <header class="page-head">
+        <h1>WebP converter</h1>
+        <p>Convert <strong>WebP images</strong> to <strong>PNG or JPG</strong>, fully in your browser. Compare original and output file sizes.</p>
+      </header>
+
+      <main>
+        <div class="tool-grid">
+          <div class="card panel">
+            <h2>Your image</h2>
+            <p class="sub">Pick a WebP file. Conversion runs locally.</p>
+            <div class="dropzone" id="wc-drop" role="button" tabindex="0" aria-label="Choose a WebP file">
+              <input type="file" id="wc-file" accept="image/webp,.webp" />
+              <div style="font-weight:800;font-size:1.02rem">Drop a WebP image here</div>
+              <div class="hint">or click to browse</div>
+            </div>
+            <div class="field" style="margin-top:14px">
+              <label for="wc-format">Output format</label>
+              <select id="wc-format">
+                <option value="image/png" selected>PNG (lossless)</option>
+                <option value="image/jpeg">JPG (smaller)</option>
+              </select>
+            </div>
+            <div class="field" id="wc-qwrap" style="display:none">
+              <label for="wc-quality">JPG quality: <span id="wc-qval">92</span>%</label>
+              <input type="range" id="wc-quality" min="50" max="100" value="92" />
+              <div class="hint">Quality applies to JPG only. PNG is always lossless.</div>
+            </div>
+            <div id="wc-preview-wrap" style="display:none;margin-top:12px">
+              <img class="preview-img" id="wc-preview" alt="Original WebP preview" />
+              <div class="hint" id="wc-orig">Original: -</div>
+            </div>
+          </div>
+
+          <div class="card result-card">
+            <div class="result-head">
+              <div class="result-label">Output</div>
+              <div class="big-number"><span id="wc-nsize" data-countup>-</span></div>
+              <p class="result-note" id="wc-note">Pick a WebP file to start converting.</p>
+            </div>
+            <div style="padding:0 28px 28px">
+              <div class="btn-row">
+                <button class="btn btn-primary btn-lg" id="wc-convert" disabled>Convert and download</button>
+              </div>
+              <div class="stats">
+                <div class="stat"><div class="k">Original size</div><div class="v" id="wc-osize">-</div></div>
+                <div class="stat"><div class="k">Format</div><div class="v" id="wc-fmt">-</div></div>
+                <div class="stat"><div class="k">Dimensions</div><div class="v" id="wc-dims">-</div></div>
+                <div class="stat"><div class="k">Change</div><div class="v" id="wc-diff">-</div></div>
+              </div>
+              <div class="hint" id="wc-msg" style="margin-top:12px"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ADSENSE SLOT 2 of 3 (in-article): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="in-article">Advertisement</div>
+
+      <section class="explainer">
+        <div class="card">
+          <h3>Why convert WebP</h3>
+          <p>WebP is a modern format that keeps files small, but some editors, printers and older tools still cannot open it. PNG opens everywhere and keeps every pixel with zero loss, while JPG trades a little quality for much smaller files. This converter reads your WebP in the browser, draws it to a canvas, and exports it in the format you choose.</p>
+        </div>
+        <div class="card">
+          <h3>Which format should you pick</h3>
+          <ul>
+            <li><strong>PNG</strong> for screenshots, graphics with text, and anything you will edit again.</li>
+            <li><strong>JPG</strong> for photos you want to share or upload with a small file size.</li>
+            <li><strong>92% quality</strong> is the sweet spot for JPG: visibly identical to the original at normal viewing.</li>
+            <li><strong>Resolution is preserved:</strong> width and height never change, only the container.</li>
+          </ul>
+          <p>The converted file downloads automatically after conversion. Nothing is uploaded at any point.</p>
+        </div>
+      </section>
+
+      <section class="related">
+        <h2>Related tools</h2>
+        <div class="related-grid">
+          <a href="image-compressor.html"><span class="t">Image compressor</span><span class="d">Shrink JPG, PNG and WebP, or hit an exact target size.</span></a>
+          <a href="heic-to-jpg.html"><span class="t">HEIC to JPG</span><span class="d">Convert iPhone HEIC photos to JPG in your browser.</span></a>
+          <a href="base64-encoder.html"><span class="t">Base64 encoder</span><span class="d">Encode text or files to Base64 and back, instantly.</span></a>
+        </div>
+      </section>
+
+      <section class="faq faq-narrow">
+        <h2>WebP converter FAQs</h2>
+        <details>
+          <summary>How do I convert WebP to PNG?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Drop or pick a WebP file, choose PNG as the output format, and press Convert and download. The PNG downloads automatically.</div>
+        </details>
+        <details>
+          <summary>How do I convert WebP to JPG?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Choose JPG as the output format and set the quality slider. JPG output is usually much smaller than PNG, which is handy for sharing.</div>
+        </details>
+        <details>
+          <summary>Does converting lose image quality?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">PNG output is lossless: zero quality loss. JPG output loses a tiny amount depending on the quality slider, though 92% looks identical in normal viewing.</div>
+        </details>
+        <details>
+          <summary>Are my images uploaded anywhere?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">No. The conversion runs entirely in your browser using the canvas API. Your image never leaves your device.</div>
+        </details>
+        <details>
+          <summary>Can I convert multiple files at once?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">This tool converts one image at a time. Drop a new file to convert the next one; each conversion downloads separately.</div>
+        </details>
+      </section>
+
+      <!-- ADSENSE SLOT 3 of 3 (above footer): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="above-footer">Advertisement</div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="f-brand">
+          <a class="brand brand-light" href="https://tools.xsrazy.web.id/" aria-label="Micro Tools Hub home">
+            <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+            <span class="brand-word">Micro <em>Tools</em></span>
+          </a>
+          <p>Free online tools with instant results, right in your browser.</p>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#text-tools">Text tools</a>
+          <nav aria-label="Popular text tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/word-counter.html">Word Counter</a>
+            <a href="https://tools.xsrazy.web.id/case-converter.html">Case Converter</a>
+            <a href="https://tools.xsrazy.web.id/character-counter.html">Character Counter</a>
+            <a href="https://tools.xsrazy.web.id/word-frequency-counter.html">Word Frequency</a>
+            <a href="https://tools.xsrazy.web.id/text-reverser.html">Text Reverser</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#generators">Generators</a>
+          <nav aria-label="Popular generators" class="flist">
+            <a href="https://tools.xsrazy.web.id/password-generator.html">Password Generator</a>
+            <a href="https://tools.xsrazy.web.id/qr/">QR Code Generator</a>
+            <a href="https://tools.xsrazy.web.id/meme-generator.html">Meme Generator</a>
+            <a href="https://tools.xsrazy.web.id/uuid-v1-generator.html">UUID Generator</a>
+            <a href="https://tools.xsrazy.web.id/fake-name-generator.html">Fake Name Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#converters">Converters</a>
+          <nav aria-label="Popular converters" class="flist">
+            <a href="https://tools.xsrazy.web.id/unit-converter.html">Unit Converter</a>
+            <a href="https://tools.xsrazy.web.id/currency-converter.html">Currency Converter</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/color-converter.html">Color Converter</a>
+            <a href="https://tools.xsrazy.web.id/number-base-converter.html">Number Base Converter</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#image-tools">Image tools</a>
+          <nav aria-label="Popular image tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/image-compressor.html">Image Compressor</a>
+            <a href="https://tools.xsrazy.web.id/image-resizer.html">Image Resizer</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/favicon-generator.html">Favicon Generator</a>
+            <a href="https://tools.xsrazy.web.id/image-cropper.html">Image Cropper</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#calculators">Calculators</a>
+          <nav aria-label="Popular calculators" class="flist">
+            <a href="https://tools.xsrazy.web.id/bmi-calculator.html">BMI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/mortgage-calculator.html">Mortgage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/percentage-toolkit.html">Percentage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/loan-calculator.html">Loan Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/age-calculator.html">Age Calculator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#business-tools">Business</a>
+          <nav aria-label="Popular business tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/invoice/">Invoice Generator</a>
+            <a href="https://tools.xsrazy.web.id/business-name-generator.html">Business Name Generator</a>
+            <a href="https://tools.xsrazy.web.id/roi-calculator.html">ROI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/salary-converter.html">Salary Converter</a>
+            <a href="https://tools.xsrazy.web.id/business-plan-generator.html">Business Plan Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#downloaders">Downloaders</a>
+          <nav aria-label="Popular downloaders" class="flist">
+            <a href="https://tools.xsrazy.web.id/tiktok-video-downloader.html">TikTok Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/twitter-video-downloader.html">Twitter Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/youtube-thumbnail-downloader.html">YouTube Thumbnail Downloader</a>
+            <a href="https://tools.xsrazy.web.id/pinterest-downloader.html">Pinterest Downloader</a>
+            <a href="https://tools.xsrazy.web.id/reddit-downloader.html">Reddit Downloader</a>
+          </nav>
+        </div>
+        <div class="fcol f-company">
+          <span class="fhead-link fhead-static">Company</span>
+          <nav aria-label="Company" class="flist-static">
+            <a href="https://tools.xsrazy.web.id/">Home</a>
+            <a href="https://tools.xsrazy.web.id/about.html">About</a>
+            <a href="https://tools.xsrazy.web.id/contact.html">Contact</a>
+            <a href="https://tools.xsrazy.web.id/privacy-policy.html">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 Micro Tools Hub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="site.js"></script>
+    <script src="animations.js"></script>
+
+    <script>
+    (function () {
+      "use strict";
+      var drop = document.getElementById("wc-drop");
+      var fileInput = document.getElementById("wc-file");
+      var formatEl = document.getElementById("wc-format");
+      var qWrap = document.getElementById("wc-qwrap");
+      var qEl = document.getElementById("wc-quality");
+      var qVal = document.getElementById("wc-qval");
+      var previewWrap = document.getElementById("wc-preview-wrap");
+      var previewImg = document.getElementById("wc-preview");
+      var origInfo = document.getElementById("wc-orig");
+      var convertBtn = document.getElementById("wc-convert");
+      var msgEl = document.getElementById("wc-msg");
+      var file = null;
+      var imgUrl = null;
+      var imgW = 0;
+      var imgH = 0;
+      function fmtBytes(n) {
+        if (n < 1024) return n + " B";
+        if (n < 1048576) return (n / 1024).toFixed(1) + " KB";
+        return (n / 1048576).toFixed(2) + " MB";
+      }
+      function setStat(id, txt) { var el = document.getElementById(id); if (el) el.textContent = txt; }
+      function loadFile(f) {
+        if (!f) return;
+        var ok = /\.webp$/i.test(f.name) || f.type === "image/webp";
+        if (!ok) {
+          if (msgEl) msgEl.textContent = "That is not a WebP image. Please pick a .webp file.";
+          return;
+        }
+        if (imgUrl) URL.revokeObjectURL(imgUrl);
+        file = f;
+        imgUrl = URL.createObjectURL(f);
+        var img = new Image();
+        img.onload = function () {
+          imgW = img.naturalWidth;
+          imgH = img.naturalHeight;
+          if (previewImg) previewImg.src = imgUrl;
+          if (previewWrap) previewWrap.style.display = "block";
+          if (origInfo) origInfo.textContent = "Original: " + f.name + " (" + fmtBytes(f.size) + ")";
+          setStat("wc-osize", fmtBytes(f.size));
+          setStat("wc-dims", imgW + " x " + imgH);
+          setStat("wc-nsize", "-");
+          setStat("wc-diff", "-");
+          setStat("wc-fmt", "-");
+          if (convertBtn) convertBtn.disabled = false;
+          if (msgEl) msgEl.textContent = "";
+          var note = document.getElementById("wc-note");
+          if (note) note.textContent = "Ready. Choose a format and convert.";
+        };
+        img.onerror = function () {
+          if (msgEl) msgEl.textContent = "Could not read that image. Try a different WebP file.";
+        };
+        img.src = imgUrl;
+      }
+      function convert() {
+        if (!file || !imgUrl || !formatEl) return;
+        if (msgEl) msgEl.textContent = "Converting...";
+        if (convertBtn) convertBtn.disabled = true;
+        var img = new Image();
+        img.onload = function () {
+          try {
+            var canvas = document.createElement("canvas");
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0);
+            var type = formatEl.value;
+            var ext = type === "image/jpeg" ? "jpg" : "png";
+            var quality = type === "image/jpeg" ? (qEl ? qEl.value / 100 : 0.92) : undefined;
+            canvas.toBlob(function (blob) {
+              if (convertBtn) convertBtn.disabled = false;
+              if (!blob) {
+                if (msgEl) msgEl.textContent = "Conversion failed. Try a different image.";
+                return;
+              }
+              var url = URL.createObjectURL(blob);
+              var a = document.createElement("a");
+              a.href = url;
+              a.download = file.name.replace(/\.webp$/i, "") + "." + ext;
+              document.body.appendChild(a);
+              a.click();
+              a.remove();
+              setStat("wc-nsize", fmtBytes(blob.size));
+              setStat("wc-fmt", ext.toUpperCase());
+              var diff = ((blob.size - file.size) / file.size * 100).toFixed(0);
+              setStat("wc-diff", (diff >= 0 ? "+" : "") + diff + "%");
+              var note = document.getElementById("wc-note");
+              if (note) note.textContent = "Done. Your " + ext.toUpperCase() + " downloaded automatically.";
+              if (msgEl) msgEl.textContent = "";
+              setTimeout(function () { URL.revokeObjectURL(url); }, 60000);
+            }, type, quality);
+          } catch (e) {
+            if (convertBtn) convertBtn.disabled = false;
+            if (msgEl) msgEl.textContent = "Conversion failed: " + (e && e.message ? e.message : "unknown error");
+          }
+        };
+        img.onerror = function () {
+          if (convertBtn) convertBtn.disabled = false;
+          if (msgEl) msgEl.textContent = "Could not read that image.";
+        };
+        img.src = imgUrl;
+      }
+      function init() {
+        if (!drop || !fileInput || !convertBtn) return;
+        drop.addEventListener("click", function () { fileInput.click(); });
+        drop.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") fileInput.click(); });
+        fileInput.addEventListener("change", function () { loadFile(fileInput.files[0]); fileInput.value = ""; });
+        ["dragover", "dragenter"].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add("drag"); }); });
+        ["dragleave", "drop"].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove("drag"); }); });
+        drop.addEventListener("drop", function (e) { loadFile(e.dataTransfer.files[0]); });
+        formatEl.addEventListener("change", function () {
+          if (qWrap) qWrap.style.display = formatEl.value === "image/jpeg" ? "block" : "none";
+        });
+        if (qEl) qEl.addEventListener("input", function () { if (qVal) qVal.textContent = qEl.value; });
+        convertBtn.addEventListener("click", convert);
+      }
+      init();
+    })();
+    </script>
+</body>
+</html>

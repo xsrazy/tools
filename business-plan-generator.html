@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Business Plan Outline Generator - Turn Your Idea Into an Outline | Micro Tools Hub</title>
+    <meta name="keywords" content="business plan generator, business plan outline, free business plan template, startup plan outline" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Free business plan outline generator: describe your idea, market, product and revenue model, and get a structured business plan outline you can copy or print. Runs entirely in your browser." />
+    <link rel="canonical" href="https://tools.xsrazy.web.id/business-plan-generator.html" />
+    <meta property="og:title" content="Business Plan Outline Generator - Turn Your Idea Into an Outline" />
+    <meta property="og:description" content="Turn your business idea into a structured plan outline in seconds. Copy or print. Free, no sign-up." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Micro Tools Hub" />
+    <meta property="og:image:alt" content="Business Plan Outline Generator - Turn Your Idea Into an Outline - free online tool" />
+    <meta property="og:url" content="https://tools.xsrazy.web.id/business-plan-generator.html" />
+    <meta property="og:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Business Plan Outline Generator - Turn Your Idea Into an Outline" />
+    <meta name="twitter:description" content="Turn your business idea into a structured plan outline in seconds. Copy or print. Free, no sign-up." />
+    <meta name="twitter:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta name="theme-color" content="#0B1220" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="/assets/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=26" />
+    <style>
+      .doc { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 26px 26px 30px; color: var(--ink); }
+      .doc h3.doc-title { text-align: center; letter-spacing: 3px; font-size: 1.15rem; margin: 0 0 4px; }
+      .doc .doc-sub { text-align: center; color: var(--muted); font-size: .85rem; margin-bottom: 18px; }
+      .doc table.lines { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .9rem; }
+      .doc table.lines th, .doc table.lines td { padding: 8px 6px; border-bottom: 1px solid var(--line); text-align: left; }
+      .doc table.lines th { color: var(--muted); font-size: .78rem; text-transform: uppercase; letter-spacing: .5px; }
+      .doc table.lines td.r, .doc table.lines th.r { text-align: right; font-variant-numeric: tabular-nums; }
+      .doc .totals { max-width: 240px; margin-left: auto; font-size: .9rem; }
+      .doc .totals .tr { display: flex; justify-content: space-between; padding: 4px 0; font-variant-numeric: tabular-nums; }
+      .doc .totals .tr.grand { font-weight: 800; font-size: 1.05rem; border-top: 2px solid var(--ink); margin-top: 6px; padding-top: 8px; }
+      .line-rows { margin-bottom: 4px; }
+      .line-row { display: grid; grid-template-columns: 1fr 58px 92px 38px; gap: 8px; margin-bottom: 8px; }
+      .line-row input { width: 100%; padding: 10px 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--ink); font: inherit; font-size: .9rem; box-sizing: border-box; }
+      .line-row input:focus { outline: 2px solid #7C3AED; outline-offset: 1px; }
+      .btn.line-x { padding: 8px 0; width: 38px; }
+      .field input[type="text"], .field input[type="number"], .field input[type="date"], .field input[type="email"], .field select, .field textarea { width: 100%; padding: 11px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--ink); font: inherit; font-size: .95rem; box-sizing: border-box; }
+      .field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid #7C3AED; outline-offset: 1px; }
+      .field textarea { min-height: 96px; resize: vertical; }
+      .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      @media (max-width: 560px) { .field-row { grid-template-columns: 1fr; } }
+      .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+      @media print {
+        header.nav, .ad-slot, .crumbs, .page-head, .tool-grid .panel, section.explainer, section.related, section.faq, footer.footer, .no-print { display: none !important; }
+        .wrap { max-width: none; }
+        .tool-grid { display: block; }
+        .doc { border: none; }
+      }
+
+      .doc h4 { margin: 20px 0 8px; font-size: 1rem; }
+      .doc h4:first-of-type { margin-top: 14px; }
+      .doc p, .doc li { font-size: .92rem; line-height: 1.6; }
+      .doc ul { margin: 6px 0; padding-left: 20px; }
+
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"Is this a complete business plan?","acceptedAnswer":{"@type":"Answer","text":"No. It generates a structured outline from your inputs: a starting skeleton with your own facts filled in. A bank-ready plan still needs financial projections, market data and detail you add yourself."}},
+        {"@type":"Question","name":"Who is this outline for?","acceptedAnswer":{"@type":"Answer","text":"Founders validating an idea, students, and anyone who needs a clear one-page structure before writing a full plan or pitch deck."}},
+        {"@type":"Question","name":"Can I edit the generated outline?","acceptedAnswer":{"@type":"Answer","text":"Yes. Copy it into any document editor and expand each section. The outline is a starting point, not a finished document."}},
+        {"@type":"Question","name":"Do I need to create an account?","acceptedAnswer":{"@type":"Answer","text":"No. There is no account, no sign-up and no server. Everything happens in your browser."}},
+        {"@type":"Question","name":"Is my business idea uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Your inputs never leave your device. The outline is generated locally with JavaScript."}}
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Business plan",
+      "url": "https://tools.xsrazy.web.id/business-plan-generator.html",
+      "description": "Structured business plan outlines.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+</head>
+<body>
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="index.html" aria-label="Micro Tools Hub home">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+          <span class="brand-word">Micro <em>Tools</em></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="navLinks" aria-label="Site">
+          <a class="nav-link" href="word-counter.html">Word Counter</a>
+          <a class="nav-link" href="password-generator.html">Password Generator</a>
+          <a class="nav-link" href="unit-converter.html">Unit Converter</a>
+          <a class="nav-link" href="timezone-converter.html">Time Zone</a>
+          <a class="nav-link" href="case-converter.html">Case Converter</a>
+          <a class="btn btn-primary btn-sm" href="index.html#tools">Browse tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ADSENSE SLOT 1 of 3 (header leaderboard): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+    <div class="ad-slot" data-ad-slot="header">Advertisement</div>
+
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="index.html#business-tools">Business</a> &nbsp;/&nbsp; Business Plan Outline Generator</nav>
+      <header class="page-head">
+        <h1>Business Plan Outline Generator</h1>
+        <p>Describe your <strong>business idea</strong> and get a structured <strong>plan outline</strong>: executive summary, market, product, revenue, marketing and next steps.</p>
+      </header>
+
+      <main>
+        <div class="tool-grid">
+          <div class="card panel">
+
+            <h2>Your business</h2>
+            <p class="sub">A few honest sentences beat a page of buzzwords.</p>
+            <div class="field">
+              <label for="bpl-idea">Business idea</label>
+              <input type="text" id="bpl-idea" placeholder="A subscription box for rare houseplants" />
+            </div>
+            <div class="field">
+              <label for="bpl-market">Target market</label>
+              <input type="text" id="bpl-market" placeholder="Urban millennials who rent apartments" />
+            </div>
+            <div class="field">
+              <label for="bpl-product">Product / service</label>
+              <textarea id="bpl-product" placeholder="What exactly do you sell, and why is it better?"></textarea>
+            </div>
+            <div class="field">
+              <label for="bpl-model">Revenue model</label>
+              <select id="bpl-model">
+                <option>Subscription</option>
+                <option>One-time sales</option>
+                <option>Freemium</option>
+                <option>Marketplace</option>
+                <option>Advertising</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="bpl-channels">Marketing channels</label>
+              <input type="text" id="bpl-channels" placeholder="TikTok, Instagram, local markets" />
+            </div>
+            <div class="btn-row">
+              <button class="btn btn-primary btn-lg" id="bpl-generate" type="button">Generate outline</button>
+            </div>
+            <div class="hint" id="bpl-status" role="status"></div>
+
+          </div>
+
+          <div class="card result-card">
+
+            <div class="result-label">Business plan outline</div>
+            <div class="doc" id="bpl-preview">
+              <p style="color:var(--muted)">Your outline will appear here. Fill in the form and click Generate outline.</p>
+            </div>
+            <div class="btn-row">
+              <button class="btn no-print" id="bpl-copy" type="button">Copy outline</button>
+              <button class="btn btn-primary no-print" id="bpl-print" type="button">Print</button>
+            </div>
+            <div class="hint" id="bpl-copystatus" role="status"></div>
+
+          </div>
+        </div>
+      </main>
+
+      <!-- ADSENSE SLOT 2 of 3 (in-article): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="in-article">Advertisement</div>
+
+      <section class="explainer">
+
+        <div class="card">
+          <h3>Why start with an outline?</h3>
+          <p>A full business plan can wait. An <strong>outline</strong> forces you to answer the six questions that matter: what you sell, who buys it, why they pick you, how money comes in, how they find you, and what you do first. If you cannot answer those in a paragraph each, the idea is not ready.</p>
+        </div>
+        <div class="card">
+          <h3>After the outline</h3>
+          <ul>
+            <li>Turn the market section into real numbers: size, growth, competitors.</li>
+            <li>Price your product and model 12 months of cash flow.</li>
+            <li>Talk to 10 potential customers before writing another word.</li>
+            <li>Use the outline as the skeleton of a pitch deck or loan application.</li>
+          </ul>
+        </div>
+
+      </section>
+
+      <section class="related">
+        <h2>Related tools</h2>
+        <div class="related-grid">
+          <a href="invoice/index.html"><span class="t">Invoice generator</span><span class="d">Full invoices with taxes, discounts and line items.</span></a>
+          <a href="qr/index.html"><span class="t">QR code generator</span><span class="d">QR codes for links, WiFi, vCards and more.</span></a>
+          <a href="business-name-generator.html"><span class="t">Business name generator</span><span class="d">Creative business name ideas from a keyword.</span></a>
+        </div>
+      </section>
+
+      <section class="faq faq-narrow">
+        <h2>Business Plan Outline Generator FAQs</h2>
+        <details>
+          <summary>Is this a complete business plan?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">No. It generates a structured outline from your inputs: a starting skeleton with your own facts filled in. A bank-ready plan still needs financial projections, market data and detail you add yourself.</div>
+        </details>
+        <details>
+          <summary>Who is this outline for?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Founders validating an idea, students, and anyone who needs a clear one-page structure before writing a full plan or pitch deck.</div>
+        </details>
+        <details>
+          <summary>Can I edit the generated outline?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Yes. Copy it into any document editor and expand each section. The outline is a starting point, not a finished document.</div>
+        </details>
+        <details>
+          <summary>Do I need to create an account?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">No. There is no account, no sign-up and no server. Everything happens in your browser.</div>
+        </details>
+        <details>
+          <summary>Is my business idea uploaded anywhere?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">No. Your inputs never leave your device. The outline is generated locally with JavaScript.</div>
+        </details>
+      </section>
+
+      <!-- ADSENSE SLOT 3 of 3 (above footer): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="above-footer">Advertisement</div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="f-brand">
+          <a class="brand brand-light" href="https://tools.xsrazy.web.id/" aria-label="Micro Tools Hub home">
+            <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+            <span class="brand-word">Micro <em>Tools</em></span>
+          </a>
+          <p>Free online tools with instant results, right in your browser.</p>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#text-tools">Text tools</a>
+          <nav aria-label="Popular text tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/word-counter.html">Word Counter</a>
+            <a href="https://tools.xsrazy.web.id/case-converter.html">Case Converter</a>
+            <a href="https://tools.xsrazy.web.id/character-counter.html">Character Counter</a>
+            <a href="https://tools.xsrazy.web.id/word-frequency-counter.html">Word Frequency</a>
+            <a href="https://tools.xsrazy.web.id/text-reverser.html">Text Reverser</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#generators">Generators</a>
+          <nav aria-label="Popular generators" class="flist">
+            <a href="https://tools.xsrazy.web.id/password-generator.html">Password Generator</a>
+            <a href="https://tools.xsrazy.web.id/qr/">QR Code Generator</a>
+            <a href="https://tools.xsrazy.web.id/meme-generator.html">Meme Generator</a>
+            <a href="https://tools.xsrazy.web.id/uuid-v1-generator.html">UUID Generator</a>
+            <a href="https://tools.xsrazy.web.id/fake-name-generator.html">Fake Name Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#converters">Converters</a>
+          <nav aria-label="Popular converters" class="flist">
+            <a href="https://tools.xsrazy.web.id/unit-converter.html">Unit Converter</a>
+            <a href="https://tools.xsrazy.web.id/currency-converter.html">Currency Converter</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/color-converter.html">Color Converter</a>
+            <a href="https://tools.xsrazy.web.id/number-base-converter.html">Number Base Converter</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#image-tools">Image tools</a>
+          <nav aria-label="Popular image tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/image-compressor.html">Image Compressor</a>
+            <a href="https://tools.xsrazy.web.id/image-resizer.html">Image Resizer</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/favicon-generator.html">Favicon Generator</a>
+            <a href="https://tools.xsrazy.web.id/image-cropper.html">Image Cropper</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#calculators">Calculators</a>
+          <nav aria-label="Popular calculators" class="flist">
+            <a href="https://tools.xsrazy.web.id/bmi-calculator.html">BMI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/mortgage-calculator.html">Mortgage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/percentage-toolkit.html">Percentage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/loan-calculator.html">Loan Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/age-calculator.html">Age Calculator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#business-tools">Business</a>
+          <nav aria-label="Popular business tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/invoice/">Invoice Generator</a>
+            <a href="https://tools.xsrazy.web.id/business-name-generator.html">Business Name Generator</a>
+            <a href="https://tools.xsrazy.web.id/roi-calculator.html">ROI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/salary-converter.html">Salary Converter</a>
+            <a href="https://tools.xsrazy.web.id/business-plan-generator.html">Business Plan Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#downloaders">Downloaders</a>
+          <nav aria-label="Popular downloaders" class="flist">
+            <a href="https://tools.xsrazy.web.id/tiktok-video-downloader.html">TikTok Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/twitter-video-downloader.html">Twitter Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/youtube-thumbnail-downloader.html">YouTube Thumbnail Downloader</a>
+            <a href="https://tools.xsrazy.web.id/pinterest-downloader.html">Pinterest Downloader</a>
+            <a href="https://tools.xsrazy.web.id/reddit-downloader.html">Reddit Downloader</a>
+          </nav>
+        </div>
+        <div class="fcol f-company">
+          <span class="fhead-link fhead-static">Company</span>
+          <nav aria-label="Company" class="flist-static">
+            <a href="https://tools.xsrazy.web.id/">Home</a>
+            <a href="https://tools.xsrazy.web.id/about.html">About</a>
+            <a href="https://tools.xsrazy.web.id/contact.html">Contact</a>
+            <a href="https://tools.xsrazy.web.id/privacy-policy.html">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 Micro Tools Hub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="site.js"></script>
+    <script src="animations.js"></script>
+    <script>
+(function () {
+  function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function $(id) { return document.getElementById(id); }
+  function val(id) { var el = $(id); return el ? el.value.trim() : ''; }
+  var preview = $('bpl-preview');
+  var genBtn = $('bpl-generate');
+  if (!preview || !genBtn) return;
+  var status = $('bpl-status');
+  function say(m) { if (status) status.textContent = m; }
+  var MODEL_TEXT = {
+    'Subscription': 'Recurring subscription revenue. Focus on monthly price, churn rate and customer lifetime value.',
+    'One-time sales': 'Revenue from one-time purchases. Focus on average order value, margin per sale and repeat purchase rate.',
+    'Freemium': 'A free tier attracts users and a paid tier converts them. Focus on free-to-paid conversion rate.',
+    'Marketplace': 'Revenue from transaction fees or commissions. Focus on take rate, supply and demand liquidity.',
+    'Advertising': 'Revenue from advertisers. Focus on audience size, engagement and rates per thousand impressions.'
+  };
+  function section(title, body) { return '<h4>' + esc(title) + '</h4><p>' + body + '</p>'; }
+  function generate() {
+    var idea = val('bpl-idea'), market = val('bpl-market'), product = val('bpl-product'),
+        model = val('bpl-model') || 'Subscription', channels = val('bpl-channels');
+    if (!idea && !market && !product) { say('Describe your idea, market or product first. One sentence is enough to start.'); return; }
+    var I = esc(idea || 'the business idea'), M = esc(market || 'the target market'), P = esc(product || 'the product or service');
+    var html = '<h3 class="doc-title">BUSINESS PLAN OUTLINE</h3><div class="doc-sub">Generated ' + new Date().toLocaleDateString('en-US') + '</div>';
+    html += section('1. Executive Summary', I + ' serves ' + M + '. The core offering: ' + P + ' Revenue comes from a ' + esc(model).toLowerCase() + ' model.');
+    html += section('2. Target Market', 'Primary customers: ' + M + '. Next step: size this market, list the top three competitors, and note what they charge.');
+    html += section('3. Product / Service', P);
+    html += section('4. Revenue Model', '<strong>' + esc(model) + '.</strong> ' + esc(MODEL_TEXT[model] || ''));
+    html += section('5. Marketing', channels ? 'Planned channels: ' + esc(channels) + '.' : 'Planned channels: not defined yet. Pick two channels you can run weekly for 90 days and measure cost per acquired customer.');
+    html += '<h4>6. Next Steps</h4><ul>' +
+      '<li>Talk to 10 potential customers and validate the problem.</li>' +
+      '<li>Build the smallest version that someone will pay for.</li>' +
+      '<li>Model 12 months of costs and revenue in a spreadsheet.</li>' +
+      '<li>Set one metric that proves the business works, and review it weekly.</li></ul>';
+    preview.innerHTML = html;
+    say('Outline generated. Copy it into your document editor to expand each section.');
+    preview.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  genBtn.addEventListener('click', generate);
+  var copyBtn = $('bpl-copy');
+  var copyStatus = $('bpl-copystatus');
+  function csay(m) { if (copyStatus) copyStatus.textContent = m; }
+  if (copyBtn) copyBtn.addEventListener('click', function () {
+    var text = preview.innerText || preview.textContent || '';
+    if (!text.trim()) { csay('Generate an outline first.'); return; }
+    function done() { csay('Outline copied to clipboard.'); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function () { csay('Copy failed in this browser.'); });
+    } else { csay('Copy is not supported in this browser.'); }
+  });
+  var printBtn = $('bpl-print');
+  if (printBtn) printBtn.addEventListener('click', function () { window.print(); });
+})();
+    </script>
+</body>
+</html>

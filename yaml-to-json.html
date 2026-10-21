@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>YAML to JSON Converter - Convert YAML Online | Micro Tools Hub</title>
+    <meta name="keywords" content="yaml to json, convert yaml to json, yaml converter, yaml parser online, yaml to json free" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Free YAML to JSON converter: paste YAML and get pretty-printed JSON instantly, with clear error messages. Runs in your browser, nothing is uploaded." />
+    <link rel="canonical" href="https://tools.xsrazy.web.id/yaml-to-json.html" />
+    <meta property="og:title" content="YAML to JSON Converter - Convert YAML Online" />
+    <meta property="og:description" content="Paste YAML, get pretty-printed JSON instantly. Free, live, no sign-up, private by design." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Micro Tools Hub" />
+    <meta property="og:image:alt" content="YAML to JSON Converter - Convert YAML Online - free online tool" />
+    <meta property="og:url" content="https://tools.xsrazy.web.id/yaml-to-json.html" />
+    <meta property="og:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="YAML to JSON Converter - Convert YAML Online" />
+    <meta name="twitter:description" content="Convert YAML to pretty JSON in your browser. Free, no uploads, no sign-up." />
+    <meta name="twitter:image" content="https://tools.xsrazy.web.id/assets/og-image.png" />
+    <meta name="theme-color" content="#0B1220" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="/assets/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=26" />
+    <style>
+      #yaml-output { white-space: pre-wrap; word-break: break-word; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .85rem; max-height: 420px; overflow: auto; margin: 0 0 14px; }
+      .yaml-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+      #yaml-error { display: none; margin-bottom: 14px; }
+      #yaml-error .msg { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .82rem; white-space: pre-wrap; word-break: break-word; }
+      #yaml-input { min-height: 260px; }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"What is the difference between YAML and JSON?","acceptedAnswer":{"@type":"Answer","text":"YAML is a human-friendly configuration format that uses indentation instead of brackets. JSON is stricter and machine-oriented, using braces, brackets and quoted keys. Both describe the same data, which is why conversion is lossless for most documents."}},
+        {"@type":"Question","name":"Why convert YAML to JSON?","acceptedAnswer":{"@type":"Answer","text":"Many APIs, JavaScript apps and config tools only accept JSON. Converting lets you write comfortably in YAML and paste strict JSON where it is required."}},
+        {"@type":"Question","name":"Is my YAML uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Parsing and formatting happen in your browser with the js-yaml library. Your data never leaves your device."}},
+        {"@type":"Question","name":"Does it support nested YAML and multiple documents?","acceptedAnswer":{"@type":"Answer","text":"Nested objects, arrays and all standard YAML types are supported. Multi-document files separated by --- convert to a JSON array of documents."}},
+        {"@type":"Question","name":"What do I do when I get a parse error?","acceptedAnswer":{"@type":"Answer","text":"The error box shows the exact message from the parser, usually with a line and column. The most common cause is mixed tabs and spaces: YAML requires spaces for indentation."}}
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "YAML to JSON",
+      "url": "https://tools.xsrazy.web.id/yaml-to-json.html",
+      "description": "Convert YAML to JSON instantly.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+</head>
+<body>
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="index.html" aria-label="Micro Tools Hub home">
+          <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+          <span class="brand-word">Micro <em>Tools</em></span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><span></span><span></span><span></span></button>
+        <nav class="nav-links" id="navLinks" aria-label="Site">
+          <a class="nav-link" href="word-counter.html">Word Counter</a>
+          <a class="nav-link" href="password-generator.html">Password Generator</a>
+          <a class="nav-link" href="unit-converter.html">Unit Converter</a>
+          <a class="nav-link" href="timezone-converter.html">Time Zone</a>
+          <a class="nav-link" href="case-converter.html">Case Converter</a>
+          <a class="btn btn-primary btn-sm" href="index.html#tools">Browse tools</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ADSENSE SLOT 1 of 3 (header leaderboard): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+    <div class="ad-slot" data-ad-slot="header">Advertisement</div>
+
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="index.html#converters">Converters</a> &nbsp;/&nbsp; YAML to JSON</nav>
+      <header class="page-head">
+        <h1>YAML to JSON</h1>
+        <p>Paste <strong>YAML</strong> and get pretty-printed <strong>JSON</strong> instantly, with clear error messages when something is off. Everything runs in your browser.</p>
+      </header>
+
+      <main>
+        <div class="tool-grid">
+          <div class="card panel">
+            <h2>Your YAML</h2>
+            <p class="sub">Paste or type. Conversion happens live.</p>
+            <div class="field">
+              <label for="yaml-input">YAML input</label>
+              <textarea class="tool-text" id="yaml-input" placeholder="name: Micro Tools Hub&#10;tools:&#10;  - yaml&#10;  - json&#10;enabled: true"></textarea>
+              <div class="hint">Multi-document files separated by --- become a JSON array.</div>
+            </div>
+            <div class="yaml-actions">
+              <button class="btn btn-primary" id="yaml-convert">Convert</button>
+            </div>
+          </div>
+
+          <div class="card result-card">
+            <div class="result-head">
+              <div class="result-label">JSON output</div>
+              <p class="result-note" id="yaml-status">Waiting for YAML input.</p>
+            </div>
+            <div class="callout" id="yaml-error" role="alert"><strong>YAML parse error</strong><div class="msg" id="yaml-error-msg"></div></div>
+            <pre id="yaml-output">{"result":"Your converted JSON will appear here."}</pre>
+            <div class="yaml-actions">
+              <button class="btn" id="yaml-copy">Copy JSON</button>
+              <button class="btn" id="yaml-download">Download .json</button>
+            </div>
+            <div class="callout info" style="margin-top:16px"><strong>Private by design:</strong> parsing uses the js-yaml library (loaded once from a CDN) and formatting happens locally. Your data is never uploaded.</div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ADSENSE SLOT 2 of 3 (in-article): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="in-article">Advertisement</div>
+
+      <section class="explainer">
+        <div class="card">
+          <h3>How it works</h3>
+          <p>The <strong>js-yaml</strong> parser reads your YAML into a JavaScript object, then the page prints it as indented <strong>JSON</strong>. Multi-document YAML (separated by <strong>---</strong>) becomes a JSON array of documents. Dates and special types are converted to their JSON-friendly forms.</p>
+        </div>
+        <div class="card">
+          <h3>Fixing parse errors</h3>
+          <ul>
+            <li><strong>Tabs vs spaces:</strong> YAML indentation must use spaces, never tabs.</li>
+            <li><strong>Indentation:</strong> keep nested levels consistent, usually two spaces per level.</li>
+            <li><strong>Colons:</strong> a colon inside a value needs a space after it (key: value).</li>
+            <li><strong>Quotes:</strong> wrap values with special characters like # or : in quotes.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="related">
+        <h2>Related tools</h2>
+        <div class="related-grid">
+          <a href="json-formatter.html"><span class="t">JSON formatter</span><span class="d">Pretty-print and validate JSON with error highlighting.</span></a>
+          <a href="base64-encoder.html"><span class="t">Base64 encoder</span><span class="d">Encode files and text to Base64, or decode them back.</span></a>
+          <a href="regex-tester.html"><span class="t">Regex tester</span><span class="d">Test regular expressions against sample text live.</span></a>
+        </div>
+      </section>
+
+      <section class="faq faq-narrow">
+        <h2>YAML to JSON FAQs</h2>
+        <details>
+          <summary>What is the difference between YAML and JSON?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">YAML is a human-friendly configuration format that uses indentation instead of brackets. JSON is stricter and machine-oriented, using braces, brackets and quoted keys. Both describe the same data, which is why conversion is lossless for most documents.</div>
+        </details>
+        <details>
+          <summary>Why convert YAML to JSON?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Many APIs, JavaScript apps and config tools only accept JSON. Converting lets you write comfortably in YAML and paste strict JSON where it is required.</div>
+        </details>
+        <details>
+          <summary>Is my YAML uploaded anywhere?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">No. Parsing and formatting happen in your browser with the js-yaml library. Your data never leaves your device.</div>
+        </details>
+        <details>
+          <summary>Does it support nested YAML and multiple documents?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">Nested objects, arrays and all standard YAML types are supported. Multi-document files separated by --- convert to a JSON array of documents.</div>
+        </details>
+        <details>
+          <summary>What do I do when I get a parse error?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="a">The error box shows the exact message from the parser, usually with a line and column. The most common cause is mixed tabs and spaces: YAML requires spaces for indentation.</div>
+        </details>
+      </section>
+
+      <!-- ADSENSE SLOT 3 of 3 (above footer): paste your AdSense ad unit code inside the div below. Placeholder only, no ad code included. -->
+      <div class="ad-slot" data-ad-slot="above-footer">Advertisement</div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="f-brand">
+          <a class="brand brand-light" href="https://tools.xsrazy.web.id/" aria-label="Micro Tools Hub home">
+            <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#7C3AED"/><path d="M20.5 6.5a6.2 6.2 0 0 0-8.1 8.1L6 21l3.4 1.3 1.3 3.4 6.4-6.4a6.2 6.2 0 0 0 8.1-8.1l-3.1 3.1-2.4-.3-.4-2.4 3.2-3.1z" fill="#fff" transform="translate(-1,1) scale(.94)"/></svg>
+            <span class="brand-word">Micro <em>Tools</em></span>
+          </a>
+          <p>Free online tools with instant results, right in your browser.</p>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#text-tools">Text tools</a>
+          <nav aria-label="Popular text tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/word-counter.html">Word Counter</a>
+            <a href="https://tools.xsrazy.web.id/case-converter.html">Case Converter</a>
+            <a href="https://tools.xsrazy.web.id/character-counter.html">Character Counter</a>
+            <a href="https://tools.xsrazy.web.id/word-frequency-counter.html">Word Frequency</a>
+            <a href="https://tools.xsrazy.web.id/text-reverser.html">Text Reverser</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#generators">Generators</a>
+          <nav aria-label="Popular generators" class="flist">
+            <a href="https://tools.xsrazy.web.id/password-generator.html">Password Generator</a>
+            <a href="https://tools.xsrazy.web.id/qr/">QR Code Generator</a>
+            <a href="https://tools.xsrazy.web.id/meme-generator.html">Meme Generator</a>
+            <a href="https://tools.xsrazy.web.id/uuid-v1-generator.html">UUID Generator</a>
+            <a href="https://tools.xsrazy.web.id/fake-name-generator.html">Fake Name Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#converters">Converters</a>
+          <nav aria-label="Popular converters" class="flist">
+            <a href="https://tools.xsrazy.web.id/unit-converter.html">Unit Converter</a>
+            <a href="https://tools.xsrazy.web.id/currency-converter.html">Currency Converter</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/color-converter.html">Color Converter</a>
+            <a href="https://tools.xsrazy.web.id/number-base-converter.html">Number Base Converter</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#image-tools">Image tools</a>
+          <nav aria-label="Popular image tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/image-compressor.html">Image Compressor</a>
+            <a href="https://tools.xsrazy.web.id/image-resizer.html">Image Resizer</a>
+            <a href="https://tools.xsrazy.web.id/image-converter.html">Image Converter</a>
+            <a href="https://tools.xsrazy.web.id/favicon-generator.html">Favicon Generator</a>
+            <a href="https://tools.xsrazy.web.id/image-cropper.html">Image Cropper</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#calculators">Calculators</a>
+          <nav aria-label="Popular calculators" class="flist">
+            <a href="https://tools.xsrazy.web.id/bmi-calculator.html">BMI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/mortgage-calculator.html">Mortgage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/percentage-toolkit.html">Percentage Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/loan-calculator.html">Loan Calculator</a>
+            <a href="https://tools.xsrazy.web.id/calculators/age-calculator.html">Age Calculator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#business-tools">Business</a>
+          <nav aria-label="Popular business tools" class="flist">
+            <a href="https://tools.xsrazy.web.id/invoice/">Invoice Generator</a>
+            <a href="https://tools.xsrazy.web.id/business-name-generator.html">Business Name Generator</a>
+            <a href="https://tools.xsrazy.web.id/roi-calculator.html">ROI Calculator</a>
+            <a href="https://tools.xsrazy.web.id/salary-converter.html">Salary Converter</a>
+            <a href="https://tools.xsrazy.web.id/business-plan-generator.html">Business Plan Generator</a>
+          </nav>
+        </div>
+        <div class="fcol">
+          <a class="fhead-link" href="https://tools.xsrazy.web.id/#downloaders">Downloaders</a>
+          <nav aria-label="Popular downloaders" class="flist">
+            <a href="https://tools.xsrazy.web.id/tiktok-video-downloader.html">TikTok Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/twitter-video-downloader.html">Twitter Video Downloader</a>
+            <a href="https://tools.xsrazy.web.id/youtube-thumbnail-downloader.html">YouTube Thumbnail Downloader</a>
+            <a href="https://tools.xsrazy.web.id/pinterest-downloader.html">Pinterest Downloader</a>
+            <a href="https://tools.xsrazy.web.id/reddit-downloader.html">Reddit Downloader</a>
+          </nav>
+        </div>
+        <div class="fcol f-company">
+          <span class="fhead-link fhead-static">Company</span>
+          <nav aria-label="Company" class="flist-static">
+            <a href="https://tools.xsrazy.web.id/">Home</a>
+            <a href="https://tools.xsrazy.web.id/about.html">About</a>
+            <a href="https://tools.xsrazy.web.id/contact.html">Contact</a>
+            <a href="https://tools.xsrazy.web.id/privacy-policy.html">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 Micro Tools Hub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="site.js"></script>
+    <script src="animations.js"></script>
+    <script>
+    (function () {
+      var ta = document.getElementById('yaml-input');
+      if (!ta) return;
+      var convertBtn = document.getElementById('yaml-convert');
+      var outEl = document.getElementById('yaml-output');
+      var errBox = document.getElementById('yaml-error');
+      var errMsg = document.getElementById('yaml-error-msg');
+      var statusEl = document.getElementById('yaml-status');
+      var copyBtn = document.getElementById('yaml-copy');
+      var dlBtn = document.getElementById('yaml-download');
+      if (!convertBtn || !outEl || !errBox || !errMsg || !statusEl || !copyBtn || !dlBtn) return;
+
+      var YAML_URL = 'https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js';
+      var lastJson = '';
+      var debounce = null;
+
+      function loadYamlLib(cb) {
+        if (window.jsyaml && typeof window.jsyaml.load === 'function') { cb(null); return; }
+        var s = document.createElement('script');
+        s.src = YAML_URL;
+        s.async = true;
+        s.onload = function () { cb(null); };
+        s.onerror = function () { cb(new Error('cdn')); };
+        document.head.appendChild(s);
+      }
+
+      function showError(text) {
+        errMsg.textContent = text;
+        errBox.style.display = 'block';
+      }
+      function hideError() {
+        errBox.style.display = 'none';
+        errMsg.textContent = '';
+      }
+
+      function convertNow() {
+        var src = ta.value;
+        if (src.trim() === '') {
+          hideError();
+          lastJson = '';
+          outEl.textContent = '{"result":"Your converted JSON will appear here."}';
+          statusEl.textContent = 'Waiting for YAML input.';
+          return;
+        }
+        statusEl.textContent = 'Loading YAML parser...';
+        loadYamlLib(function (err) {
+          if (err) {
+            hideError();
+            statusEl.textContent = 'Could not load the YAML parser from the CDN. Check your connection and try again.';
+            return;
+          }
+          try {
+            var docs = [];
+            window.jsyaml.loadAll(src, function (d) { docs.push(d === undefined ? null : d); });
+            var data = docs.length <= 1 ? docs[0] : docs;
+            var json = JSON.stringify(data === undefined ? null : data, null, 2);
+            hideError();
+            lastJson = json;
+            outEl.textContent = json;
+            statusEl.textContent = docs.length > 1
+              ? 'Converted ' + docs.length + ' YAML documents to a JSON array.'
+              : 'Converted successfully.';
+          } catch (e) {
+            lastJson = '';
+            outEl.textContent = '';
+            statusEl.textContent = 'Could not convert. See the error below.';
+            showError(e && e.message ? e.message : String(e));
+          }
+        });
+      }
+
+      ta.addEventListener('input', function () {
+        if (debounce) clearTimeout(debounce);
+        debounce = setTimeout(convertNow, 300);
+      });
+      convertBtn.addEventListener('click', function () {
+        if (debounce) { clearTimeout(debounce); debounce = null; }
+        convertNow();
+      });
+
+      copyBtn.addEventListener('click', function () {
+        var t = lastJson;
+        if (!t) return;
+        function done(ok) {
+          copyBtn.textContent = ok ? 'Copied' : 'Copy JSON';
+          setTimeout(function () { copyBtn.textContent = 'Copy JSON'; }, 1500);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(t).then(function () { done(true); }, function () { done(false); });
+        } else {
+          var tmp = document.createElement('textarea');
+          tmp.value = t;
+          tmp.style.position = 'fixed';
+          tmp.style.opacity = '0';
+          document.body.appendChild(tmp);
+          tmp.select();
+          var ok = false;
+          try { ok = document.execCommand('copy'); } catch (e) {}
+          tmp.remove();
+          done(ok);
+        }
+      });
+
+      dlBtn.addEventListener('click', function () {
+        if (!lastJson) return;
+        var blob = new Blob([lastJson], { type: 'application/json' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'converted.json';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+      });
+    })();
+    </script>
+</body>
+</html>
