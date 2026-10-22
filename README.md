@@ -4,6 +4,8 @@ A collection of 1,108 free online tools that run in the browser. No sign-up, no 
 
 Live: https://tools.xsrazy.web.id
 
+![Micro Tools Hub](assets/og-image.png)
+
 ## About
 
 Micro Tools Hub (tools.xsrazy.web.id) collects small everyday utilities in one place: counters, converters, calculators, generators, image tools, and more. Almost everything is computed locally on the visitor's own device, so tools answer instantly and the files or text being processed never need to leave the browser.
@@ -37,6 +39,19 @@ Examples: word counter, password generator, meme generator, JSON formatter, curr
 - Page generation: `scripts/generate.js` builds pages from `data/tools-registry.json` (the single registry of all 1,108 tools) using `scripts/templates/page.html`. 1,057 pages are generated this way; 51 pages (mostly calculators and interactive tools) are handbuilt HTML files kept in the repo
 - SEO: generated pages include FAQ sections with JSON-LD structured data, and `sitemap.xml` lists 1,113 URLs. The generator also syncs the shared footer, the stylesheet version, and the sitemap on every run
 - Backend: almost none. Only two Vercel serverless functions exist: `api/rates.js`, which proxies the Frankfurter API for live currency exchange rates (cached at the edge for 6 hours), and `api/dl.js`, which resolves downloadable media for the Downloader tools
+
+## API
+
+Only two serverless endpoints exist; everything else is static.
+
+| Endpoint | Method | Description |
+| --- | --- | --- |
+| `/api/rates` | GET | Live currency exchange rates for the converter tools, proxied from the Frankfurter API (`?from=USD&to=IDR`), cached at the edge for 6 hours |
+| `/api/dl` | GET | Resolves downloadable media for the Downloader tools (`?platform=...&url=...`), using public resolver APIs per platform (including tikwm for TikTok and FxTwitter for X) |
+
+## Environment Variables
+
+None. The two endpoints call public upstream APIs and need no keys or secrets.
 
 ## Development
 
